@@ -48,14 +48,14 @@ function getInfosClient($id) {
 }
 
 function UpdateMail($id, $new_mail) {
-	$SQL = "UPDATE users SET mail='" . $new_mail . "' WHERE id=" . $id;
+	$SQL = "UPDATE client SET mail='" . $new_mail . "' WHERE id=" . $id;
 	$res = SQLUpdate($SQL);
 
 	return $res;
 }
 
 function UpdateMdp($id, $new_mdp) {
-	$SQL = "UPDATE users SET mdp='" . $new_mdp . "' WHERE id=" . $id;
+	$SQL = "UPDATE client SET mdp='" . $new_mdp . "' WHERE id=" . $id;
 	$res = SQLUpdate($SQL);
 
 	return $res;
@@ -76,14 +76,14 @@ function UpdateTel($id, $new_tel) {
 }
 
 function UpdateDateCode($id, $date_code) {
-	$SQL = "UPDATE client SET DateCode='" . $date_code . "' WHERE idUser=" . $id;
+	$SQL = "UPDATE eleve SET DateCode='" . $date_code . "' WHERE idEleve=" . $id;
 	$res = SQLUpdate($SQL);
 
 	return $res;
 }
 
 function UpdateDatePermis($id, $date_permis) {
-	$SQL = "UPDATE client SET DatePermis='" . $date_permis . "' WHERE idUser=" . $id;
+	$SQL = "UPDATE eleve SET DatePermis='" . $date_permis . "' WHERE idEleve=" . $id;
 	$res = SQLUpdate($SQL);
 
 	return $res;
