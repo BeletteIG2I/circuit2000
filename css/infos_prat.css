@@ -1,0 +1,98 @@
+/*
+ * Nom de fichier : infos_prat.css
+ * Description : Feuille de style de la partie "Infos Pratiques" de l'espace perso
+ * Auteur(s) : Maxence DELATTRE
+*/
+
+#infos_prat {margin:0 1%;width:98%;}
+#infos_prat div {vertical-align:top;display:inline-block;}
+#infos_prat .form {display:block;}
+
+#espace_clients .separateur {
+	vertical-align:top;
+	display:inline-block;
+	width:3px;
+	height:500px;
+	margin:0;
+	border-radius:3px;
+	background-color:white;
+}
+
+#fichiers, #conseils, #verif, #conseils_fichiers {width:49%;}
+
+#espace_clients h1 {
+	color:white;
+	text-align:center;
+	font-size:175%;
+	margin:0 0 20px 0;
+	font-weight:normal;
+}
+
+#conseils textarea {
+	width:85%;
+	margin:5%;
+	height:300px;
+	background-color:rgb(200,200,200);
+	font-family:'Calibri Light',Arial,sans-serif;
+	font-size:100%;
+}
+
+#conseils input {
+	float:right;
+	width:100px;
+	margin-right:5%;
+}
+
+#fichiers {text-align:center;}
+#fichiers #supprimer {margin-top:10%;}
+#fichiers input[type="submit"] {float:right;margin:3% 15% 0 0;}
+#supprimer select {width:50%;}
+
+#infos_prat #conseils_astuces, #infos_prat #fichiersDispos, #infos_prat #selectSuppFiles {
+	text-align:justify;
+	width:90%;
+	max-height:250px;
+	word-wrap:break-word;
+	overflow-y:auto;
+}
+
+#infos_prat #fichiersDispos ul, #infos_prat #selectSuppFiles ul {width:100%;}
+#infos_prat #fichiersDispos ul li, #infos_prat #selectSuppFiles ul li {display:block;width:100%;}
+#infos_prat #fichiersDispos ul li a, #infos_prat #selectSuppFiles ul li a {color:white;text-decoration:none;padding-left:5%;}
+
+#clic_verif_inter, #clic_verif_exter {
+	width:90%;
+	height:150px;
+	background-repeat:no-repeat;
+	background-size:100%;
+}
+
+#clic_verif_inter {background-image:url(../images/verif_inter.png);}
+#clic_verif_exter {background-image:url(../images/verif_exter.png);}
+#clic_verif_inter:hover, #clic_verif_exter:hover {cursor:pointer;}
+#infos_prat h1 {margin:0;}
+#infos_prat .titre2 {margin-top:20px;}
+
+.file {
+	background:transparent;
+	background-image:url(../images/file.png);
+	background-repeat:no-repeat;
+	background-position:left;
+	background-size:20px;
+}
+.docx, .doc {background-image:url(../images/docx.png);}
+.pdf {background-image:url(../images/pdf.png);}
+
+#infos_prat #messageResultat {
+	color:black;
+	padding:5px;
+	width:20%;
+	background-color:white;
+	border:3px solid rgb(255,0,0);
+	position:absolute;
+	top:45%;
+	left:40%;
+	border-radius:5px;
+	display:none;
+	z-index:5;
+}

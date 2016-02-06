@@ -1,0 +1,18 @@
+
+#planning
+{
+    display:block;
+    overflow:auto;
+}
+
+
+#calendar {
+	
+    margin-left: 8%;
+    margin-right:12%;
+    display:inline-block;
+    width:80%;
+    float:left;
+    min-width: 600px;
+    height:70%;
+}

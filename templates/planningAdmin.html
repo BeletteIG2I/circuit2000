@@ -1,0 +1,41 @@
+<!--
+ * Nom de fichier : planningAdmin.html
+ * Description : Fichier HTML contenant la structure de la partie "Planning" pour l'administrateur de l'espace perso
+ * Auteur(s) : Maxime DE COSTER
+-->
+
+<link rel='stylesheet' href='css/fullcalendar.css' />
+<script src='js/fullcalendar/moment.min.js'></script>
+<script src='js/fullcalendar/fullcalendar.js'></script>
+<script src='js/fullcalendar/lang-all.js'></script>
+<link rel="stylesheet" type="text/css" href="css/planningAdmin.css"/>
+<script type="text/javascript" src="js/planningAdmin.js"></script>
+
+<div>
+    <div id="planning">
+        <div id="calendar">
+<!--       Automatiquement fait en AJAX     -->
+        </div>
+        <div id="modificationPlanning">
+            <form id="formAjoutPlanning" action="templates/data.php?action=ajouterPlanning" method="POST">
+                <h2>
+                    Ajouter une leçon
+                </h2> 
+                <h3>Date : <input type="text" id="datepicker" name ="date"></h3>
+                <p>
+                    Heure : 
+                    <label for="debut">De <input type="number" step="1" value="8" min="8" max="24" name="hD"> h <input type="number" step="5" value="0" min="0" max="55" name="mD">  </label>
+                    <label for="fin"> à <input name="hF" type="number" step="1" value="9" min="8" max="24"> h <input type="number" step="5" value="0" min="0" max="55" name="mF"></label>
+                </p>
+                <label for="intitule" > Intitule : </label><input type="text" name ="intitule" placeholder="peut être vide"></br></br>
+                <input type="button" value="Ajouter">
+            </form>
+            <form id="formSupprimerToutPlanning" action="templates/data.php" method="post">
+                <p>
+                    <h2>Supprimer Tout</h2>
+                    <input type="button" name="supprimerAll" value="Supprimer Tout">    
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
