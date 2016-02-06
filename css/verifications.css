@@ -1,0 +1,147 @@
+/*
+ * Nom de fichier : verifications.css
+ * Description : Feuille de style des vérifications intérieures et extérieures de la partie "Infos Pratiques" de l'espace perso
+ * Auteur(s) : Maxence DELATTRE
+*/
+
+#container_verif {
+	width:100%;
+	height:500px;
+	margin:0 auto;
+	position:relative;
+	z-index:1;
+}
+
+#slider_verif {
+	width:92%;
+	height:100%;
+	overflow:hidden;
+	z-index:2;
+	position:absolute;
+}
+
+#slider_verif ul {
+	width:100%;
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	height:100%;
+}
+
+#slider_verif ul li {
+	float:left;
+	width:100%;
+	margin:0;
+	height:100%;
+}
+
+#navigation_verif{
+	position:absolute;
+	top:0;
+	right:0;
+	width:64px;
+}
+
+#navigation_verif button {
+	border:0;
+	background:none;
+	outline:none;
+	width:64px;
+	height:64px;
+	background-repeat:no-repeat;
+	background-color:transparent;
+	padding:0;
+}
+
+#navigation_verif button:hover {cursor:pointer;background-color:grey;}
+#navigation_verif ul {width:60%;margin:auto;}
+.menu_verif {width:50%;margin:0 auto;}
+
+#navigation_verif .menu_verif li {
+	display:block;
+	border-radius:50%;
+	border:1px solid white;
+	width:15px;
+	height:15px;
+	margin-bottom:5px;
+}
+
+#slider_verif h1 {
+	margin:0;
+	text-align:justify;
+	font-family:'AutoMoto';
+}
+
+#slider_verif tr, #slider_verif td {text-align:justify;border:none;}
+#slider_verif p {margin:0;}
+#slider_verif tr td:nth-child(1):not(.sous_titre) {text-align:center;width:3%;font-family:'AutoMoto';}
+#slider_verif tr td:nth-child(2) {border:1px solid white;border-left:none;width:60%;}
+#slider_verif tr td:nth-child(3) {border:1px solid white;border-right:none;}
+#slider_verif tr.premiere_question td {border-top:none;}
+#slider_verif tr.derniere_question td {border-bottom:none;}
+#slider_verif table {width:100%;margin:0;border:none;border-collapse:collapse;}
+#navigation_verif #top {background-image:url(../images/top.png);}
+#navigation_verif #bottom {background-image:url(../images/bottom.png);}
+#navigation_verif .menu_verif li:hover {background-color:grey;}
+#navigation_verif .menu_verif li.nav-active {background-color:white;}
+
+#backEspacePerso {
+	width:60px;
+	height:50px;
+	background-color:white;
+	background-image:url(../images/home.png);
+	background-repeat:no-repeat;
+	background-size:45px;
+	background-position:7.5px 2.5px;
+	margin:auto;
+}
+
+#backEspacePerso:hover {cursor:pointer;}
+
+#slider_verif #verif_inter tr td:nth-child(2) {width:50%;}
+#slider_verif #verif_inter tr td:nth-child(3) {text-align:center;}
+#slider_verif #verif_inter tr td img {
+	width:268px;
+	height:211px;
+	-webkit-transition: all .5s cubic-bezier( .6, 2, .4, 1);
+	-moz-transition: all .5s cubic-bezier( .6, 2, .4, 1);
+	-ms-transition: all .5s cubic-bezier( .6, 2, .4, 1);
+	-o-transition: all .5s cubic-bezier( .6, 2, .4, 1);
+	transition: all .5s cubic-bezier( .6, 2, .4, 1);
+
+}
+
+#navigation_verif #menu_verif_inter li {
+	width:8px;
+	height:8px;
+	margin-bottom:4px;
+}
+
+#navigation_verif #menu_verif_inter ul {width:40%;}
+
+#slider_verif #verif_inter tr td img:hover{
+	cursor:-webkit-zoom-in;
+}
+
+#zoom_image {
+	display:none;
+	width:100%;
+	height:100%;
+	background-color:rgba(50,50,50,0.85);
+	position:fixed;
+	top:11.5%;
+	left:0;
+	z-index:2;
+}
+
+#retour_verif {
+	width:50px;
+	height:50px;
+	background-color:transparent;
+	background-image:url(../images/back.png);
+	background-repeat:no-repeat;
+	background-size:50px;
+	position:absolute;
+	top:0;
+	right:0;
+}
