@@ -1,4 +1,0 @@
-180.76.15.34 - - [28/Dec/2015:01:09:36 +0100] "GET / HTTP/1.1" 200 992 www.driviz.com "-" "Mozilla/5.0 (compatible; Baiduspider/2.0; +http://www.baidu.com/search/spider.html)" "-"
-194.44.161.58 - - [28/Dec/2015:01:12:45 +0100] "GET / HTTP/1.1" 200 992 driviz.com "-" "-" "-"
-180.76.15.16 - - [28/Dec/2015:02:20:51 +0100] "GET /robots.txt HTTP/1.1" 404 823 www.driviz.com "-" "Mozilla/5.0 (Windows NT 5.1; rv:6.0.2) Gecko/20100101 Firefox/6.0.2" "-"
-204.13.200.200 - - [28/Dec/2015:02:34:11 +0100] "GET / HTTP/1.1" 200 992 driviz.com "http://www.bing.com" "Mozilla/5.0 (compatible; MSIE 8.0; Windows NT 6.1; Trident/4.0; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; .NET CLR 1.0.3705; .NET CLR 1.1.4322)" "-"
