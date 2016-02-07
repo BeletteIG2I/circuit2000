@@ -11,13 +11,10 @@ function InsertClient($nom, $prenom, $mail) {
     // On génère un mot de passe aléatoire de 8 caractères
     $mdp = chaine_aleatoire(8);
 
-    // On insère l'utilisateur dans 'users' avec le champ 'admin' à 0
-    $sql = "INSERT INTO users(mail, mdp, admin) VALUES ('$mail', '$mdp', '0')";
+    // On insère l'utilisateur dans 'client' avec le champ 'fonction' à 0
+    $sql = "INSERT INTO client(nom,prenom,mail, mdp, admin) VALUES ('$nom','$prenom','$mail', '$mdp', '0')";
     $res = SQLInsert($sql);
-
-    // On l'insère dans 'client' avec son nom et son prénom
-    $sql = "INSERT INTO client(idUser, nom, prenom) VALUES ('$res', '$nom', '$prenom')";
-    $rep = SQLInsert($sql);
+   
 
     return $res;
 }

@@ -42,7 +42,8 @@ if(isset($_POST['action'])) {
 	if($_POST['action'] == 'getEspacePerso') {
 		$login = $_POST['login'];
 		if(($login && $login != "") || $_SESSION['connecte']) {
-			$passe = sha1(md5(sha1($_POST['password']))); // voir maLibUtils.php
+			//$passe = sha1(md5(sha1($_POST['password']))); // voir maLibUtils.php
+			$passe = $_POST['password']; // voir maLibUtils.php
 			if(($passe && $_POST['password'] != "") || $_SESSION['connecte']) {
 				if(verifUser($login,$passe) || $_SESSION['connecte']) { // voir maLibSecurisation.php
 					if($_SESSION['connecte'])

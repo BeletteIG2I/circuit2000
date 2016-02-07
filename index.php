@@ -20,12 +20,12 @@ ob_start("ob_gzhandler");
 <html>
 	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="icon" type="image/png" href="/images/icon.png" />
+        <link rel="icon" type="image/png" href="/Circuit2000git/circuit2000/images/icon.png" />
 		<title>Auto-école Circuit 2000</title>
-		<link rel="stylesheet" type="text/css" href="/css/base.min.css">
-		<link rel="stylesheet" type="text/css" href="/css/prestations.min.css">
-		<link rel="stylesheet" type="text/css" href="/css/slider.min.css">
-		<script src="/js/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="/Circuit2000git/circuit2000/css/base.min.css">
+		<link rel="stylesheet" type="text/css" href="/Circuit2000git/circuit2000/css/prestations.min.css">
+		<link rel="stylesheet" type="text/css" href="/Circuit2000git/circuit2000/css/slider.min.css">
+		<script src="/Circuit2000git/circuit2000/js/jquery.min.js"></script>
 		<!-- <script src="/js/jquery-ui.min.js"></script> -->
 		<script type="text/javascript">
 			$(document).ready(function() {
@@ -68,6 +68,15 @@ ob_start("ob_gzhandler");
 			        }
 				});
 			}
+			
+			$(document).on("click","#submit_connexion", function() { // Au clic sur un item du menu de l'espace clients
+				alert("YOLO");
+				if($("#login").val() && $("#login").val()!= "" && $("#password").val() && $("#password").val() != "") {
+					
+					afficherEspaceClients(); // on affiche directement l'espace clients correspondant en lieu et place du formulaire d'identification
+				}
+				
+			});
 		</script>
 	</head>
 	<body>

@@ -17,21 +17,21 @@ include_once ('maLibSQL.php');
  * @param string $password
  * @return false ou true ; un effet de bord est la création de variables de session
  */
-function verifUser($login = '', $password = '') {
-	$SQL = "SELECT id FROM users WHERE mail='" . $login . "' AND mdp='" . $password . "'";
+function verifUser($login /*= ''*/, $password/* = ''*/) {
+	$SQL = "SELECT id FROM client WHERE mail='" . $login . "' AND mdp='" . $password . "'";
 	$idUser = SQLGetChamp($SQL); // renvoie la valeur de id ou false
 
 	if($idUser) {
 			$_SESSION["login"] = $login;
 			$_SESSION["connecte"] = true;
-			$_SESSION["admin"] = false;
-			$_SESSION["idUser"] = $idUser;
+			
+			
 
-			$SQL = "SELECT admin FROM users WHERE id=$idUser";
-			$admin = SQLGetChamp($SQL);
-
+			$SQL = "SELECT fonction FROM client WHERE id=$idUser";
+			$fonction = SQLGetChamp($SQL);
+			
 			if($admin)
-				$_SESSION["admin"] = true;
+			$_SESSION["fonction"] = $fonction;
 
 			return true; 
 	}
