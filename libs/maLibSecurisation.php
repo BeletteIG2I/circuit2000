@@ -28,13 +28,16 @@ function verifUser($login /*= ''*/, $password/* = ''*/) {
 			
 
 			$SQL = "SELECT fonction FROM client WHERE id=$idUser";
-			$fonction = SQLGetChamp($SQL);
+			$admin = SQLGetChamp($SQL);
 			
 			if($admin)
-			$_SESSION["fonction"] = $fonction;
-
+				//echo "<script> console.log('test') </script>";
+				$_SESSION["admin"] = $admin;
+			//echo "<script> console.log('test2') </script>";
 			return true; 
 	}
 
 	return false;
 }
+
+?>
