@@ -31,14 +31,14 @@ function chaine_aleatoire($nb_car, $chaine = 'azertyuiopqsdfghjklmwxcvbn12345678
 }
 
 function getClients() {
-    $sql = "SELECT client.idUser, client.nom, client.prenom FROM client,users WHERE client.idUser = users.id";
+    $sql = "SELECT client.id, client.nom, client.prenom FROM client";
     $res = SQLSelect($sql);
 
     return parcoursRs($res);
 }
 
 function getInfosClient($id) {
-	$sql = "SELECT * FROM client,users WHERE users.id=" . $id . " AND client.idUser = users.id";
+	$sql = "SELECT * FROM client WHERE client.id=" . $id;
 	$res = SQLSelect($sql);
 
 	return parcoursRs($res);

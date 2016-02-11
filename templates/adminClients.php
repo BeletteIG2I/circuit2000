@@ -8,9 +8,9 @@
 $clients = getClients(); 
 
 ?>
-<link rel="stylesheet" type="text/css" href="/Circuit2000git/circuit2000/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/Circuit2000git/circuit2000css/client.css">
-<script type="text/javascript" src="/Circuit2000git/circuit2000/js/datepicker-fr.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="/css/client.css">
+<script type="text/javascript" src="/js/datepicker-fr.js"></script>
 <script type="text/javascript" src="js/adminClient.js"></script>
 <div id="client">
     <div id="infoClient">

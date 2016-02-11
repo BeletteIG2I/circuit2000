@@ -21,8 +21,8 @@
 
 		<div id="navigation">
 			<div id="buttons">
-				<button id="left"><img src="/Circuit2000git/circuit2000/images/left.png" alt="gauche"></button>
-				<button id="right"><img src="/Circuit2000git/circuit2000/images/right.png" alt="droite"></button>
+				<button id="left"><img src="/images/left.png" alt="gauche"></button>
+				<button id="right"><img src="/images/right.png" alt="droite"></button>
 			</div>	
 		</div>
 	</div>
