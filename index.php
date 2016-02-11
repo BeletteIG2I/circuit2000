@@ -1,5 +1,5 @@
 <?php
-
+//ligne pour Test francis
 /*
  * Nom de fichier : index.php
  * Description : Fichier PHP contenant la structure principal du site
