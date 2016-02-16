@@ -50,22 +50,23 @@ if($action = valider('action')) {
         case 'recupInfoUser' : { // On récupère toutes les infos d'un client
             $var = getInfosClient($_GET["id"]);
             echo(json_encode($var));
+			
         }break;
 
         case 'recupDatesUser' : { // On récupère les dates (côté admin) au format aaaa-mm-jj
-            $var = getInfosClient($_GET["id"]);
-
+            $var = getInfosEleve($_GET["id"]);
+			
             $dateCode = $var[0]['dateCode'];
             $datePermis = $var[0]['datePermis'];
 
             $dates = array();
 
             if ($dateCode != "0000-00-00 00:00:00") {
-                $dateCode = EcrireDate2($var[0]['dateCode']);
+                $dateCode = EcrireDate($var[0]['dateCode']);
                 $dates[0] = $dateCode;
             }
             if ($datePermis != "0000-00-00 00:00:00") {
-                $datePermis = EcrireDate2($var[0]['datePermis']);
+                $datePermis = EcrireDate($var[0]['datePermis']);
                 $dates[1] = $datePermis;
             }
 
@@ -73,7 +74,7 @@ if($action = valider('action')) {
         }break;
 
         case 'recupDatesUser2' : { // On récupère les dates (côté client) au format jj mois aaaa
-            $var = getInfosClient($_GET["id"]);
+            $var = getInfosEleve($_GET["id"]);
 
             $dateCode = $var[0]['dateCode'];
             $datePermis = $var[0]['datePermis'];

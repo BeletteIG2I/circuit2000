@@ -15,7 +15,7 @@ $(document).ready(function() {
             url:"templates/data.php?action=recupUsers",
             success: function (result, textStatus, jqXHR) {
                 result = $.parseJSON(result);
-                console.log(result);
+                
                 var chaine = "";
 
                 chaine += "<option value='none'>Sélectionnez votre client</option>"
@@ -23,7 +23,7 @@ $(document).ready(function() {
                 // Pour chaque client existant, on ajoute son nom et son prénom dans la liste déroulante
                 for (var index = 0; index < result.length; index++) {
                     chaine += "<option value='"
-                    chaine += result[index].idUser;
+                    chaine += result[index].id;
                     chaine += "'>";
                     chaine += result[index].nom;
                     chaine += " ";
@@ -44,13 +44,16 @@ $(document).ready(function() {
     $(document).on("change", "#listeClients",function(){
 
         if($(this).val() != "none") { // On vérifie qu'un utilisateur est sélectionné
+			//console.log($(this).val());
             // On met à jour les champs textes (adresse, email, téléphone)
             $.ajax({
                 type:"GET",
                 url:"templates/data.php?action=recupInfoUser&id=" + $(this).val(),
                 success:function(result, textStatus, jqXHR) {
+					
                     result = $.parseJSON(result);
-                    $("#adresseDuClient").html(result[0].adresse.replace(/(\r\n|\n\r|\r|\n)/g, "<br/>"));
+					var adresse = result[0].numeroADR + " - " + result[0].rueADR + " - " + result[0].villeADR + " - " + result[0].codePostal;
+                    $("#adresseDuClient").html(adresse.replace(/(\r\n|\n\r|\r|\n)/g, "<br/>"));
                     $("#mailDuClient").html(result[0].mail);
                     $("#telDuClient").html(result[0].telephone);
                 },
@@ -64,7 +67,9 @@ $(document).ready(function() {
                 type:"GET",
                 url:"templates/data.php?action=recupDatesUser&id=" + $(this).val(),
                 success:function(result, textStatus, jqXHR) {
+					console.log(result);
                     result = $.parseJSON(result);
+					console.log(result);
                     $("#dateCode").val(result[0]);
                     $("#datePermis").val(result[1]);
                 },

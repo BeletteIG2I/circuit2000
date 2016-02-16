@@ -11,7 +11,7 @@ $clients = getClients();
 <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="/css/client.css">
 <script type="text/javascript" src="/js/datepicker-fr.js"></script>
-<script type="text/javascript" src="js/adminClient.js"></script>
+<script type="text/javascript" src="/js/adminClient.js"></script>
 <div id="client">
     <div id="infoClient">
         <h1>Informations Clients</h1>
@@ -33,7 +33,7 @@ $clients = getClients();
                 <td class="gauche"> <h2> Date Code : </h2> </td>
                 <td class="droite">
                     <input type="text" class="datepicker" id="dateCode">
-                    <input type="submit" id="validerDateCode" value="Valider Date Code">
+                   <input type="submit" id="validerDateCode" value="Valider Date Code">
                 </td>
             </tr>
             <tr>

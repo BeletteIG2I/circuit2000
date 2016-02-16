@@ -6,7 +6,6 @@
  * Auteur(s) : Clément RUFFIN
 */
 
-
 if($_SESSION["admin"] == 1)
     include "./adminClients.php";
 else if ($_SESSION["admin"] == 0)

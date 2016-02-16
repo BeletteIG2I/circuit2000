@@ -11,8 +11,8 @@ function InsertClient($nom, $prenom, $mail) {
     // On génère un mot de passe aléatoire de 8 caractères
     $mdp = chaine_aleatoire(8);
 
-    // On insère l'utilisateur dans 'client' avec le champ 'fonction' à 0
-    $sql = "INSERT INTO client(nom,prenom,mail, mdp, admin) VALUES ('$nom','$prenom','$mail', '$mdp', '0')";
+    // On insère l'utilisateur dans 'user' avec le champ 'fonction' à 0
+    $sql = "INSERT INTO user(nom,prenom,mail, mdp, fonction) VALUES ('$nom','$prenom','$mail', '$mdp', '0')";
     $res = SQLInsert($sql);
    
 
@@ -31,42 +31,51 @@ function chaine_aleatoire($nb_car, $chaine = 'azertyuiopqsdfghjklmwxcvbn12345678
 }
 
 function getClients() {
-    $sql = "SELECT client.id, client.nom, client.prenom FROM client";
+    $sql = "SELECT user.id, user.nom, user.prenom FROM user";
     $res = SQLSelect($sql);
 
     return parcoursRs($res);
 }
 
 function getInfosClient($id) {
-	$sql = "SELECT * FROM client WHERE client.id=" . $id;
+	$sql = "SELECT * FROM user WHERE id=" . $id;
 	$res = SQLSelect($sql);
 
 	return parcoursRs($res);
 }
 
+function getInfosEleve($id) {
+	$sql = "SELECT * FROM eleve WHERE eleve.id=" . $id;
+	$res = SQLSelect($sql);
+
+	return parcoursRs($res);
+}
+
+
+
 function UpdateMail($id, $new_mail) {
-	$SQL = "UPDATE client SET mail='" . $new_mail . "' WHERE id=" . $id;
+	$SQL = "UPDATE user SET mail='" . $new_mail . "' WHERE id=" . $id;
 	$res = SQLUpdate($SQL);
 
 	return $res;
 }
 
 function UpdateMdp($id, $new_mdp) {
-	$SQL = "UPDATE client SET mdp='" . $new_mdp . "' WHERE id=" . $id;
+	$SQL = "UPDATE user SET mdp='" . $new_mdp . "' WHERE id=" . $id;
 	$res = SQLUpdate($SQL);
 
 	return $res;
 }
 
 function UpdateAdresse($id, $new_adresse) {
-	$SQL = "UPDATE client SET adresse='" . $new_adresse . "' WHERE idUser=" . $id;
+	$SQL = "UPDATE user SET adresse='" . $new_adresse . "' WHERE idUser=" . $id;
 	$res = SQLUpdate($SQL);
 
 	return $res;
 }
 
 function UpdateTel($id, $new_tel) {
-	$SQL = "UPDATE client SET telephone='" . $new_tel . "' WHERE idUser=" . $id;
+	$SQL = "UPDATE user SET telephone='" . $new_tel . "' WHERE idUser=" . $id;
 	$res = SQLUpdate($SQL);
 
 	return $res;
