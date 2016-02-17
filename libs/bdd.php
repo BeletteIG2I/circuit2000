@@ -78,7 +78,7 @@ function UpdateAdresse($id, $num,$rue,$ville,$codePostal) {
 	$res = SQLUpdate($SQL);
 
 	$SQL = "UPDATE user SET codePostal='" . $codePostal . "' WHERE id=" . $id;
-	$res = SQLUpdate($SQL);
+	$res2 = SQLUpdate($SQL);
 
 
 	return $res;
@@ -104,5 +104,7 @@ function UpdateDatePermis($id, $date_permis) {
 
 	return $res;
 }
+
+
 
 ?>

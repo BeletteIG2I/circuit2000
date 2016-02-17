@@ -74,11 +74,11 @@
             }
             else if (modifAdresse == 1) {
                 $("#inputAdresseClient").hide(); // On cache l'input
-                numNouvelleAdresse = $("#inputAdresseClient").val().split("-")[0]; // On récupère la nouvelle adresse numero
-                rueNouvelleAdresse = $("#inputAdresseClient").val().split("-")[1]; // On récupère la nouvelle adresse rue
-                villeNouvelleAdresse = $("#inputAdresseClient").val().split("-")[2]; // On récupère la nouvelle adresse ville
-                codePostalNouvelleAdresse = $("#inputAdresseClient").val().split("-")[3]; // On récupère la nouvelle adresse codePostal
-				alert(numNouvelleAdresse+rueNouvelleAdresse+villeNouvelleAdresse+codePostalNouvelleAdresse);
+                numNouvelleAdresse = $("#inputAdresseClient").val().split(" - ")[0]; // On récupère la nouvelle adresse numero
+                rueNouvelleAdresse = $("#inputAdresseClient").val().split(" - ")[1]; // On récupère la nouvelle adresse rue
+                villeNouvelleAdresse = $("#inputAdresseClient").val().split(" - ")[2]; // On récupère la nouvelle adresse ville
+                codePostalNouvelleAdresse = $("#inputAdresseClient").val().split(" - ")[3]; // On récupère la nouvelle adresse codePostal
+				
                 $.ajax({
                     type: "GET",
                     url: "templates/data.php",

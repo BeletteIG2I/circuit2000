@@ -167,11 +167,12 @@ if($action = valider('action')) {
             $res = NULL;
             // Après avoir vérifié l'adresse, on modifie en base
             if ($num = valider("num", "GET") && $rue = valider("rue", "GET") && $ville = valider("ville", "GET") && $codePostal = valider("codePostal", "GET")  )
-                $res = UpdateAdresse($_GET["id"], $num,$rue,$ville,$codePostal);
+                $res = UpdateAdresse($_GET["id"], $_GET["num"],$_GET["rue"],$_GET["ville"],$_GET["codePostal"]);
 
             if ($res != NULL) {
                 $clientUpdate = getInfosClient($_GET["id"]);
-				$nouvelleAdresse = $clientUpdate[0]['numeroADR'] + " - " + $clientUpdate[0]['rueADR']+ " - " + $clientUpdate[0]['villeADR'] + " - " + $clientUpdate[0]['codePostal'];
+				
+				$nouvelleAdresse = $clientUpdate[0]['numeroADR'] . " - " . $clientUpdate[0]['rueADR'] . " - " . $clientUpdate[0]['villeADR'] . " - " . $clientUpdate[0]['codePostal'];
                 echo $nouvelleAdresse;
             }
             else
