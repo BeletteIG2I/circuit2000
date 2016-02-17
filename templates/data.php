@@ -166,12 +166,13 @@ if($action = valider('action')) {
         case 'updateAdresse' : {
             $res = NULL;
             // Après avoir vérifié l'adresse, on modifie en base
-            if ($adresse = valider("adresse", "GET"))
-                $res = UpdateAdresse($_GET["id"], $adresse);
+            if ($num = valider("num", "GET") && $rue = valider("rue", "GET") && $ville = valider("ville", "GET") && $codePostal = valider("codePostal", "GET")  )
+                $res = UpdateAdresse($_GET["id"], $num,$rue,$ville,$codePostal);
 
             if ($res != NULL) {
                 $clientUpdate = getInfosClient($_GET["id"]);
-                echo $nouvelleAdresse = $clientUpdate[0]['adresse'];
+				$nouvelleAdresse = $clientUpdate[0]['numeroADR'] + " - " + $clientUpdate[0]['rueADR']+ " - " + $clientUpdate[0]['villeADR'] + " - " + $clientUpdate[0]['codePostal'];
+                echo $nouvelleAdresse;
             }
             else
                 echo("erreur:Echec de la modification de l'adresse");

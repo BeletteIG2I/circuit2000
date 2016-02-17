@@ -24,13 +24,13 @@ function verifUser($login /*= ''*/, $password/* = ''*/) {
 	if($idUser) {
 			$_SESSION["login"] = $login;
 			$_SESSION["connecte"] = true;
-			
+			$_SESSION["idUser"] = $idUser;
 			
 
-			$SQL = "SELECT fonction FROM user WHERE user.id = ". $idUser;
+			$SQL = "SELECT user.fonction FROM user WHERE user.id = ". $idUser;
 			$admin = SQLGetChamp($SQL);
 			
-			if($admin)
+			if($admin || $admin == 0)
 				$_SESSION["admin"] = $admin;
 			
 			return true; 

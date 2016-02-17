@@ -67,15 +67,25 @@ function UpdateMdp($id, $new_mdp) {
 	return $res;
 }
 
-function UpdateAdresse($id, $new_adresse) {
-	$SQL = "UPDATE user SET adresse='" . $new_adresse . "' WHERE idUser=" . $id;
+function UpdateAdresse($id, $num,$rue,$ville,$codePostal) {
+	$SQL = "UPDATE user SET numeroADR='" . $num . "' WHERE id=" . $id;
 	$res = SQLUpdate($SQL);
+	
+	$SQL = "UPDATE user SET rueADR='" . $rue . "' WHERE id=" . $id;
+	$res = SQLUpdate($SQL);
+
+	$SQL = "UPDATE user SET villeADR='" . $ville . "' WHERE id=" . $id;
+	$res = SQLUpdate($SQL);
+
+	$SQL = "UPDATE user SET codePostal='" . $codePostal . "' WHERE id=" . $id;
+	$res = SQLUpdate($SQL);
+
 
 	return $res;
 }
 
 function UpdateTel($id, $new_tel) {
-	$SQL = "UPDATE user SET telephone='" . $new_tel . "' WHERE idUser=" . $id;
+	$SQL = "UPDATE user SET telephone='" . $new_tel . "' WHERE id=" . $id;
 	$res = SQLUpdate($SQL);
 
 	return $res;

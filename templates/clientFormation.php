@@ -26,8 +26,9 @@
             type:"GET",
             url:"templates/data.php?action=recupInfoUser&id=" + $idUser,
             success:function(result, htmlStatus, jqXHR) {
-                result = $.parseJSON(result);
-                $("#htmlAdresseClient").html(result[0].adresse.replace(/(\r\n|\n\r|\r|\n)/g, "<br/>"));
+				result = $.parseJSON(result);
+                var adresse = result[0].numeroADR + " - " + result[0].rueADR + " - " + result[0].villeADR + " - " + result[0].codePostal;
+                $("#htmlAdresseClient").html(adresse.replace(/(\r\n|\n\r|\r|\n)/g, "<br/>"));
                 $("#htmlMailClient").html(result[0].mail);
                 $("#htmlTelClient").html(result[0].telephone);
             },
@@ -73,19 +74,24 @@
             }
             else if (modifAdresse == 1) {
                 $("#inputAdresseClient").hide(); // On cache l'input
-                nouvelleAdresse = $("#inputAdresseClient").val(); // On récupère la nouvelle adresse
-
+                numNouvelleAdresse = $("#inputAdresseClient").val().split("-")[0]; // On récupère la nouvelle adresse numero
+                rueNouvelleAdresse = $("#inputAdresseClient").val().split("-")[1]; // On récupère la nouvelle adresse rue
+                villeNouvelleAdresse = $("#inputAdresseClient").val().split("-")[2]; // On récupère la nouvelle adresse ville
+                codePostalNouvelleAdresse = $("#inputAdresseClient").val().split("-")[3]; // On récupère la nouvelle adresse codePostal
+				alert(numNouvelleAdresse+rueNouvelleAdresse+villeNouvelleAdresse+codePostalNouvelleAdresse);
                 $.ajax({
                     type: "GET",
                     url: "templates/data.php",
-                    data:{action:"updateAdresse",id:$idUser,adresse:nouvelleAdresse},
+                    data:{action:"updateAdresse",id:$idUser,num:numNouvelleAdresse,rue:rueNouvelleAdresse,ville:villeNouvelleAdresse,codePostal:codePostalNouvelleAdresse},
                     success: function (result, htmlStatus, jqXHR) {
                         if(result.search('erreur:') != -1) {
+							
                             $('#msgErrorMesInfos').text(result.substring(7,result.length));
                             $('#msgErrorMesInfos').css("border-color","red");
                             // On enlève la chaîne de caractères 'erreur:' pour afficher le message d'erreur
                         }
                         else { // Si pas d'erreurs
+							alert(result);
                             $('#msgErrorMesInfos').text("Adresse modifiée");
                             $('#msgErrorMesInfos').css("border-color","green");
                             $("#htmlAdresseClient").html(result.replace(/(\r\n|\n\r|\r|\n)/g, "<br/>")); // On recopie la nouvelle adresse sur la page

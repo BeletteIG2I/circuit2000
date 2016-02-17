@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1:3306
--- Généré le :  Mar 16 Février 2016 à 14:43
+-- Généré le :  Mer 17 Février 2016 à 12:09
 -- Version du serveur :  5.5.43
 -- Version de PHP :  5.4.41
 
@@ -68,7 +68,15 @@ INSERT INTO `eleve` (`id`, `idEleve`, `dateInscription`, `dateCode`, `datePermis
 CREATE TABLE `fonction` (
   `numero` int(11) NOT NULL,
   `nom` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `fonction`
+--
+
+INSERT INTO `fonction` (`numero`, `nom`) VALUES
+(1, 'Admin'),
+(3, 'Client');
 
 -- --------------------------------------------------------
 
@@ -97,10 +105,10 @@ CREATE TABLE `user` (
   `mail` varchar(30) NOT NULL,
   `mdp` varchar(8) NOT NULL,
   `fonction` int(11) NOT NULL,
-  `numeroADR` int(4) DEFAULT NULL,
+  `numeroADR` varchar(4) DEFAULT NULL,
   `rueADR` varchar(30) DEFAULT NULL,
   `villeADR` varchar(30) DEFAULT NULL,
-  `codePostal` int(6) DEFAULT NULL,
+  `codePostal` varchar(6) DEFAULT NULL,
   `telephone` varchar(12) DEFAULT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -109,7 +117,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nom`, `prenom`, `dateNaissance`, `mail`, `mdp`, `fonction`, `numeroADR`, `rueADR`, `villeADR`, `codePostal`, `telephone`) VALUES
-(2, 'Eve', 'Flo', '24/06/1994', 'admin', 'admin', 1, 12, 'Carnot', 'Souchez', 62153, '0645716659');
+(2, 'Eve', 'Flo', '24/06/1994', 'admin', 'admin', 0, '1', '1', '1', ' 62153', '0645716659');
 
 -- --------------------------------------------------------
 
@@ -180,7 +188,7 @@ ALTER TABLE `eleve`
 -- AUTO_INCREMENT pour la table `fonction`
 --
 ALTER TABLE `fonction`
-  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT pour la table `moniteur`
 --
