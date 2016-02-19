@@ -52,6 +52,47 @@ function getInfosEleve($id) {
 }
 
 
+function getMoniteurs() {
+    $sql = "SELECT user.id, user.nom, user.prenom, moniteur.immatVoiture FROM user,moniteur";
+    $res = SQLSelect($sql);
+
+    return parcoursRs($res);
+}
+
+function getInfosMoniteur($id) {
+	$sql = "SELECT * FROM user,moniteur,vehicule WHERE user.id = moniteur.id AND moniteur.immatVoiture = vehicule.immatriculation AND user.id=" . $id;
+	$res = SQLSelect($sql);
+
+	return parcoursRs($res);
+}
+
+function getVehicules() {
+    $sql = "SELECT * FROM vehicule";
+    $res = SQLSelect($sql);
+
+    return parcoursRs($res);
+}
+
+function getCours() {
+    $sql = "SELECT * FROM cours";
+    $res = SQLSelect($sql);
+
+    return parcoursRs($res);
+}
+
+function getCoursParEleve($idEleve) {
+    $sql = "SELECT * FROM cours WHERE id =" . $idEleve;
+    $res = SQLSelect($sql);
+
+    return parcoursRs($res);
+}
+
+function getCoursParEleve($idMoniteur) {
+    $sql = "SELECT * FROM cours WHERE idMoniteur =" . $idMoniteur;
+    $res = SQLSelect($sql);
+
+    return parcoursRs($res);
+}
 
 function UpdateMail($id, $new_mail) {
 	$SQL = "UPDATE user SET mail='" . $new_mail . "' WHERE id=" . $id;
