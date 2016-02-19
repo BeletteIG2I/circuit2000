@@ -87,7 +87,7 @@ function getCoursParEleve($idEleve) {
     return parcoursRs($res);
 }
 
-function getCoursParEleve($idMoniteur) {
+function getCoursParMoniteur($idMoniteur) {
     $sql = "SELECT * FROM cours WHERE idMoniteur =" . $idMoniteur;
     $res = SQLSelect($sql);
 
