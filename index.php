@@ -20,13 +20,13 @@ ob_start("ob_gzhandler");
 <html>
 	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="icon" type="image/png" href="/images/icon.png" />
+        <link rel="icon" type="image/png" href="images/icon.png" />
 		<title>Auto-école Circuit 2000</title>
-		<link rel="stylesheet" type="text/css" href="/css/base.min.css">
-		<link rel="stylesheet" type="text/css" href="/css/prestations.min.css">
-		<link rel="stylesheet" type="text/css" href="/css/slider.min.css">
-		<script src="/js/jquery.min.js"></script>
-		<!-- <script src="/js/jquery-ui.min.js"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/base.css">
+		<link rel="stylesheet" type="text/css" href="css/prestations.css">
+		<link rel="stylesheet" type="text/css" href="css/slider.css">
+		<script src="js/jquery.min.js"></script>
+		<!-- <script src="js/jquery-ui.min.js"></script> -->
 		<script type="text/javascript">
 			$(document).ready(function() {
 				if(<?php echo((isset($_SESSION['connecte']) && $_SESSION['connecte']) ? 1 : 0);  ?>) {
@@ -83,6 +83,13 @@ ob_start("ob_gzhandler");
 		<!-- <div id="cercle"></div> -->
 		<?php include('templates/menu.html'); ?>
 		<section>
+			<div id="gestCompte">
+				<p id="gTitre">Gestion compte</p>
+				<p id="g1">Modifier les informations</p>
+				<p id="g2">Planning</p>
+				<p id="g3">Récapitulatif</p>
+				<p id="g4">Déconnexion</p>
+			</div>
 			<article id="nos_services">
 				<div class="espace"></div>
 				<center>
@@ -212,9 +219,9 @@ ob_start("ob_gzhandler");
 			function downloadJSAtOnload() {
 				var element = document.createElement("script");
 				var element1 = document.createElement("script");
-				element.src = "/js/script.js";
+				element.src = "js/script.js";
 				document.body.appendChild(element);
-				element1.src = "/js/jquery-ui.min.js";
+				element1.src = "js/jquery-ui.min.js";
 				document.body.appendChild(element1);
 			}
 
