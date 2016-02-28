@@ -1,9 +1,3 @@
-/*
- * Nom de fichier : base.css
- * Description : Feuille de style de base pour tout le site
- * Auteur(s) : Justine MEURIOT, Maxence DELATTRE
-*/
-
 @font-face { /* Police de l'auto école */
     font-family: 'AutoMoto';
     src: url('../polices/automoto-webfont.eot');
@@ -115,38 +109,9 @@ h1 {
 }
 
 
-.tab {
-	margin-top:20%;
-	background-color:white;
-	width:70%;
-	margin:auto;
-}
 
-table
-{
-	width:80%;
-	height:80%;
-	border-collapse: collapse;
-	background-color:white;
-	margin-top:3%;
-	margin-bottom:10%;
-}
 
-td 
-{
-    border: 1px solid black;
-	color:black;
-	width:14%;
-	#height:50%;
-}
 
-th
-{
-	border: 1px solid black;
-	background-color:grey;
-	width:14%;
-	#height:50px;
-}
 
 #gestCompte{
 	position: fixed;
@@ -164,9 +129,9 @@ th
 	border: 1px solid grey;
 }
 
-#planning
+#modifs
 {
-    #margin-top:6%;
+    margin-top:6%;
 	margin-left:15%;
 	margin-bottom:10%;
 	background-color:black;
@@ -176,18 +141,18 @@ th
 	font-size:100%;
 }
 
+#form
+{
+	margin-left:30%;
+}
+
+#button
+{
+	margin-left:45%;
+}
+
 h2
 {
 	font-size:100%;
 }
 
-#calendar {
-	
-    margin-left: 8%;
-    margin-right:12%;
-    display:inline-block;
-    width:80%;
-    float:left;
-    min-width: 600px;
-    height:70%;
-}
