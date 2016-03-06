@@ -17,11 +17,12 @@
 ?>
 <link rel="stylesheet" type="html/css" href="css/client.css">
 <script type="html/javascript">
+    $("#menuClient").show;
     $(document).ready( function() {
         $idUser = <?php echo $_SESSION["idUser"]; ?>;
 
         /** Au chargement de la page, on récupère les infos sur le client et on les affiche sur la page
-        *  (adresse, email, téléphone, dates d'obtention du code et du permis) */
+          (adresse, email, téléphone, dates d'obtention du code et du permis) */
         $.ajax({
             type:"GET",
             url:"templates/data.php?action=recupInfoUser&id=" + $idUser,

@@ -57,14 +57,15 @@ nav {
 	margin-bottom: 20px;
 }
 
-#gestCompte{
+#menuAdmin{
 	position: fixed;
 	width: 13%;
 	top: 17%;
 	right: 1%;
+        display:none;
 }
 
-#gestCompte p{
+#menuAdmin p{
 	width: 100%;
 	height: 50px;
 	background-color: black;
@@ -72,6 +73,54 @@ nav {
 	margin: 0px;
 	border: 1px solid grey;
 }
+
+#menuAdmin p:hover{
+	background-color: grey;
+}
+
+#menuClient{
+	position: fixed;
+	width: 13%;
+	top: 17%;
+	right: 1%;
+        display:none;
+}
+
+#menuClient p{
+	width: 100%;
+	height: 50px;
+	background-color: black;
+	color:white;
+	margin: 0px;
+	border: 1px solid grey;
+}
+
+#menuClient p:hover{
+	background-color: grey;
+}
+
+#menuMoniteur{
+	position: fixed;
+	width: 13%;
+	top: 17%;
+	right: 1%;
+        display:none;
+}
+
+#menuMoniteur p{
+	width: 100%;
+	height: 50px;
+	background-color: black;
+	color:white;
+	margin: 0px;
+	border: 1px solid grey;
+}
+
+#menuMoniteur p:hover{
+	background-color: grey;
+}
+
+
 
 #menu {
 	position: absolute;

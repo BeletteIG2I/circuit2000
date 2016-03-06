@@ -41,11 +41,14 @@ ob_start("ob_gzhandler");
 				// On applique donc une hauteur de 100% - 11,5% = 88,5% à la page affichée pour qu'elle couvre la hauteur de la fenêtre pas plus pas moins
 				$(".historique").css("height",0.885*$(window).height());
 				// On fait la même chose pour les éléments de classe historique (page de présentation de l'auto-école et page de la faq)
+                                
 			});
 
 			function afficherEspaceClients() { // Affiche l'espace client correspondant à l'utilisateur connecté
 				var chaine = "";
-
+                                
+                                
+                                
 				$.ajax({
 					type:'POST',
 					url:'./templates/recup_data.php',
@@ -83,12 +86,24 @@ ob_start("ob_gzhandler");
 		<!-- <div id="cercle"></div> -->
 		<?php include('templates/menu.html'); ?>
 		<section>
-			<div id="gestCompte">
+			<div id="menuAdmin">
 				<p id="gTitre">Gestion compte</p>
 				<p id="g1">Modifier les informations</p>
 				<p id="g2">Planning</p>
-				<p id="g3">Récapitulatif</p>
+				<p id="g3">Récapitulatif Temps de Pause</p>
 				<p id="g4">Déconnexion</p>
+			</div>
+                    
+                        <div id="menuClient">
+                            <p id="gTitre">Modifier les informations</p>
+				<p id="g1">Planning</p>
+				<p id="g2">Déconnexion</p>
+			</div>
+                    
+                        <div id="menuMoniteur">
+				<p id="gTitre">Modifier les informations</p>
+				<p id="g1">Planning</p>
+				<p id="g2">Déconnexion</p>
 			</div>
 			<article id="nos_services">
 				<div class="espace"></div>
