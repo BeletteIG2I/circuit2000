@@ -46,47 +46,12 @@ if($action = valider('action')) {
             $clients = getClients();
             echo(json_encode($clients));
         }break;
-		
-		case 'recupMoniteurs' : { // On récupère les id, noms, prénoms et immatVoiture des moniteurs
-            $moniteurs = getMoniteurs();
-            echo(json_encode($moniteurs));
-        }break;
-		
-		case 'recupVehicules' : { // On récupère les infos des vehicules
-            $vehicule = getVehicules();
-            echo(json_encode($vehicule));
-        }break;
-		
-		case 'recupCours' : { // On récupère les id, noms, prénoms et immatVoiture des moniteurs
-            $cours = getCours();
-            echo(json_encode($cours));
-        }break;
 
         case 'recupInfoUser' : { // On récupère toutes les infos d'un client
             $var = getInfosClient($_GET["id"]);
             echo(json_encode($var));
 			
         }break;
-		
-		case 'recupInfoMoniteur' : { // On récupère toutes les infos d'un client
-            $var = getInfosClient($_GET["id"]);
-            echo(json_encode($var));
-			
-        }break;
-		
-		case 'recupInfoCours' : { // On récupère toutes les infos d'un client
-			if($_SESSION["admin"]==0){
-				$var = getCoursParEleve($_GET["id"]);
-				echo(json_encode($var));
-				
-			}else if($_SESSION["admin"]==2){
-				$var = getCoursParMoniteur($_GET["id"]);
-				echo(json_encode($var));
-			}
-            
-			
-        }break;
-
 
         case 'recupDatesUser' : { // On récupère les dates (côté admin) au format aaaa-mm-jj
             $var = getInfosEleve($_GET["id"]);

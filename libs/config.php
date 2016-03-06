@@ -11,7 +11,7 @@ $BDD_base="db569599150";
 //Connexion à la BDD local
 $BDD_host="localhost";
 $BDD_user="root";
-$BDD_password="root";
+$BDD_password="";
 $BDD_base="circuit2000";
 
 ?>
