@@ -287,6 +287,17 @@ if($action = valider('action')) {
                 echo ("erreur:Echec de la modification de la date d'obtention du permis");
         }break;
 
+        case 'Arreter pause': // mettre à jour le temps de pause dans la base de données
+
+        $temps = $_GET['sec'];
+        $cours = $_GET['id'];
+        $tpspause = getTpsPauseParCours($cours) + $temps;
+        $sql = "UPDATE cours SET temps_pause='".$tpspause."' WHERE id=".$cours ;
+
+        $res=SQLUpdate($sql);
+
+
+        break;
 
         case 'envoyerMail' : { // On recupère les informations utiles sur le client (prénom, nom, email)
             $client = getInfosClient($_GET["id"]);
