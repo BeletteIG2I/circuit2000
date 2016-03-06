@@ -1,3 +1,23 @@
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+	jQuery(function($){
+		$('.month').hide();
+		$('.month:first').show();
+		$('.months a:first').addClass('active');
+		var current = 1;
+		$('.months a').click(function(){
+			var month = $(this).attr('id').replace('linkMonth','');
+			if(month != current){
+			$('#month'+current).slideUp();
+			$('#month'+month).slideDown();
+			$('.months a').removeClass('active');
+			$('.months a#linkMonth'+month).addClass('active');
+			current = month;
+			}
+			return false;
+		});
+	});
+</script>
 <?php
 require('date.php');
 
@@ -18,7 +38,7 @@ $dates = $date->getAll($year);
     </div>
     <?php $dates = current($dates);?>
     <?php foreach ($dates as $m=>$days):?>
-       <div class="month" id="<?php echo $m;?>">
+       <div class="month relative" id="<?php echo $m;?>">
        		<table>
             	<thead>
                 	<tr>
@@ -31,12 +51,26 @@ $dates = $date->getAll($year);
                 </thead>
                 <tbody>
                 <tr>
-					<?php foreach ($days as $d=>$w):?>
-                            <td><?php echo $d;?></td>
+					<?php $end = end($days); foreach ($days as $d=>$w):?>
+                    		<?php if($d ==1 && $w>1):?>
+                            	
+                            	<td colspan="<?php echo $w-1;?> "class="padding"></td>
+                            <?php endif;?>
+                            <td>
+                            	<div class="relative">
+									<div class="day"><?php echo $d;?></div>
+                                </div>
+                                <ul class="events">
+                                <li>Mon évènement </li>
+                                </ul>
+                            </td>
                             <?php if($w == 7): ?>
                             </tr><tr>
                             <?php endif; ?>
                     <?php endforeach;?>
+                    <?php if($end != 7): ?>
+                    	<td colspan="<?php echo 7-$end;?> "class="padding"></td>
+                    <?php endif;?>
                 </tr>
                 </tbody>
             </table>
