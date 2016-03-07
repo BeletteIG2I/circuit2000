@@ -15,7 +15,7 @@ body {
 .months {
 }
 .month {
-    margin-top: 12px;
+    margin-top: 30px;
 }
 .months ul {
     list-style: outside none none;
@@ -126,9 +126,32 @@ table td:hover .daytitle {
     clear: both;
 }
 </style>
-<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-	jQuery(function($){
+
+jQuery(function($){
+               $('.month').hide();
+               $('.month:first').show();
+               $('.months a:first').addClass('active');
+               var current = 1;
+               $('.months a').click(function(){
+                    var month = $(this).attr('id').replace('linkMonth','');
+					console.log("Month:"+month);
+                    if(month != current){
+						console.log("Peit Test"+$('#month')+current);
+						console.log("Next Month"+$('#month')+month);
+						console.log("current:"+current);
+                        $("#month"+current).slideUp();
+                        $("#month"+month).slideDown();
+                        $('.months a').removeClass('active'); 
+                        $('.months a#linkMonth'+month).addClass('active'); 
+                        current = month;
+                    }
+                    return false; 
+               });
+            });
+	/*jQuery(function($){
 		$('.month').hide();
 		$('.month:first').show();
 		$('.months a:first').addClass('active');
@@ -144,7 +167,7 @@ table td:hover .daytitle {
 			}
 			return false;
 		});
-	});
+	});*/
 </script>
 <?php
 require('date.php');
@@ -166,7 +189,7 @@ $dates = $date->getAll($year);
     </div>
     <?php $dates = current($dates);?>
     <?php foreach ($dates as $m=>$days):?>
-       <div class="month relative" id="<?php echo $m;?>">
+       <div class="month relative" id="month<?php echo $m;?>">
        		<table>
             	<thead>
                 	<tr>
@@ -181,19 +204,23 @@ $dates = $date->getAll($year);
                 <tr>
 					<?php $end = end($days); foreach ($days as $d=>$w):?>
                     		<?php if($d ==1 && $w>1):?>
-                            	
-                            	<td colspan="<?php echo $w-1;?> "class="padding"></td>
-                            <?php endif;?>
+                            	<td colspan="<?php echo $w-1;?> "class="padding">
+                                </td>
+							<?php endif;?>
                             <td>
-                            	<div class="relative">
-									<div class="day"><?php echo $d;?></div>
+                                <div class="relative">
+                                    <div class="day"><?php echo $d;?></div>
                                 </div>
                                 <ul class="events">
+                                <?php if($d ==2):?>
+                            	<li>Evènement le 2eme jour</li>
+								<?php endif;?>
                                 <li>Mon évènement </li>
+                                <li>Mon deuxième évènement</li>
                                 </ul>
                             </td>
                             <?php if($w == 7): ?>
-                            </tr><tr>
+                                </tr><tr>
                             <?php endif; ?>
                     <?php endforeach;?>
                     <?php if($end != 7): ?>
