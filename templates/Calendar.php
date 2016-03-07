@@ -15,6 +15,7 @@ body {
 .months {
 }
 .month {
+	float: left;
     margin-top: 30px;
 }
 .months ul {
@@ -126,7 +127,6 @@ table td:hover .daytitle {
     clear: both;
 }
 </style>
-<!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 
@@ -139,10 +139,25 @@ jQuery(function($){
                     var month = $(this).attr('id').replace('linkMonth','');
 					console.log("Month:"+month);
                     if(month != current){
-						console.log("Peit Test"+$('#month')+current);
-						console.log("Next Month"+$('#month')+month);
-						console.log("current:"+current);
-                        $("#month"+current).slideUp();
+						
+						if(month == 0)
+						{
+							
+							$("#listeMois").html(function(month){
+								var res ="";
+								
+								res += "<li><a href=\"#\" id=\"linkMonth<?php echo 0;?>\"> < </a></li>";
+								res += "<li><a href=\"#\" id=\"linkMonth<?php echo 13;?>\"> > </a></li>";
+								
+								
+								return res;
+								});
+						}
+						else if(month == 13)
+						{
+								
+						}
+						$("#month"+current).hide();
                         $("#month"+month).slideDown();
                         $('.months a').removeClass('active'); 
                         $('.months a#linkMonth'+month).addClass('active'); 
@@ -151,27 +166,9 @@ jQuery(function($){
                     return false; 
                });
             });
-	/*jQuery(function($){
-		$('.month').hide();
-		$('.month:first').show();
-		$('.months a:first').addClass('active');
-		var current = 1;
-		$('.months a').click(function(){
-			var month = $(this).attr('id').replace('linkMonth','');
-			if(month != current){
-			$('#month'+current).slideUp();
-			$('#month'+month).slideDown();
-			$('.months a').removeClass('active');
-			$('.months a#linkMonth'+month).addClass('active');
-			current = month;
-			}
-			return false;
-		});
-	});*/
 </script>
 <?php
 require('date.php');
-
 $date = new Date();
 $year = date('Y');
 $dates = $date->getAll($year);
@@ -181,9 +178,15 @@ $dates = $date->getAll($year);
 <div class="periods">
     <div class="year"><?php echo $year;?> </div>
     <div class="months"> 
-        <ul>
-            <?php foreach ($date->months as $id=>$m):?>
-                <li><a href="#" id="linkMonth<?php echo $id+1;?>"><?php echo utf8_encode(substr(utf8_decode($m),0,3));?></a></li>
+        <ul id="listeMois">
+			<?php foreach ($date->months as $id=>$m):?>
+				<?php 
+				if(($id+1) == date('m')):?>
+                	<li><a href="#" id="linkMonth<?php echo 0;?>"> < </a></li>
+                	<li><a href="#" id="linkMonth<?php echo $id+1;?>"><?php echo utf8_encode(substr(utf8_decode($m),0,3));?></a></li>
+                    <li><a href="#" id="linkMonth<?php echo 13;?>"> > </a></li>
+                <?php
+				endif; ?>
             <?php endforeach;?>
         </ul>
     </div>
@@ -233,8 +236,6 @@ $dates = $date->getAll($year);
     <?php endforeach;?>
 </div>
 
-
-<pre><?php print_r($dates);?></pre>
 
 
 
