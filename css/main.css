@@ -60,7 +60,7 @@ body {
     font: 16px/26px Helvetica, Helvetica Neue, Arial;
 }
 
-.wrapper {
+.main-container .wrapper {
     width: 90%;
     margin: 0 5%;
 }
@@ -184,12 +184,15 @@ nav a:hover {
 /* ====================
     INTERMEDIATE: Menu
    ==================== */
-   
+    
+	.header-container header {
+		height: 70px;
+	}
+	
 	#logo{
-	position: absolute;
-	left: 2%;
-	height: 100%;
-	width: auto;
+		float: left;
+		height: 100%;
+		width: auto;
 	}
 	
     nav a {
@@ -248,10 +251,7 @@ nav a:hover {
     }
 
     nav {
-        float: right;
-        width: 60%;
-		height: 100%;
-		margin: 0 20%;
+		margin: 0 auto;
     }
 
 /* ============
@@ -275,10 +275,13 @@ nav a:hover {
     Maximal Width
    =============== */
 
-    .wrapper {
+    .main-container .wrapper, nav {
         width: 1026px; /* 1140px - 10% for margins */
-        margin: 0 auto;
     }
+	
+	.main-container .wrapper {
+		margin: 0 auto;
+	}
 }
 
 /* ==========================================================================
