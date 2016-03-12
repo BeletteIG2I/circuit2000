@@ -25,7 +25,7 @@ body {
 .months ul li a {
     color: #888888;
     float: left;
-    font-size: 20px;
+    font-size: 35px;
     font-weight: bold;
     margin: -1px;
     padding: 0 15px 0 0;
@@ -142,8 +142,8 @@ jQuery(function($){
 						console.log("Peit Test"+$('#month')+current);
 						console.log("Next Month"+$('#month')+month);
 						console.log("current:"+current);
-                        $("#month"+current).hide();
-                        $("#month"+month).show();
+                        $('#month'+current).slideUp();
+                        $('#month'+month).slideDown();
                         $('.months a').removeClass('active'); 
                         $('.months a#linkMonth'+month).addClass('active'); 
                         current = month;
@@ -151,7 +151,23 @@ jQuery(function($){
                     return false; 
                });
             });
-
+	/*jQuery(function($){
+		$('.month').hide();
+		$('.month:first').show();
+		$('.months a:first').addClass('active');
+		var current = 1;
+		$('.months a').click(function(){
+			var month = $(this).attr('id').replace('linkMonth','');
+			if(month != current){
+			$('#month'+current).slideUp();
+			$('#month'+month).slideDown();
+			$('.months a').removeClass('active');
+			$('.months a#linkMonth'+month).addClass('active');
+			current = month;
+			}
+			return false;
+		});
+	});*/
 </script>
 <?php
 require('date.php');
@@ -171,54 +187,9 @@ $dates = $date->getAll($year);
             <?php endforeach;?>
         </ul>
     </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <h2>Semaines</h2>
-
-       <div class="semaines">
-       		<table>
-                <tbody>
-                <tr>
-					<?php foreach ($days as $d=>$w):?>
-                        <td>1</td>
-                    <?php endforeach;?>    
-                </tr>
-                </tbody>
-            </table>
-       </div>      
-
-    
-    
-   <!--
-    <?php $numSemaine=0; foreach ($days as $d=>$w):?>
-                            <?php $numSemaine+=1; if($w == 7): ?>
-                            <td>
-                              	<?php echo $numSemaine;?>
-                            </td>
-                            <?php endif; ?>
-                    <?php endforeach;?>
-    
-    -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <?php $dates = current($dates);?>
     <?php foreach ($dates as $m=>$days):?>
-       <div class="month relative" id="month<?php echo $m;?>">
+       <div class="month relative" id="<?php echo $m;?>">
        		<table>
             	<thead>
                 	<tr>
@@ -262,6 +233,8 @@ $dates = $date->getAll($year);
     <?php endforeach;?>
 </div>
 
+
+<pre><?php print_r($dates);?></pre>
 
 
 
