@@ -230,6 +230,11 @@ $dates = $date->getAll($year);
                     <?php for($i=8;$i<=19;$i++) :?>
                             <tr>
                             <td><?php echo $i."H00";?></td>
+                            
+                            <?php for($j=1;$j<=7;$j++) :?>
+                            <td><?php echo $j;?></td>
+                    		<?php endfor;?>   
+                            
                             </tr>
                     <?php endfor;?>   
                 </tbody>
