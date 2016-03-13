@@ -128,6 +128,19 @@ table td:hover .daytitle {
 h2{
 display:inline;	
 }
+.week ul li a {
+    color: #888888;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -1px;
+    padding: 0 15px 0 0;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.week ul li a:hover, .week ul li a.active {
+    color: #d90000;
+}
 </style>
 <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
@@ -189,29 +202,36 @@ $dates = $date->getAll($year);
  
     <?php $dates = current($dates);?>
     <?php foreach ($dates as $m=>$days):?>
-       <div class="month relative" id="month<?php echo $m;?>">
-       		<table>
-            	<thead>
-                	
+       <div class="week">
+       		
+                	<ul>
                 	<?php 
 					$nbSem = 0;
 					$end = end($days); 
+					
 					foreach ($days as $d=>$w):?>
                             <?php if($w == 7): ?>
-                            <td><a href="#" id="linkWeek<?php echo $nbSem+1;?>"><?php echo ($nbSem+=1);?> </a></td>
+                            <li><a href="#" id="linkWeek<?php echo $nbSem+1;?>"><?php echo ($nbSem+=1);?> </a></li>
                                 
-                            <?php endif; ?>    
+                            <?php endif; ?>
+                        
                     <?php endforeach;?>
-                </thead>
+                    </ul>
+            <table>
                 <tbody>
-                <tr>
-                	<td colspan= 1 class="padding"></td>
-					<?php foreach ($date->days as $d):?>
-                        <th>
-                        <?php echo substr($d,0,3);?>
-                        </th>
-                    <?php endforeach;?>    
-                </tr>
+                    <tr>
+                        <td colspan= 1 class="padding"></td>
+                        <?php foreach ($date->days as $d):?>
+                            <th>
+                            <?php echo substr($d,0,3);?>
+                            </th>
+                        <?php endforeach;?>    
+                    </tr>
+                    <?php for($i=8;$i<=19;$i++) :?>
+                            <tr>
+                            <td><?php echo $i."H00";?></td>
+                            </tr>
+                    <?php endfor;?>   
                 </tbody>
             </table>
        </div>      
