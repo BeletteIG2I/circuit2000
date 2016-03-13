@@ -94,6 +94,27 @@ function getCoursParMoniteur($idMoniteur) {
     return parcoursRs($res);
 }
 
+function UpdateNom($id, $new_nom) {
+	$SQL = "UPDATE user SET nom='" . $new_nom . "' WHERE id=" . $id;
+	$res = SQLUpdate($SQL);
+
+	return $res;
+}
+
+function UpdatePrenom($id, $new_prenom) {
+	$SQL = "UPDATE user SET prenom='" . $new_prenom . "' WHERE id=" . $id;
+	$res = SQLUpdate($SQL);
+
+	return $res;
+}
+
+function UpdateDateNaissance($id, $new_dateNaiss) {
+	$SQL = "UPDATE user SET dateNaissance='" . $new_dateNaiss . "' WHERE id=" . $id;
+	$res = SQLUpdate($SQL);
+
+	return $res;
+}
+
 function UpdateMail($id, $new_mail) {
 	$SQL = "UPDATE user SET mail='" . $new_mail . "' WHERE id=" . $id;
 	$res = SQLUpdate($SQL);
@@ -145,7 +166,5 @@ function UpdateDatePermis($id, $date_permis) {
 
 	return $res;
 }
-
-
 
 ?>

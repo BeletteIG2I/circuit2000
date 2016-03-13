@@ -47,44 +47,41 @@ if($action = valider('action')) {
             echo(json_encode($clients));
         }break;
 		
-		case 'recupMoniteurs' : { // On récupère les id, noms, prénoms et immatVoiture des moniteurs
+        case 'recupMoniteurs' : { // On récupère les id, noms, prénoms et immatVoiture des moniteurs
             $moniteurs = getMoniteurs();
             echo(json_encode($moniteurs));
         }break;
 		
-		case 'recupVehicules' : { // On récupère les infos des vehicules
+	case 'recupVehicules' : { // On récupère les infos des vehicules
             $vehicule = getVehicules();
             echo(json_encode($vehicule));
         }break;
 		
-		case 'recupCours' : { // On récupère les id, noms, prénoms et immatVoiture des moniteurs
+	case 'recupCours' : { // On récupère les id, noms, prénoms et immatVoiture des moniteurs
             $cours = getCours();
             echo(json_encode($cours));
         }break;
 
         case 'recupInfoUser' : { // On récupère toutes les infos d'un client
             $var = getInfosClient($_GET["id"]);
-            echo(json_encode($var));
-			
+            echo(json_encode($var));	
         }break;
 		
-		case 'recupInfoMoniteur' : { // On récupère toutes les infos d'un client
+	case 'recupInfoMoniteur' : { // On récupère toutes les infos d'un client
             $var = getInfosClient($_GET["id"]);
             echo(json_encode($var));
 			
         }break;
 		
-		case 'recupInfoCours' : { // On récupère toutes les infos d'un client
-			if($_SESSION["admin"]==0){
-				$var = getCoursParEleve($_GET["id"]);
-				echo(json_encode($var));
+	case 'recupInfoCours' : { // On récupère toutes les infos d'un client
+		if($_SESSION["admin"]==0){
+			$var = getCoursParEleve($_GET["id"]);
+			echo(json_encode($var));
 				
-			}else if($_SESSION["admin"]==2){
-				$var = getCoursParMoniteur($_GET["id"]);
-				echo(json_encode($var));
-			}
-            
-			
+		}else if($_SESSION["admin"]==2){
+			$var = getCoursParMoniteur($_GET["id"]);
+			echo(json_encode($var));
+		}	
         }break;
 
 
@@ -205,13 +202,68 @@ if($action = valider('action')) {
                 $res = UpdateAdresse($_GET["id"], $_GET["num"],$_GET["rue"],$_GET["ville"],$_GET["codePostal"]);
 
             if ($res != NULL) {
-                $clientUpdate = getInfosClient($_GET["id"]);
-				
-				$nouvelleAdresse = $clientUpdate[0]['numeroADR'] . " - " . $clientUpdate[0]['rueADR'] . " - " . $clientUpdate[0]['villeADR'] . " - " . $clientUpdate[0]['codePostal'];
+                $clientUpdate = getInfosClient($_GET["id"]);				
+		$nouvelleAdresse = $clientUpdate[0]['numeroADR'] . " - " . $clientUpdate[0]['rueADR'] . " - " . $clientUpdate[0]['villeADR'] . " - " . $clientUpdate[0]['codePostal'];
                 echo $nouvelleAdresse;
             }
             else
                 echo("erreur:Echec de la modification de l'adresse");
+        }break;
+        
+        case 'updateNom' : {
+            $res = NULL;
+            // Après avoir vérifié le nom, on modifie en base
+            if ($nom = valider("nom", "GET"))
+                $res = UpdateNom($_GET["id"], $nom);
+
+            if ($res != NULL) {
+                $clientUpdate = getInfosClient($_GET["id"]);
+                echo $nouveauNom = $clientUpdate[0]['nom'];
+            }
+            else
+                echo("erreur:Echec de la modification de l'e-mail");
+        }break;
+        
+        case 'updatePrenom' : {
+            $res = NULL;
+            // Après avoir vérifié le nom, on modifie en base
+            if ($prenom = valider("prenom", "GET"))
+                $res = UpdatePrenom($_GET["id"], $prenom);
+
+            if ($res != NULL) {
+                $clientUpdate = getInfosClient($_GET["id"]);
+                echo $nouveauPrenom = $clientUpdate[0]['prenom'];
+            }
+            else
+                echo("erreur:Echec de la modification de l'e-mail");
+        }break;
+        
+        case 'updateMdp' : {
+            $res = NULL;
+            // Après avoir vérifié le nom, on modifie en base
+            if ($mdp = valider("mdp", "GET"))
+                $res = UpdateMdp($_GET["id"], $mdp);
+
+            if ($res != NULL) {
+                $clientUpdate = getInfosClient($_GET["id"]);
+                echo $nouveauMdp = $clientUpdate[0]['mdp'];
+            }
+            else
+                echo("erreur:Echec de la modification de l'e-mail");
+        }break;
+        
+        case 'updateDateNaissance' : {
+            $res = NULL;
+            // Après avoir vérifié le nom, on modifie en base
+            if ($dateNaiss = valider("dateNaiss", "GET"))
+                $res = UpdateDateNaissance($_GET["id"], $dateNaiss);
+
+            if ($res != NULL) {
+                $clientUpdate = getInfosClient($_GET["id"]);
+                echo $nouveauDateNaiss = $clientUpdate[0]['dateNaissance'];
+            }
+            else
+                echo("erreur:Echec de la modification de l'e-mail");
         }break;
 
         case 'updateMail' : {
