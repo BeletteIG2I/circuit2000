@@ -205,30 +205,12 @@ $dates = $date->getAll($year);
                 </thead>
                 <tbody>
                 <tr>
-					<?php $end = end($days); foreach ($days as $d=>$w):?>
-                    		<?php if($d ==1 && $w>1):?>
-                            	<td colspan="<?php echo $w-1;?> "class="padding">
-                                </td>
-							<?php endif;?>
-                            <td>
-                                <div class="relative">
-                                    <div class="day"><?php echo $d;?></div>
-                                </div>
-                                <ul class="events">
-                                <?php if($d ==2):?>
-                            	<li>Evènement le 2eme jour</li>
-								<?php endif;?>
-                                <li>Mon évènement </li>
-                                <li>Mon deuxième évènement</li>
-                                </ul>
-                            </td>
-                            <?php if($w == 7): ?>
-                                </tr><tr>
-                            <?php endif; ?>
-                    <?php endforeach;?>
-                    <?php if($end != 7): ?>
-                    	<td colspan="<?php echo 7-$end;?> "class="padding"></td>
-                    <?php endif;?>
+                	<td colspan= 1 class="padding"></td>
+					<?php foreach ($date->days as $d):?>
+                        <th>
+                        <?php echo substr($d,0,3);?>
+                        </th>
+                    <?php endforeach;?>    
                 </tr>
                 </tbody>
             </table>
