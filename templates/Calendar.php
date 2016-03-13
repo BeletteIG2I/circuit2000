@@ -12,8 +12,7 @@ body {
 .relative {
     position: relative;
 }
-.months {
-}
+
 .month {
     margin-top: 30px;
 }
@@ -35,6 +34,35 @@ body {
 .months ul li a:hover, .months ul li a.active {
     color: #d90000;
 }
+
+
+.week {
+    margin-top: 30px;
+
+}
+.week ul {
+    list-style: outside none none;
+ 
+}
+.week ul li a {
+    color: #888888;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -1px;
+    padding: 24px 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.week ul li a:hover, .week ul li a.active {
+    color: #d90000;
+}
+
+h2{	
+float:left;
+}
+
+
 table {
     border-collapse: collapse;
 }
@@ -125,22 +153,8 @@ table td:hover .daytitle {
 .clear {
     clear: both;
 }
-h2{
-display:inline;	
-}
-.week ul li a {
-    color: #888888;
-    float: left;
-    font-size: 20px;
-    font-weight: bold;
-    margin: -1px;
-    padding: 0 15px 0 0;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-.week ul li a:hover, .week ul li a.active {
-    color: #d90000;
-}
+
+
 </style>
 <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
@@ -155,8 +169,8 @@ jQuery(function($){
                     var month = $(this).attr('id').replace('linkMonth','');
 					console.log("Month:"+month);
                     if(month != current){
-						console.log("Peit Test"+$('#month')+current);
-						console.log("Next Month"+$('#month')+month);
+						console.log("Mois précédent"+$('#month')+current);
+						console.log("Mois actuel"+$('#month')+month);
 						console.log("current:"+current);
                         $("#month"+current).hide();
                         $("#month"+month).show();
@@ -169,79 +183,66 @@ jQuery(function($){
             });
 
 </script>
+
 <?php
 require('date.php');
-
 $date = new Date();
 $year = date('Y');
 $dates = $date->getAll($year);
-
 ?>
 
 <div class="periods">
-    <div class="year"><?php echo $year;?> </div>
+    <div class="year"><?php echo $year;?></div>
     <div class="months"> 
         <ul>
             <?php foreach ($date->months as $id=>$m):?>
                 <li><a href="#" id="linkMonth<?php echo $id+1;?>"><?php echo utf8_encode(substr(utf8_decode($m),0,3));?></a></li>
             <?php endforeach;?>
         </ul>
-    </div>
-    
-    
-    
-    
-    
-    
-    
-    
-    </br>
-    </br>
-    <h2>Semaines</h2>
-
+	</div>
+   
+   
+	<div class="week">	
+		<h2>Semaine</h2>
  
-    <?php $dates = current($dates);?>
-    <?php foreach ($dates as $m=>$days):?>
-       <div class="week">
-       		
-                	<ul>
-                	<?php 
-					$nbSem = 0;
-					$end = end($days); 
+		<?php $dates = current($dates);?>
+		<?php foreach ($dates as $m=>$days):?>		
+				
+			<ul>
+				<?php 
+				$nbSem = 0;
+				$end = end($days);
+				
+				foreach ($days as $d=>$w):?>
+						<?php if($w == 7): ?>
+							<li><a href="#" id="linkWeek<?php echo $nbSem+1;?>">
+							<?php echo ($nbSem+=1);?> </a></li>
+						<?php endif; ?>							
+				<?php endforeach;?>
+			</ul>
+
+			<table>
+				<tr>
+					<td colspan= 1 class="padding"></td>
+					<?php foreach ($date->days as $d):?>
+						<th>
+						<?php echo substr($d,0,3);?>
+						</th>
+					<?php endforeach;?>    
+				</tr>
+				<?php for($i=8;$i<=19;$i++) :?>
+						<tr>
+							<td><?php echo $i."H00";?></td>
+							<?php for($j=1;$j<=7;$j++) :?>
+								<td><?php echo '' ;?></td>
+							<?php endfor;?>  
+						</tr>
+				<?php endfor;?>   
 					
-					foreach ($days as $d=>$w):?>
-                            <?php if($w == 7): ?>
-                            <li><a href="#" id="linkWeek<?php echo $nbSem+1;?>"><?php echo ($nbSem+=1);?> </a></li>
-                                
-                            <?php endif; ?>
-                        
-                    <?php endforeach;?>
-                    </ul>
-            <table>
-                <tbody>
-                    <tr>
-                        <td colspan= 1 class="padding"></td>
-                        <?php foreach ($date->days as $d):?>
-                            <th>
-                            <?php echo substr($d,0,3);?>
-                            </th>
-                        <?php endforeach;?>    
-                    </tr>
-                    <?php for($i=8;$i<=19;$i++) :?>
-                            <tr>
-                            <td><?php echo $i."H00";?></td>
-                            
-                            <?php for($j=1;$j<=7;$j++) :?>
-                            <td><?php echo $j;?></td>
-                    		<?php endfor;?>   
-                            
-                            </tr>
-                    <?php endfor;?>   
-                </tbody>
-            </table>
-       </div>      
-    <?php endforeach;?>
-</div>
+			</table>
+				 
+		<?php endforeach;?>
+	</div>
        
        
        
@@ -259,7 +260,7 @@ $dates = $date->getAll($year);
     
     
     
-    <!-- NE pas modifier ce qu'il y a en dessous !!!! --> 
+    <!-- NE pas modifier ce qu'il y a en dessous !!!! 
     
     <?php $dates = current($dates);?>
     <?php foreach ($dates as $m=>$days):?>
@@ -303,10 +304,9 @@ $dates = $date->getAll($year);
                 </tr>
                 </tbody>
             </table>
-       </div>      
+       </div>-->      
     <?php endforeach;?>
 </div>
-
 
 
 
