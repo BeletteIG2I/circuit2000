@@ -125,6 +125,9 @@ table td:hover .daytitle {
 .clear {
     clear: both;
 }
+h2{
+display:inline;	
+}
 </style>
 <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
@@ -179,33 +182,46 @@ $dates = $date->getAll($year);
     
     
     
-    
+    </br>
+    </br>
     <h2>Semaines</h2>
 
-       <div class="semaines">
+ 
+    <?php $dates = current($dates);?>
+    <?php foreach ($dates as $m=>$days):?>
+       <div class="month relative" id="month<?php echo $m;?>">
        		<table>
+            	<thead>
+                	
+                	<?php 
+					$nbSem = 0;
+					$end = end($days); 
+					foreach ($days as $d=>$w):?>
+                            <?php if($w == 7): ?>
+                            <td><a href="#" id="linkWeek<?php echo $nbSem+1;?>"><?php echo ($nbSem+=1);?> </a></td>
+                                
+                            <?php endif; ?>    
+                    <?php endforeach;?>
+                </thead>
                 <tbody>
                 <tr>
-					<?php foreach ($days as $d=>$w):?>
-                        <td>1</td>
+                	<td colspan= 1 class="padding"></td>
+					<?php foreach ($date->days as $d):?>
+                        <th>
+                        <?php echo substr($d,0,3);?>
+                        </th>
                     <?php endforeach;?>    
                 </tr>
                 </tbody>
             </table>
        </div>      
-
-    
-    
-   <!--
-    <?php $numSemaine=0; foreach ($days as $d=>$w):?>
-                            <?php $numSemaine+=1; if($w == 7): ?>
-                            <td>
-                              	<?php echo $numSemaine;?>
-                            </td>
-                            <?php endif; ?>
-                    <?php endforeach;?>
-    
-    -->
+    <?php endforeach;?>
+</div>
+       
+       
+       
+       
+       
     
     
     
@@ -215,6 +231,10 @@ $dates = $date->getAll($year);
     
     
     
+    
+    
+    
+    <!-- NE pas modifier ce qu'il y a en dessous !!!! --> 
     
     <?php $dates = current($dates);?>
     <?php foreach ($dates as $m=>$days):?>
