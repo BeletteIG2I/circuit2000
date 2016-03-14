@@ -60,13 +60,17 @@ body {
     font: 16px/26px Helvetica, Helvetica Neue, Arial;
 }
 
-.main-container .wrapper {
+.main-container .wrapper , nav {
     width: 90%;
     margin: 0 5%;
 }
 
+nav {
+	height: 100px;
+}
+
 /* ===================
-    ALL: Orange Theme
+    ALL: Black Theme
    =================== */
 
 .header-container {
@@ -109,7 +113,7 @@ nav ul {
 nav a {
     display: block;
     margin-bottom: 10px;
-    padding: 15px 0;
+    padding: 12px 0;
 
     text-align: center;
     text-decoration: none;
@@ -245,14 +249,45 @@ nav a:hover {
 /* ============
     WIDE: Menu
    ============ */
-
-    .title {
-        float: left;
-    }
-
-    nav {
-		margin: 0 auto;
-    }
+		
+	#plogo, #menu, #connexion, #menu .navigateur {
+		display: inline-block;
+	}
+	
+	#plogo, #menu, #connexion {
+		height: 100%;
+	}
+	
+    #plogo, #menu {
+		float: left;
+	}
+	
+	#plogo, #connexion {
+		width: 20%;
+	}
+	
+	#menu {
+		width: 60%;
+	}
+	
+	#connexion{
+		background-color: red;
+	}
+	
+	#menu .navigateur {
+		width: 30%;
+		height: 50px;
+		
+		color: white;
+		
+		border-bottom: 0px solid grey;
+	}
+	
+	#menu .navigateur:hover {
+		background-color: white;
+		
+		color: black;
+	}
 
 /* ============
     WIDE: Main
@@ -275,12 +310,20 @@ nav a:hover {
     Maximal Width
    =============== */
 
-    .main-container .wrapper, nav {
+    .main-container{
         width: 1026px; /* 1140px - 10% for margins */
     }
 	
-	.main-container .wrapper {
+	.main-container{
 		margin: 0 auto;
+	}
+	
+	#logo {
+		margin-left: 10%;
+	}
+	
+	#connexion {
+		
 	}
 }
 
