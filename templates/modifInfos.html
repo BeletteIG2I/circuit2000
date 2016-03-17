@@ -1,3 +1,4 @@
+
 <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
@@ -5,7 +6,30 @@
 
 
 <link rel="stylesheet" type="text/css" href="../css/modifInfos.css"/>
+<script type="html/javascript">
 
+	$(document).ready( function() {
+        $idUser = <?php echo $_SESSION["idUser"]; ?>;
+
+        /** Au chargement de la page, on récupère les infos sur le client et on les affiche sur la page
+          (adresse, email, téléphone, dates d'obtention du code et du permis) */
+        $.ajax({
+            type:"GET",
+            url:"templates/data.php?action=recupInfoUser&id=" + $idUser,
+            success:function(result, htmlStatus, jqXHR) {
+				alert($idUser);
+				result = $.parseJSON(result);
+                var adresse = result[0].numeroADR + " - " + result[0].rueADR + " - " + result[0].villeADR + " - " + result[0].codePostal;
+                $("#nom").value = result[0].nom;
+                //$("#htmlMailClient").html(result[0].mail);
+                $//("#htmlTelClient").html(result[0].telephone);
+            },
+            error : function(jqXHR, htmlStatus, htmlError) {
+                console.log("Status :" + htmlStatus + " \nError : " + htmlError);
+            }
+        });
+	  });
+</script>
 
 <div id="barre_blanche">
 <nav>
@@ -27,7 +51,7 @@
 						
 							
 						   <label for="champs">Nom :</label>
-						   <input type="text" name="nom" id="champs" />
+						   <input type="text" name="nom" id="nom" />
 						   
 						   <br /><br />
 						   <label for="champs">Prénom :</label>
