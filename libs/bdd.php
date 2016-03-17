@@ -94,6 +94,22 @@ function getCoursParMoniteur($idMoniteur) {
     return parcoursRs($res);
 }
 
+function getTpsPauseParCours($idCours){
+    $sql = "SELECT temps_pause FROM cours WHERE numero =" . $idCours;
+    $res = SQLSelect($sql);
+
+    return parcoursRs($res);
+}
+
+function UpdateTpsPause($id,$newTpsPause){
+
+    $sql = "UPDATE cours SET temps_pause='".$newTpsPause."' WHERE id=".$id ;
+    $res=SQLUpdate($sql);
+
+    return parcoursRs($res);
+
+}
+
 function UpdateNom($id, $new_nom) {
 	$SQL = "UPDATE user SET nom='" . $new_nom . "' WHERE id=" . $id;
 	$res = SQLUpdate($SQL);

@@ -74,16 +74,15 @@ if($action = valider('action')) {
         }break;
 		
 	case 'recupInfoCours' : { // On récupère toutes les infos d'un client
-		if($_SESSION["admin"]==0){
+		if($_SESSION["admin"]==3){
 			$var = getCoursParEleve($_GET["id"]);
 			echo(json_encode($var));
 				
-		}else if($_SESSION["admin"]==2){
+		}else if($_SESSION["admin"]==1){
 			$var = getCoursParMoniteur($_GET["id"]);
 			echo(json_encode($var));
 		}	
         }break;
-
 
         case 'recupDatesUser' : { // On récupère les dates (côté admin) au format aaaa-mm-jj
             $var = getInfosEleve($_GET["id"]);
@@ -194,6 +193,27 @@ if($action = valider('action')) {
                 echo ("erreur:Veuillez remplir tous les champs");
 
         }break;
+
+        case 'updateTpsPause':{
+            
+            $res = NULL;
+            //Après avoir vérifier le temps de pause et l'id, on modifie en base
+            if($tpsPause = valider("newTpsPause","GET") && $idCours = valider("idCours","GET"))
+                $res = UpdateTpsPause($_GET["idCours"], $_GET["newTpsPause"]);
+
+            if($res != NULL){
+
+                $tpsPauseUpdate = getTpsPauseParCours($_GET["idCours"]);
+                $nouveauTpsPause = $tpsPauseUpdate[0]['temps_pause'];
+                
+                echo $nouveauTpsPause;
+
+            }
+            else
+                echo("erreur:Echec de la modification du temps de pause");
+        }        
+
+        break;
 
         case 'updateAdresse' : {
             $res = NULL;
