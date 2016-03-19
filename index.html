@@ -16,6 +16,49 @@
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script>
+			$( document ).ready(function() {
+				var win = $(window);
+				if (win.width() >= 100) {
+					$("div[id=menu] > div").addClass("hidden");
+					$("div[id=menu] > select").removeClass("hidden");
+					$("div[id=connexion] > div").addClass("hidden");
+					$("div[id=connexion] > img").removeClass("hidden");
+				}
+				
+				if (win.width() >= 480) {
+					$("div[id=connexion] > img").addClass("hidden");
+					$("div[id=connexion] > div").removeClass("hidden");
+					
+				}
+				
+				if (win.width() >= 750) { 
+					$("div[id=menu] > select").addClass("hidden");
+					$("div[id=menu] > div").removeClass("hidden");
+				}
+			});
+			
+			$( window ).on('resize', function(){
+				var win = $(this);
+				if (win.width() >= 100) {
+					$("div[id=menu] > div").addClass("hidden");
+					$("div[id=menu] > select").removeClass("hidden");
+					$("div[id=connexion] > div").addClass("hidden");
+					$("div[id=connexion] > img").removeClass("hidden");
+				}
+				
+				if (win.width() >= 480) {
+					$("div[id=connexion] > img").addClass("hidden");
+					$("div[id=connexion] > div").removeClass("hidden");
+				}
+				
+				if (win.width() >= 750) { 
+					$("div[id=menu] > select").addClass("hidden");
+					$("div[id=menu] > div").removeClass("hidden");
+				}
+			});
+		</script>
     </head>
     <body>
         <div class="header-container">
@@ -23,13 +66,30 @@
 				<!-- -->
 				<div id="plogo"><img id="logo" src="images/CIRCUIT_2000.png">
 				</div><div id="menu">
-					<div class="navigateur">NOS SERVICES
+					<select class="hidden" name="nom" size="1">
+						<option>NOS SERVICES
+						<option>L'AUTO ÉCOLE
+						<option selected>NOS BUREAUX
+						<option>FAQ
+						<option>ESPACE CLIENTS
+						<option>CONTACT
+					</select>
+					<div class="hidden"><div class="navigateur">NOS SERVICES
 					</div><div class="navigateur">L'AUTO ÉCOLE
 					</div><div class="navigateur">NOS BUREAUX
 					</div><div class="navigateur">FAQ
 					</div><div class="navigateur">ESPACE CLIENTS
-					</div><div class="navigateur">CONTACT</div>
-				</div><div id="connexion"></div>
+					</div><div class="navigateur">CONTACT</div></div>
+				</div><div id="connexion">
+					<img class="hidden" id="iconeConnexion" src="images/login.png">
+					<div class="hidden">
+						<p>Identifiant</p>
+						<input class="champForm" id="identifiant" type="text"/>
+						<p>Mot de passe</p>
+						<input class="champForm" id="passe" type="password"/>
+						<input id="butConnexion" type="button" />
+					</div>
+				</div>
 				
             </header>
         </div>

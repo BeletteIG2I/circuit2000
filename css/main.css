@@ -75,8 +75,6 @@ nav {
 
 .header-container {
 	position: fixed;
-	width: 100%;
-	min-height: 80px;
     /*border-bottom: 20px solid #e44d26;*/
 }
 
@@ -93,7 +91,7 @@ nav {
 .header-container,
 .footer-container,
 .main aside {
-    background: #000000;
+	background-image: linear-gradient(black, #2E2E2E);
 }
 
 .title {
@@ -103,33 +101,53 @@ nav {
 /* ==============
     MOBILE: Menu
    ============== */
-
-nav ul {
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
-
-nav a {
-    display: block;
-    margin-bottom: 10px;
-    padding: 12px 0;
-
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-
-    color: white;
-}
-
-nav a:hover,
-nav a:visited {
-    color: white;
-}
-
-nav a:hover {
-    text-decoration: underline;
-}
+	
+	.header-container header {
+		height: 50px;
+	}
+	
+	#plogo, #menu, #connexion, #menu .navigateur {
+		display: inline-block;
+	}
+	
+	#plogo, #logo, #menu, #connexion {
+		height: 100%;
+	}
+	
+	#menu {
+		width: 40%;
+	}
+	
+	#plogo, #connexion {
+		width: 30%;
+	}
+	
+    #plogo, #menu {
+		float: left;
+	}
+	
+	#connexion #butConnexion, #iconeConnexion {
+		float: right;
+	}
+	
+	#iconeConnexion {
+		width: 30px;
+		height: 30px;
+		margin: 10px 10px 10px 0;
+	}
+	
+	#connexion .champForm {
+		width: 60%;
+		height: 15px;
+		font-size: 14px;
+	}
+	
+	#connexion p {
+		margin: 0;
+		color: white;
+		font-size: 12px;
+		line-height: 12px;
+	}
 
 /* ==============
     MOBILE: Main
@@ -178,51 +196,38 @@ nav a:hover {
 
 
 
-
 /* ==========================================================================
    Media Queries
    ========================================================================== */
 
-@media only screen and (min-width: 480px) {
+@media only screen and (min-width: 497px) {
 
 /* ====================
     INTERMEDIATE: Menu
    ==================== */
     
 	.header-container header {
-		height: 70px;
+		height: 80px;
 	}
 	
-	#logo{
-		float: left;
-		height: 100%;
-		width: auto;
+	#connexion #butConnexion{
+		width: 32px;
+		height: 32px;
+		padding: 0;
+		border: 0;
+		background-image: url(../images/login.png);
+		background-color: transparent;
+		background-repeat: no-repeat;
+		background-size: 28px 28px;
 	}
 	
-    nav a {
-        float: left;
-		margin: 0 1%;
-    }
 	
-    nav li:first-child a {
-        margin-left: 0;
-    }
-
-    nav li:last-child a {
-        margin-right: 0;
-    }
-
+	
 /* ========================
     INTERMEDIATE: IE Fixes
    ======================== */
 
-    nav ul li {
-        display: inline;
-    }
-
-    .oldie nav a {
-        margin: 0 0.7%;
-    }
+    
 }
 
 @media only screen and (min-width: 768px) {
@@ -249,17 +254,10 @@ nav a:hover {
 /* ============
     WIDE: Menu
    ============ */
-		
-	#plogo, #menu, #connexion, #menu .navigateur {
-		display: inline-block;
-	}
 	
-	#plogo, #menu, #connexion {
-		height: 100%;
-	}
-	
-    #plogo, #menu {
-		float: left;
+	#connexion p {
+		line-height: 20px;
+		font-size: 15px;
 	}
 	
 	#plogo, #connexion {
@@ -268,10 +266,6 @@ nav a:hover {
 	
 	#menu {
 		width: 60%;
-	}
-	
-	#connexion{
-		background-color: red;
 	}
 	
 	#menu .navigateur {
@@ -288,6 +282,8 @@ nav a:hover {
 		
 		color: black;
 	}
+	
+	
 
 /* ============
     WIDE: Main
