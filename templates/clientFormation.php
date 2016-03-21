@@ -17,7 +17,7 @@
 ?>
 <link rel="stylesheet" type="html/css" href="css/client.css">
 <script type="html/javascript">
-    $("#menuClient").show;
+    
     $(document).ready( function() {
         $idUser = <?php echo $_SESSION["idUser"]; ?>;
 

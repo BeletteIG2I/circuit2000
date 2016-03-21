@@ -4,17 +4,15 @@
  * Description : Fichier PHP contenant la structure de la partie "Client" pour l'administrateur de l'espace perso
  * Auteur(s) : Clément RUFFIN
 */
-
+include("data.php");
 $clients = getClients(); 
 
 ?>
 <link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
 <link rel="stylesheet" type="text/css" href="/css/client.css">
 <script type="text/javascript" src="/js/datepicker-fr.js"></script>
-<script type="text/javascript" src="/js/adminClient.js"></script>
-<script>
-    $("#menuAdmin").show;
-</script>
+<script type="text/javascript" src="../js/adminClient.js"></script>
+
 <div id="client">
     <div id="infoClient">
         <h1>Informations Clients</h1>

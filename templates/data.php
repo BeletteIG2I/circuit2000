@@ -5,7 +5,7 @@
  * Auteur(s) : Clément RUFFIN, Maxime DE COSTER, Maxence DELATTRE
 */
 
-session_start();
+//session_start();
 
 if(!isset($_SESSION['connecte']))
 	$_SESSION['connecte'] = false;

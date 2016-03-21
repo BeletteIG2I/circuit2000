@@ -57,6 +57,10 @@ nav {
 	margin-bottom: 20px;
 }
 
+a{
+    color:white;
+}
+
 #menuAdmin{
 	position: fixed;
 	width: 13%;
@@ -93,6 +97,7 @@ nav {
 	color:white;
 	margin: 0px;
 	border: 1px solid grey;
+        display:none;
 }
 
 #menuClient p:hover{
