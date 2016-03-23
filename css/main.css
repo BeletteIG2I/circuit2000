@@ -148,6 +148,18 @@ nav {
 		font-size: 12px;
 		line-height: 12px;
 	}
+	
+	#trucrelou
+	{
+   -webkit-appearance: none;
+   text-align: center !important;
+	margin-top:5%;
+	width: 90%;
+	height: 25px;
+	overflow: hidden;
+	background: url(../images/new_arrow.jpg) no-repeat  right #ddd;
+	border: 1px solid #ccc;
+	}
 
 /* ==============
     MOBILE: Main
@@ -222,7 +234,19 @@ nav {
 	}
 	
 	
+	#trucrelou
+	{
+   -webkit-appearance: none;
+   text-align: center !important;
+	margin-top:5%;
+	width: 90%;
+	height: 34px;
+	overflow: hidden;
+	background: url(../images/new_arrow.jpg) no-repeat  right #ddd;
+	border: 1px solid #ccc;
+	}
 	
+
 /* ========================
     INTERMEDIATE: IE Fixes
    ======================== */
@@ -271,9 +295,9 @@ nav {
 	#menu .navigateur {
 		width: 30%;
 		height: 50px;
-		
+		text-align:center;
 		color: white;
-		
+		font-family: Calibri Light;
 		border-bottom: 0px solid grey;
 	}
 	
