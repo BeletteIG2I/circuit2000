@@ -183,16 +183,32 @@ jQuery(function($){
             });
 
 </script>
+<?php 
+function debug_to_console( $data ) {
 
+	if ( is_array( $data ) )
+		$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
+	else
+		$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
+
+	echo $output;
+}
+
+
+?>
 <?php
 require('date.php');
 $date = new Date();
 $year = date('Y');
 $dates = $date->getAll($year);
+$flag = 0;
+$nbSem = 0;
 ?>
 
 <div class="periods">
     <div class="year"><?php echo $year;?></div>
+    
+    <!-- On affiche la liste des mois de l'année -->
     <div class="months"> 
         <ul>
             <?php foreach ($date->months as $id=>$m):?>
@@ -201,26 +217,66 @@ $dates = $date->getAll($year);
         </ul>
 	</div>
    
-   
+   <!-- Affichage des semaines -->
 	<div class="week">	
 		<h2>Semaine</h2>
  
-		<?php $dates = current($dates);?>
+		<?php 
+		
+		$dates = current($dates);?>
 		<?php foreach ($dates as $m=>$days):?>		
 				
-			<ul>
+			<ul> <!-- listage des numéros de semaines (en y ajoutant des liens vers les semaines -->
+				
+				
 				<?php 
-				$nbSem = 0;
+				/*echo "<script> console.log('".$m."');</script>";*/
+                
+				
 				$end = end($days);
 				
-				foreach ($days as $d=>$w):?>
-						<?php if($w == 7): ?>
-							<li><a href="#" id="linkWeek<?php echo $nbSem+1;?>">
-							<?php echo ($nbSem+=1);?> </a></li>
-						<?php endif; ?>							
-				<?php endforeach;?>
+				foreach ($days as $d=>$semaine):?>
+					
+					
+                   <?php foreach ($semaine as $s=>$day):?>
+					   <?php if($s==1  && !$flag){
+                                    //Si le premier jour du premier mois est <5 c'est à dire est lundi ou mardi ou mercredi ou jeudi
+                                    //Alors la numérotation des semaine commence le 1 Janvier
+                                    //Sinon on attend le premier lundi de Janvier
+                                    if ($day < 5){
+                                        $nbSem = 1;
+                                    }
+                                    else $nbSem = 0;
+									$flag = 1;
+                             }
+							 if($s > 1){
+								if ($day == 1){
+									$nbSem += 1;	
+								}
+							 }
+							 //echo "J:".$s;
+							
+                       ?>
+                   <?php endforeach;?>
+                    
+                    <?php //echo "Sem:".$nbSem;?>
+	
+					<li><a href="#" id="linkWeek<?php echo $nbSem;?>">
+					<?php echo $nbSem;?> </a></li>		
+                    
+                    				
+				<?php 
+				//debug_to_console($semaine);
+				endforeach;?>
+			
 			</ul>
 
+
+
+
+
+</br></br></br></br>
+<!--
 			<table>
 				<tr>
 					<td colspan= 1 class="padding"></td>
@@ -244,14 +300,12 @@ $dates = $date->getAll($year);
 		<?php endforeach;?>
 	</div>
        
+       --> 
        
        
        
        
-    
-    
-    
-    
+
     
     
     
