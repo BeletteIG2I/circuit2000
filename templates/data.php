@@ -5,7 +5,7 @@
  * Auteur(s) : Clément RUFFIN, Maxime DE COSTER, Maxence DELATTRE
 */
 
-//session_start();
+session_start();
 
 if(!isset($_SESSION['connecte']))
 	$_SESSION['connecte'] = false;
@@ -74,15 +74,16 @@ if($action = valider('action')) {
         }break;
 		
 	case 'recupInfoCours' : { // On récupère toutes les infos d'un client
-		if($_SESSION["admin"]==3){
+		if($_SESSION["admin"]==0){
 			$var = getCoursParEleve($_GET["id"]);
 			echo(json_encode($var));
 				
-		}else if($_SESSION["admin"]==1){
+		}else if($_SESSION["admin"]==2){
 			$var = getCoursParMoniteur($_GET["id"]);
 			echo(json_encode($var));
 		}	
         }break;
+
 
         case 'recupDatesUser' : { // On récupère les dates (côté admin) au format aaaa-mm-jj
             $var = getInfosEleve($_GET["id"]);
@@ -126,8 +127,17 @@ if($action = valider('action')) {
         case 'ajouterClient' : {
             $res = NULL;
             // Après avoir vérifié les champs passés en paramètres, on insère le nouveau client en base
-            if (($nomClient = valider("nomClient", "POST")) && ($prenomClient = valider("prenomClient", "POST")) && ($mailClient = valider("mailClient", "POST")) ) {
-                $res = InsertClient($nomClient, $prenomClient, $mailClient);
+            if (($nomClient = valider("nom", "GET")) && ($prenomClient = valider("prenomClient", "GET")) 
+						&& ($mailClient = valider("mail", "GET")) 
+						&& ($telClient = valider("tel", "GET")) 
+						&& ($dateNaissClient = valider("dateNaiss", "GET"))
+						&& ($mdpClient = valider("mdpClient", "GET"))
+						&& ($numAdrClient = valider("numAdrClient", "GET"))
+						&& ($rueAdrClient = valider("rueAdrClient", "GET"))
+						&& ($villeAdrClient = valider("villeAdrClient", "GET"))
+						&& ($codePostalClient = valider("codePostalClient", "GET"))) {
+                $res = InsertClient($nomClient, $prenomClient, $mailClient,$telClient
+				,$dateNaissClient,$mdpClient,$numAdrClient,$rueAdrClient,$villeAdrClient,$codePostalClient);
 
             	if($res != false) { // Si le mail passé en paramètre est valide
 					$i = 0;
@@ -135,12 +145,7 @@ if($action = valider('action')) {
 					$chaine = "abcdefghijklmnpqrstuvwxyABCDEFGHIJKLMNOPQRSUTVWXYZ0123456789";
 					$nb_chars = strlen($chaine);
 
-					for($i = 0 ; $i < 10 ; $i++) {
-					    $mdp .= $chaine[rand(0, ($nb_chars-1))];
-					}
-					$mdp_crypte = sha1(md5(sha1($mdp)));
-
-			    	UpdateMdp($res, $mdp_crypte);
+					
         
 		            $mail = $mailClient;//'maxencedelattre62@gmail.com'; // Déclaration de l'adresse de destination.
 		            if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
@@ -193,27 +198,6 @@ if($action = valider('action')) {
                 echo ("erreur:Veuillez remplir tous les champs");
 
         }break;
-
-        case 'updateTpsPause':{
-            
-            $res = NULL;
-            //Après avoir vérifier le temps de pause et l'id, on modifie en base
-            if($tpsPause = valider("newTpsPause","GET") && $idCours = valider("idCours","GET"))
-                $res = UpdateTpsPause($_GET["idCours"], $_GET["newTpsPause"]);
-
-            if($res != NULL){
-
-                $tpsPauseUpdate = getTpsPauseParCours($_GET["idCours"]);
-                $nouveauTpsPause = $tpsPauseUpdate[0]['temps_pause'];
-                
-                echo $nouveauTpsPause;
-
-            }
-            else
-                echo("erreur:Echec de la modification du temps de pause");
-        }        
-
-        break;
 
         case 'updateAdresse' : {
             $res = NULL;

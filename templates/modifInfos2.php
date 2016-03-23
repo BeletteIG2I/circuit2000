@@ -12,7 +12,7 @@
             var $idUser = 2;
            
             /** Au chargement de la page, on récupère les infos sur le client et on les affiche sur la page
-              (adresse, email, téléphone, dates d'obtention du code et du permis) */
+              (adresse, email, téléphone,...) */
             $.ajax({
                 type:"GET",
                 url:"../templates/data.php?action=recupInfoUser&id=" + $idUser,
@@ -173,7 +173,7 @@
                     
                 //Changement de date de Naissance
                 nouveauDateNaiss = $(".naissJour").val() + "/" + $(".naissMois").val() + "/" + $(".naissAnnee").val();
-                alert(nouveauDateNaiss);
+                
                 $.ajax({
                         type: "GET",
                         url: "../templates/data.php?action=updateDateNaissance&id=" + $idUser + "&dateNaiss=" + nouveauDateNaiss,
@@ -360,14 +360,6 @@
 					  <p><input type="button" value="Soummettre" id="envoie"></p>
 
 					
-				
-			
-				<div id="gestCompte">
-				<p id="gTitre">Gestion compte</p>
-				<p id="g1">Modifier les informations</p>
-				<p id="g2">Planning</p>
-				<p id="g3">Récapitulatif</p>
-				<p id="g4">Déconnexion</p>
 			</div>
 </div>
 

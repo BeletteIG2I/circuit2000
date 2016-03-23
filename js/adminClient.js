@@ -6,13 +6,13 @@
 
 $(document).ready(function() {
     actualiserListeClients();
-    alert("yolo");
+
     /** Au chargement de la page, on met à jour la liste des clients sélectionnables
      *  On la met également à jour lorsque l'admin inscrit un nouveau client */
     function actualiserListeClients() {
         $.ajax({
             type: "GET",
-            url:"/templates/data.php?action=recupUsers",
+            url:"templates/data.php?action=recupUsers",
             success: function (result, textStatus, jqXHR) {
                 result = $.parseJSON(result);
                 

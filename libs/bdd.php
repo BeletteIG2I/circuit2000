@@ -7,12 +7,10 @@
 
 include("maLibSQL.php");
 
-function InsertClient($nom, $prenom, $mail) {
-    // On génère un mot de passe aléatoire de 8 caractères
-    $mdp = chaine_aleatoire(8);
+function InsertClient($nom, $prenom, $mail,$tel,$dateNaiss,$mdp,$numAdr,$rueAdr,$villeAdr,$codePostal) {
 
     // On insère l'utilisateur dans 'user' avec le champ 'fonction' à 0
-    $sql = "INSERT INTO user(nom,prenom,mail, mdp, fonction) VALUES ('$nom','$prenom','$mail', '$mdp', '0')";
+    $sql = "INSERT INTO user(nom,prenom,mail,mdp,telephone,dateNaissance,fonction,numeroADR,rueADR,villeADR,codePostal) VALUES ('$nom','$prenom','$mail', '$mdp', '$tel','$dateNaiss','0','$numAdr', '$rueAdr', '$villeAdr', '$codePostal')";
     $res = SQLInsert($sql);
    
 
@@ -92,22 +90,6 @@ function getCoursParMoniteur($idMoniteur) {
     $res = SQLSelect($sql);
 
     return parcoursRs($res);
-}
-
-function getTpsPauseParCours($idCours){
-    $sql = "SELECT temps_pause FROM cours WHERE numero =" . $idCours;
-    $res = SQLSelect($sql);
-
-    return parcoursRs($res);
-}
-
-function UpdateTpsPause($id,$newTpsPause){
-
-    $sql = "UPDATE cours SET temps_pause='".$newTpsPause."' WHERE id=".$id ;
-    $res=SQLUpdate($sql);
-
-    return parcoursRs($res);
-
 }
 
 function UpdateNom($id, $new_nom) {
