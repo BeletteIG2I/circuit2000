@@ -249,7 +249,7 @@ $nbSem = 0;
                                     else $nbSem = 0;
 									$flag = 1;
                              }
-							 if($s > 1){
+							 if($s >= 1){
 								if ($day == 1){
 									$nbSem += 1;	
 								}
