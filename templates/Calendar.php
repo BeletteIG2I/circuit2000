@@ -281,7 +281,7 @@ $nbSem = 0;
                                 <tr>
                                     <td><?php echo $i."H00";?></td>
                                     <?php for($j=1;$j<=7;$j++) :?>
-                                        <td id="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>><?php echo $j.'' ;?></td>
+                                        <td id="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>"><?php echo $j.'' ;?></td>
                                     <?php endfor;?>  
                                 </tr>
                         <?php endfor;?>   
