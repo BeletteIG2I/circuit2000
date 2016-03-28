@@ -264,7 +264,10 @@ $nbSem = 0;
                     <?php //echo "Sem:".$nbSem;?>
 	
 					<li><a href="#" id="linkWeek<?php echo $nbSem;?>">
-					<?php echo $nbSem;?> </a></li>		
+					<?php echo $nbSem;?> </a></li>	
+                    
+                    <!-- Affichage de chaque tableau pour chaque semaine -->
+                    	
                     <table id="TableWeek<?php echo $nbSem;?>">
                         <tr>
                             <td colspan= 1 class="padding"></td>
@@ -278,7 +281,7 @@ $nbSem = 0;
                                 <tr>
                                     <td><?php echo $i."H00";?></td>
                                     <?php for($j=1;$j<=7;$j++) :?>
-                                        <td><?php echo '' ;?></td>
+                                        <td id="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>><?php echo $j.'' ;?></td>
                                     <?php endfor;?>  
                                 </tr>
                         <?php endfor;?>   
