@@ -51,7 +51,7 @@ function getInfosEleve($id) {
 
 
 function getMoniteurs() {
-    $sql = "SELECT user.id, user.nom, user.prenom, moniteur.immatVoiture FROM user,moniteur";
+    $sql = "SELECT user.id, user.nom, user.prenom, moniteur.immatVoiture FROM user,moniteur WHERE user.id = moniteur.idMoniteur";
     $res = SQLSelect($sql);
 
     return parcoursRs($res);
@@ -62,6 +62,13 @@ function getInfosMoniteur($id) {
 	$res = SQLSelect($sql);
 
 	return parcoursRs($res);
+}
+
+function getTpsPauseMoniteur(){
+    $sql = "SELECT idMoniteur,temps_pause FROM cours";
+    $res = SQLSelect($sql);
+
+    return parcoursRs($res);
 }
 
 function getVehicules() {
