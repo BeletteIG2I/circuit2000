@@ -127,15 +127,15 @@ if($action = valider('action')) {
         case 'ajouterClient' : {
             $res = NULL;
             // Après avoir vérifié les champs passés en paramètres, on insère le nouveau client en base
-            if (($nomClient = valider("nom", "GET")) && ($prenomClient = valider("prenomClient", "GET")) 
-						&& ($mailClient = valider("mail", "GET")) 
-						&& ($telClient = valider("tel", "GET")) 
-						&& ($dateNaissClient = valider("dateNaiss", "GET"))
+            if (($nomClient = valider("nomClient", "GET")) && ($prenomClient = valider("prenomClient", "GET")) 
+						&& ($mailClient = valider("mailClient", "GET")) 
+						&& ($telClient = valider("telClient", "GET")) 
+						&& ($dateNaissClient = valider("dateNaissClient", "GET"))
 						&& ($mdpClient = valider("mdpClient", "GET"))
 						&& ($numAdrClient = valider("numAdrClient", "GET"))
 						&& ($rueAdrClient = valider("rueAdrClient", "GET"))
 						&& ($villeAdrClient = valider("villeAdrClient", "GET"))
-						&& ($codePostalClient = valider("codePostalClient", "GET"))) {
+						&& ($codePostalClient = valider("codePostalAdrClient", "GET"))) {
                 $res = InsertClient($nomClient, $prenomClient, $mailClient,$telClient
 				,$dateNaissClient,$mdpClient,$numAdrClient,$rueAdrClient,$villeAdrClient,$codePostalClient);
 

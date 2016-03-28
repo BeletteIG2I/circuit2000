@@ -57,6 +57,11 @@ nav {
 	margin-bottom: 20px;
 }
 
+a {
+    color:white;
+    text-decoration:none;
+}
+
 #menuAdmin{
 	position: fixed;
 	width: 13%;

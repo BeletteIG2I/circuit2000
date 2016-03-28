@@ -204,3 +204,6 @@ input[type=submit] {
   padding: 10px;
 }
 
+#chargement{
+    display: none;
+}

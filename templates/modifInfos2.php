@@ -1,3 +1,11 @@
+<?php
+/*
+ * Nom de fichier : modifInfos.php
+ * Description : Fichier PHP contenant la structure et le script JQuery de la partie "Users" pour modifier ses informations personnelles
+ * Auteur(s) : Florian Evelette Bédier
+*/
+    session_start();
+?>
 <head> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="../css/modifInfos2.css"/>
@@ -9,7 +17,7 @@
 
 <script>
         $(document).ready(function(){
-            var $idUser = 2;
+            $idUser = <?php echo $_SESSION["idUser"]; ?>;
            
             /** Au chargement de la page, on récupère les infos sur le client et on les affiche sur la page
               (adresse, email, téléphone,...) */
@@ -44,7 +52,7 @@
                 rueNouvelleAdresse = $(".rueADR").val();
                 villeNouvelleAdresse = $(".villeADR").val();
                 codePostalNouvelleAdresse = $(".codePostal").val();
-                
+                $("#chargement").show();
                 $.ajax({
                     type: "GET",
                     url: "../templates/data.php",
@@ -212,6 +220,7 @@
                             $('#msgErrorMesInfos').css("border-color","green");
                             $("#htmlTelClient").html(result); // On recopie la nouvelle adresse sur la page
                             alert("Modifcations reussies");
+                            $("#chargement").hide();
                         }
                         $('#msgErrorMesInfos').show(); // On affiche le message
                         $('#msgErrorMesInfos').fadeOut(4000,'easeInExpo'); // On le fait disparaître en 4s en easeInExpo
@@ -357,7 +366,7 @@
 						   <input type="text" name="post" id="champs" class="codePostal"/></br>
 					  </fieldset>
 					  
-					  <p><input type="button" value="Soummettre" id="envoie"></p>
+					   <p><input type="button" value="Soummettre" id="envoie"> <img src="../images/ajax-loader.gif" alt="chargement" id="chargement"/></p>
 
 					
 			</div>

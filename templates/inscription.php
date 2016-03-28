@@ -13,78 +13,56 @@
            
             
             $("#envoie").click(function(){
-                
-                nouveauNom = $(".nom").val();
-				nouveauPrenom = $(".prenom").val();
-				nouveauMail = $(".mail").val();
-				nouveauMdp= $(".mdp").val();
-				nouveauTel = $(".telephone").val();
-				nouveauDateNaiss = $(".naissJour").val() + "/" + $(".naissMois").val() + "/" + $(".naissAnnee").val();
-                numNouvelleAdresse = $(".numeroADR").val();
-                rueNouvelleAdresse = $(".rueADR").val();
-                villeNouvelleAdresse = $(".villeADR").val();
-                codePostalNouvelleAdresse = $(".codePostal").val();
-                
-			/*
-				 var $this = $(this).parent();
+                //Verification des 2 Mots de passe
+                if($(".mdp").val() === $(".mdp2").val()){
+                    $("#chargement").show();
+                    //Mise en place des paramètres
+                    nouveauNom = $(".nom").val();
+                    nouveauPrenom = $(".prenom").val();
+                    nouveauMail = $(".mail").val();
+                    nouveauMdp= $(".mdp").val();
+                    nouveauTel = $(".telephone").val();
+                    nouveauDateNaiss = $(".naissJour").val() + "/" + $(".naissMois").val() + "/" + $(".naissAnnee").val();
+                    numNouvelleAdresse = $(".numeroADR").val();
+                    rueNouvelleAdresse = $(".rueADR").val();
+                    villeNouvelleAdresse = $(".villeADR").val();
+                    codePostalNouvelleAdresse = $(".codePostal").val();
 
-					$.ajax({
-						url: "templates/data.php?action=ajouterClient",
-						type: "POST",
-						data: $this.serialize(), // On sérialise les données (On envoie toutes les valeurs présentes dans le formulaire)
-						success: function (result, textStatus, jqXHR) {
-							if(result.search('erreur:') != -1) {
-								$('#messageCreation').css("border-color","red");
-								$('#messageCreation').text(result.substring(7,result.length));
-								// On enlève la chaîne de caractères 'erreur:' pour afficher le message d'erreur
-							}
-							else { // Si pas d'erreurs
-								$('#messageCreation').css("border-color","green");
-								$('#messageCreation').text(result);
-							}
-							$('#messageCreation').show(); // On affiche le message
-							$('#messageCreation').fadeOut(4000,'easeInExpo'); // On le fait disparaître en 4s en easeInExpo
+                    //envoie de la requete
+                    $.ajax({
+                        type: "GET",
+                        url: "../templates/data.php",
+                        data:{action:"ajouterClient",nomClient:nouveauNom,prenomClient:nouveauPrenom,mailClient:nouveauMail,
+                                                        telClient:nouveauTel,dateNaissClient:nouveauDateNaiss,mdpClient:nouveauMdp,
+                                                        numAdrClient:numNouvelleAdresse,rueAdrClient:rueNouvelleAdresse,villeAdrClient:villeNouvelleAdresse,codePostalAdrClient:codePostalNouvelleAdresse},
+                        success: function (result, htmlStatus, jqXHR) {
+                            if(result.search('erreur:') != -1) {
+                                                    alert(result.substring(7,result.length));
+                                $('#msgErrorMesInfos').text(result.substring(7,result.length));
+                                $('#msgErrorMesInfos').css("border-color","red");
+                                // On enlève la chaîne de caractères 'erreur:' pour afficher le message d'erreur
+                            }
+                            else { // Si pas d'erreurs
 
-							// Chaque fois que l'admin ajoute un client, on met à jour la liste déroulante des clients
-							actualiserListeClients();
-						},
-						error: function (jqXHR, textStatus, textErreur) {
-							alert("Status :" + textStatus + " \nErreur : " + textErreur);
-						}
-					});*/
-				
-                $.ajax({
-                    type: "GET",
-                    url: "../templates/data.php",
-                    data:{action:"ajouterClient",nomClient:nouveauNom,prenomClient:nouveauPrenom,mailClient:nouveauMail,telClient:nouveauTel,dateNaissClient:nouveauDateNaiss,mdpClient:nouveauMdp,num:numNouvelleAdresse,rue:rueNouvelleAdresse,ville:villeNouvelleAdresse,codePostal:codePostalNouvelleAdresse},
-                    success: function (result, htmlStatus, jqXHR) {
-                        if(result.search('erreur:') != -1) {
-						alert(result.substring(7,result.length));
-                            $('#msgErrorMesInfos').text(result.substring(7,result.length));
-                            $('#msgErrorMesInfos').css("border-color","red");
-                            // On enlève la chaîne de caractères 'erreur:' pour afficher le message d'erreur
+                               /* $('#msgErrorMesInfos').text("Adresse modifiée");
+                                $('#msgErrorMesInfos').css("border-color","green");*/
+                                alert("Inscription reussie");
+                                $("#chargement").hide();
+                            }
+                            $('#msgErrorMesInfos').show(); // On affiche le message
+                            $('#msgErrorMesInfos').fadeOut(4000,'easeInExpo'); // On le fait disparaître en 4s en easeInExpo
+                        },
+                        error: function (jqXHR, htmlStatus, htmlError) {
+                            console.log("Status :" + htmlStatus + " \nError : " + htmlError);
                         }
-                        else { // Si pas d'erreurs
-                            
-                           /* $('#msgErrorMesInfos').text("Adresse modifiée");
-                            $('#msgErrorMesInfos').css("border-color","green");*/
-                            $(".numeroADR").val(numNouvelleAdresse);
-                            $(".rueADR").val(rueNouvelleAdresse);
-                            $(".villeADR").val(villeNouvelleAdresse);
-                            $(".codePostal").val(codePostalNouvelleAdresse); // On recopie la nouvelle adresse sur la page
-                            
-                        }
-                        $('#msgErrorMesInfos').show(); // On affiche le message
-                        $('#msgErrorMesInfos').fadeOut(4000,'easeInExpo'); // On le fait disparaître en 4s en easeInExpo
-                    },
-                    error: function (jqXHR, htmlStatus, htmlError) {
-                        console.log("Status :" + htmlStatus + " \nError : " + htmlError);
-                    }
+                    });
+
+                }else{
+                    alert("Mots de passe différents");
+                }
+                    
                 });
                 
-                
-            });
-        
         });
         
         
@@ -95,7 +73,7 @@
 <nav>
 	<img id="logo" src="../images/CIRCUIT_2000.png">
 	<div id="entete"> 
-		<h2>Modifier les informations</h2>
+		<h2>Inscription</h2>
 	</div>
 	
 
@@ -220,8 +198,8 @@
 						   <input type="text" name="post" id="champs" class="codePostal"/></br>
 					  </fieldset>
 					  
-					  <p><input type="button" value="Soummettre" id="envoie"></p>
-
+					  <p><input type="button" value="Soummettre" id="envoie"> <img src="../images/ajax-loader.gif" alt="chargement" id="chargement"/></p>
+                                          
 					
 			</div>
 </div>
