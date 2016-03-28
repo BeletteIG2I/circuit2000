@@ -250,6 +250,8 @@ $nbSem = 0;
 									$flag = 1;
                              }
 							 if($s >= 1){
+								 //Si on change de semaine, on regarde si c'est un lundi
+								 //Si oui alors on incrémente le numéro de la semaine
 								if ($day == 1){
 									$nbSem += 1;	
 								}
@@ -263,7 +265,25 @@ $nbSem = 0;
 	
 					<li><a href="#" id="linkWeek<?php echo $nbSem;?>">
 					<?php echo $nbSem;?> </a></li>		
-                    
+                    <table id="TableWeek<?php echo $nbSem;?>">
+                        <tr>
+                            <td colspan= 1 class="padding"></td>
+                            <?php foreach ($date->days as $d):?>
+                                <th>
+                                <?php echo substr($d,0,3);?>
+                                </th>
+                            <?php endforeach;?>    
+                        </tr>
+                        <?php for($i=8;$i<=19;$i++) :?>
+                                <tr>
+                                    <td><?php echo $i."H00";?></td>
+                                    <?php for($j=1;$j<=7;$j++) :?>
+                                        <td><?php echo '' ;?></td>
+                                    <?php endfor;?>  
+                                </tr>
+                        <?php endfor;?>   
+                            
+                    </table>
                     				
 				<?php 
 				//debug_to_console($semaine);
