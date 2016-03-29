@@ -6,8 +6,8 @@
 */
 ?>
 
-<link rel="stylesheet" type="text/css" href="css/infos_prat.css">
-<script type="text/javascript" src="js/infos_prat.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/infos_prat.css">
+<script type="text/javascript" src="../js/infos_prat.js"></script>
 <div id="infos_prat">
 	<?php if(isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
 	<div id="conseils">
@@ -20,7 +20,7 @@
 	<div class="separateur"></div>
 	<div id="fichiers">
 		<h1>Fichiers mis à disposition</h1>
-		<form class="form" action="templates/data.php" method="post" enctype="multipart/form-data"  target="upload_target" id="form">
+		<form class="form" action="../templates/data.php" method="post" enctype="multipart/form-data"  target="upload_target" id="form">
             <input type="file" name="fichier"/><br />
             <input type="submit" id="ajouterFichier" name="action" value="Ajouter un fichier"><br />
             <iframe id="upload_target" name="upload_target" src="" style="width:0;height:0;border:0px solid #fff;"></iframe>

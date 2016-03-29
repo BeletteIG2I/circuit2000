@@ -8,10 +8,10 @@
 $clients = getClients(); 
 
 ?>
-<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
-<link rel="stylesheet" type="text/css" href="/css/client.css">
-<script type="text/javascript" src="/js/datepicker-fr.js"></script>
-<script type="text/javascript" src="/js/adminClient.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="../css/client.css">
+<script type="text/javascript" src="../js/datepicker-fr.js"></script>
+<script type="text/javascript" src="../js/adminClient.js"></script>
 <div id="client">
     <div id="infoClient">
         <h1>Informations Clients</h1>
@@ -49,7 +49,7 @@ $clients = getClients();
     <div class="separateur"></div>
     <div id="creerClient">
         <h1>Créer un nouveau client</h1>
-        <form id="formCreerClient" action="/Circuit2000/libs/data.php" method="post">
+        <form id="formCreerClient" action="../templates/data.php" method="post">
                 <label for="nomClient">Nom : </label>
                 <input type="text" name="nomClient" /><br/><br/>
                 <label for="prenomClient">Prénom : </label>

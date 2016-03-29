@@ -7,6 +7,11 @@
 session_start();
 ?>
 
+<html>
+<link rel="stylesheet" type="text/css" href="../css/base.css">
+<link rel="stylesheet" type="text/css" href="../css/prestations.css">
+<link rel="stylesheet" type="text/css" href="../css/slider.css">
+
 <div id="espace_perso">
 	<?php include('sous_menu.php'); ?>
 	<div id="deco">Déconnexion</div>
@@ -14,14 +19,15 @@ session_start();
 		<div id="slider">
 			<ul>
 				<li><?php include("client.php"); ?></li>
+				<li><?php include("planning.php"); ?></li>
 				<li><?php include('infos_prat.php'); ?></li>
 			</ul>
 		</div>
 
 		<div id="navigation">
 			<div id="buttons">
-				<button id="left"><img src="/images/left.png" alt="gauche"></button>
-				<button id="right"><img src="/images/right.png" alt="droite"></button>
+				<button id="left"><img src="../images/left.png" alt="gauche"></button>
+				<button id="right"><img src="../images/right.png" alt="droite"></button>
 			</div>	
 		</div>
 	</div>
@@ -158,3 +164,4 @@ session_start();
 		});
 	</script>
 </div>
+</html>
