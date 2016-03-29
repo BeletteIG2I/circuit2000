@@ -7,10 +7,12 @@
 
 include("maLibSQL.php");
 
-function InsertClient($nom, $prenom, $mail,$tel,$dateNaiss,$mdp,$numAdr,$rueAdr,$villeAdr,$codePostal) {
+function InsertClient($nom, $prenom, $mail) {
+    // On génère un mot de passe aléatoire de 8 caractères
+    $mdp = chaine_aleatoire(8);
 
     // On insère l'utilisateur dans 'user' avec le champ 'fonction' à 0
-    $sql = "INSERT INTO user(nom,prenom,mail,mdp,telephone,dateNaissance,fonction,numeroADR,rueADR,villeADR,codePostal) VALUES ('$nom','$prenom','$mail', '$mdp', '$tel','$dateNaiss','0','$numAdr', '$rueAdr', '$villeAdr', '$codePostal')";
+    $sql = "INSERT INTO user(nom,prenom,mail, mdp, fonction) VALUES ('$nom','$prenom','$mail', '$mdp', '0')";
     $res = SQLInsert($sql);
    
 
@@ -86,7 +88,7 @@ function getCours() {
 }
 
 function getCoursParEleve($idEleve) {
-    $sql = "SELECT * FROM cours WHERE id =" . $idEleve;
+    $sql = "SELECT * FROM cours WHERE idEleve =" . $idEleve;
     $res = SQLSelect($sql);
 
     return parcoursRs($res);
@@ -97,27 +99,6 @@ function getCoursParMoniteur($idMoniteur) {
     $res = SQLSelect($sql);
 
     return parcoursRs($res);
-}
-
-function UpdateNom($id, $new_nom) {
-	$SQL = "UPDATE user SET nom='" . $new_nom . "' WHERE id=" . $id;
-	$res = SQLUpdate($SQL);
-
-	return $res;
-}
-
-function UpdatePrenom($id, $new_prenom) {
-	$SQL = "UPDATE user SET prenom='" . $new_prenom . "' WHERE id=" . $id;
-	$res = SQLUpdate($SQL);
-
-	return $res;
-}
-
-function UpdateDateNaissance($id, $new_dateNaiss) {
-	$SQL = "UPDATE user SET dateNaissance='" . $new_dateNaiss . "' WHERE id=" . $id;
-	$res = SQLUpdate($SQL);
-
-	return $res;
 }
 
 function UpdateMail($id, $new_mail) {
@@ -171,5 +152,6 @@ function UpdateDatePermis($id, $date_permis) {
 
 	return $res;
 }
+
 
 ?>

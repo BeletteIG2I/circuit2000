@@ -181,6 +181,24 @@ jQuery(function($){
                     return false; 
                });
             });
+			
+//Récupération des cours de la BDD et affichage dans le planning			
+$(document).ready( function() {
+	$.ajax({
+            type:"GET",
+            url:"data.php?action=recupInfoCours&id=" + <?php echo 1;?>,
+            success:function(result, htmlStatus, jqXHR) {
+				result = $.parseJSON(result);
+				
+				$.each(result, function(){console.log(result);});
+				//console.log("Date cours:" + result.date);
+               	///console.log("resulat planning #" + result);
+            },
+            error : function(jqXHR, htmlStatus, htmlError) {
+                console.log("Status :" + htmlStatus + " \nError : " + htmlError);
+            }
+        });
+});
 
 </script>
 <?php 
@@ -204,6 +222,10 @@ $dates = $date->getAll($year);
 $flag = 0;
 $nbSem = 0;
 ?>
+
+<!-- div pour l'affichage des cours (pour les tests) --> 
+<div id="divDeTest"></div>
+<!-- ###################  -->
 
 <div class="periods">
     <div class="year"><?php echo $year;?></div>
@@ -281,7 +303,7 @@ $nbSem = 0;
                                 <tr>
                                     <td><?php echo $i."H00";?></td>
                                     <?php for($j=1;$j<=7;$j++) :?>
-                                        <td id="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>"><?php echo $j.'' ;?></td>
+                                        <td id="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>"><?php echo '' ;?></td>
                                     <?php endfor;?>  
                                 </tr>
                         <?php endfor;?>   
@@ -293,6 +315,10 @@ $nbSem = 0;
 				endforeach;?>
 			
 			</ul>
+
+
+
+
 
 
 
