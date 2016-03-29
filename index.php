@@ -222,7 +222,7 @@ ob_start("ob_gzhandler");
 					</p>
 				</div> 
 			</article>
-			<article id="espace_clients">
+			<!--<article id="espace_clients">
 				<div id='identification'>
 					<div id="div_bonhomme"></div>
 					<hr id='soulignement'/></br>
@@ -236,14 +236,14 @@ ob_start("ob_gzhandler");
 						<p>Assurez-vous que cette adresse e-mail est la bonne et cliquez sur "Envoyer un nouveau mot de passe". Il est conseillé de le changer une fois que vous aurez réussi à vous connecter.</p>
 						<input type="button" id="reinit" value="Envoyer un nouveau mot de passe" />
 					</div>
-					<label>Identifiant : </label><input id="login" name="login" type="text" /><br/>
-					<label>Mot de passe : </label><input id="password" name="password" type="password" /><br/>
+					<label></label><input id="login" name="login" type="text" placeholder="Identifiant"/><br/>
+					<label></label><input id="password" name="password" type="password" placeholder="Mot de passe"/><br/>
 					<input type="hidden" name="action" value="get" />
 					<input id="submit_connexion" type="submit" value="Se connecter" />
 					<p><span id="oubliMdp">Mot de passe oublié ?</span></p>
 					<div id="msgErrorConnexion"></div>
 				</div>
-			</article>
+			</article>-->
 			<article id="contact">
 				<div id="formulaire_contact">
 					<h1 id='titre_contact'>Vous souhaitez nous rencontrer ?</h1>

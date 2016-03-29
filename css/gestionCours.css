@@ -38,6 +38,7 @@ body {
 	background-repeat:no-repeat;
 	background-size:contain;
 	margin-bottom: 20px;
+	z-index:3;
 }
 
 
