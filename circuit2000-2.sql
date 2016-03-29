@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Lun 28 Mars 2016 à 23:11
+-- Généré le :  Mar 29 Mars 2016 à 22:43
 -- Version du serveur :  5.5.38
 -- Version de PHP :  5.6.2
 
@@ -30,13 +30,19 @@ CREATE TABLE `cours` (
 `id` bigint(20) NOT NULL,
   `idMoniteur` bigint(20) NOT NULL,
   `idEleve` int(6) NOT NULL,
-  `date_debut` date NOT NULL,
-  `date_fin` date NOT NULL,
   `temps_pause` bigint(20) DEFAULT NULL,
-  `date` date DEFAULT NULL,
+  `date` datetime DEFAULT NULL,
   `description` varchar(60) DEFAULT NULL,
   `Commentaire` varchar(40) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `cours`
+--
+
+INSERT INTO `cours` (`id`, `idMoniteur`, `idEleve`, `temps_pause`, `date`, `description`, `Commentaire`) VALUES
+(1, 1, 1, NULL, '2016-03-30 08:00:00', 'Mon premier cours', 'Voici les commentaires du premier cours.'),
+(2, 1, 1, NULL, '2016-03-31 15:00:00', 'Mon Deuxième cours', 'Commentaires du 2eme cours');
 
 -- --------------------------------------------------------
 
@@ -88,8 +94,15 @@ CREATE TABLE `moniteur` (
   `id` int(11) NOT NULL,
 `idMoniteur` int(11) NOT NULL,
   `dateEntree` date NOT NULL,
-  `immatVoiture` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `immatVoiture` varchar(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `moniteur`
+--
+
+INSERT INTO `moniteur` (`id`, `idMoniteur`, `dateEntree`, `immatVoiture`) VALUES
+(4, 1, '2016-03-29', '3445');
 
 -- --------------------------------------------------------
 
@@ -110,14 +123,16 @@ CREATE TABLE `user` (
   `villeADR` varchar(30) DEFAULT NULL,
   `codePostal` varchar(6) DEFAULT NULL,
   `telephone` varchar(12) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Contenu de la table `user`
 --
 
 INSERT INTO `user` (`id`, `nom`, `prenom`, `dateNaissance`, `mail`, `mdp`, `fonction`, `numeroADR`, `rueADR`, `villeADR`, `codePostal`, `telephone`) VALUES
-(2, 'Eve', 'Flo', '24/06/1994', 'admin', 'admin', 0, '1', '1', '1', ' 62153', '0645716659');
+(2, 'Eve', 'Flo', '24/06/1994', 'admin', 'admin', 0, '1', '1', '1', ' 62153', '0645716659'),
+(3, 'nomAdmin', 'prenomAdmin', '13/12/95', 'admin', 'admin', 1, '45', 'Jean Philippe', 'Lens', '62300', '0123456789'),
+(4, 'nomMoniteur', 'prenomMoniteur', '24/05/88', 'moniteur@moniteur.com', 'moniteur', 2, '34', 'Alfred 2 ', 'Lille', '59000', '1234567891');
 
 -- --------------------------------------------------------
 
@@ -182,7 +197,7 @@ ALTER TABLE `vehicule`
 -- AUTO_INCREMENT pour la table `cours`
 --
 ALTER TABLE `cours`
-MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `eleve`
 --
@@ -197,12 +212,12 @@ MODIFY `numero` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT pour la table `moniteur`
 --
 ALTER TABLE `moniteur`
-MODIFY `idMoniteur` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `idMoniteur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT pour la table `vehicule`
 --
