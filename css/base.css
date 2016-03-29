@@ -68,7 +68,7 @@ a {
 	width: 13%;
 	top: 17%;
 	right: 1%;
-        #display:none;
+        display:none;
 }
 
 #menuAdmin p{
