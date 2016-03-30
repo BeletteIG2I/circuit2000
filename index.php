@@ -96,7 +96,7 @@ ob_start("ob_gzhandler");
 			$(document).on("click","#submit_connexion", function() { // Au clic sur un item du menu de l'espace clients
 				//Lors du clic sur le bouton se connecter lance l'affichage Client
 				if($("#login").val() && $("#login").val()!= "" && $("#password").val() && $("#password").val() != "") {
-					
+					alert("toto");
 					afficherEspaceClients(); // on affiche directement l'espace clients correspondant en lieu et place du formulaire d'identification
 				}
 				
@@ -105,7 +105,36 @@ ob_start("ob_gzhandler");
 	</head>
 	<body>
 		<!-- <div id="cercle"></div> -->
-		<?php include('templates/menu.html'); ?>
+		<div id="barre_blanche"></div>
+                <nav>
+                        <img id="logo" src="images/CIRCUIT_2000.png">
+                        <ul id="menu">
+                                <li><a href="#nos_services">Nos services</a></li>
+                                <li><a href="#l_auto_ecole">L'auto école</a></li>
+                                <li><a href="#nos_bureaux">Nos bureaux</a></li>
+                                <li><a href="#faq">FAQ</a></li>
+
+                                <li><a href="#contact">Nous contacter</a></li>
+                        </ul>
+
+                        <div id="connexion">
+
+                                <label></label><input id="login" name="login" type="text" placeholder="Identifiant"/><br/>
+                                <label></label><input id="password" name="password" type="password" placeholder="Mot de passe"/><br/>
+                                <input type="hidden" name="action" value="get" />
+                                <input id="submit_connexion" type="submit" value="Se connecter" />
+                                <p><span id="oubliMdp">Mot de passe oublié ?</span></p>
+
+                        </div>
+
+                        <!-- A INTEGRER
+                        <div id="reseaux_sociaux">
+                                <a id="facebook" href="https://fr-fr.facebook.com/pages/Circuit-2000/376830679070353" target="blank"></a>
+                                <a id="twitter" href="https://twitter.com/circuit2000" target="blank"></a>
+                                <a id="instagram" href="https://instagram.com/circuit2000" target="blank"></a>
+                        </div>
+                        -->
+                </nav>
 		<section>
 		<div id="menuAdmin">
                     <p id="gTitre"><a href="templates/modifInfos2.php">Modifier les informations</a></p>
@@ -118,8 +147,7 @@ ob_start("ob_gzhandler");
                 <div id="menuClient">    
                     <p id="gTitre"><a href="templates/modifInfos2.php">Modifier les informations</a></p>
                     <p id="g1"><a href="templates/planing.php">Planning</a></p>
-                    <p id="g3"><a href="templates/tempsPause.php">Récapitulatif Temps de Pause</a></p>
-                    <p id="g4">Déconnexion</p>
+                    <p id="g2">Déconnexion</p>
                 </div>
 
                 <div id="menuMoniteur">
