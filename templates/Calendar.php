@@ -186,7 +186,7 @@ jQuery(function($){
 $(document).ready( function() {
 	$.ajax({
             type:"GET",
-            url:"data.php?action=recupInfoCours&id=" + <?php echo 1;?>,
+            url:"data.php?action=recupInfoCours",
             success:function(result, htmlStatus, jqXHR) {
 				result = $.parseJSON(result);
 				for(i=0 ; i < result.length; i++)
