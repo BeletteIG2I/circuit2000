@@ -189,8 +189,31 @@ $(document).ready( function() {
             url:"data.php?action=recupInfoCours&id=" + <?php echo 1;?>,
             success:function(result, htmlStatus, jqXHR) {
 				result = $.parseJSON(result);
-				
-				$.each(result, function(){console.log(result);});
+				for(i=0 ; i < result.length; i++)
+				{
+					//console.log(result[i]["date"]);
+					//console.log(i);
+					var laDate = result[i]["date"];
+					var description = result[i]["description"];
+					var Commentaire = result[i]["Commentaire"];
+					//laDate = laDate.substring(11,13);
+					//console.log("DATE ==>" + laDate);
+					//console.log(maDate);
+					var annee = laDate.substring(0,4);
+					var mois = laDate.substring(5,7);	
+					var jour = laDate.substring(8,10);
+					var heure = laDate.substring(11,13);
+					console.log("Le " + jour + "/" + mois + "/" + annee + " à " + heure + "H00 il y aura : " + description + ". Il portera sur : " + Commentaire);	
+					
+					/*
+					$jour = $_POST['jour'];
+					$annee = $_POST['annee'];
+					$mois = $_POST['mois'];
+ 					$timestamp = mktime(0, 0, 0, $mois, $jour, $annee); //Donne le timestamp correspondant à cette date
+ 					echo date('D', $timestamp); //Ecrira les 3 premières lettres du jour en anglais, dans ton cas cela écrire Tue, si tu veux afficher 					
+					Mardi il suffira juste alors de faire un tableau associatif, pareil si tu veux afficher 2.*/
+				} 
+				//$.each(result, function(){console.log(result);});
 				//console.log("Date cours:" + result.date);
                	///console.log("resulat planning #" + result);
             },
