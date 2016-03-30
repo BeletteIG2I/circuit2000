@@ -196,26 +196,22 @@ $(document).ready( function() {
 					var laDate = result[i]["date"];
 					var description = result[i]["description"];
 					var Commentaire = result[i]["Commentaire"];
-					//laDate = laDate.substring(11,13);
-					//console.log("DATE ==>" + laDate);
-					//console.log(maDate);
 					var annee = laDate.substring(0,4);
 					var mois = laDate.substring(5,7);	
 					var jour = laDate.substring(8,10);
-					var heure = laDate.substring(11,13);
-					console.log("Le " + jour + "/" + mois + "/" + annee + " à " + heure + "H00 il y aura : " + description + ". Il portera sur : " + Commentaire);	
+					var heure = parseFloat(laDate.substring(11,13));
+					//console.log("Le " + jour + "/" + mois + "/" + annee + " à " + heure + "H00 il y aura : " + description + ". Il portera sur : " + Commentaire);	
+					laDate = new Date(mois+'/'+jour+'/'+annee);
 					
-					/*
-					$jour = $_POST['jour'];
-					$annee = $_POST['annee'];
-					$mois = $_POST['mois'];
- 					$timestamp = mktime(0, 0, 0, $mois, $jour, $annee); //Donne le timestamp correspondant à cette date
- 					echo date('D', $timestamp); //Ecrira les 3 premières lettres du jour en anglais, dans ton cas cela écrire Tue, si tu veux afficher 					
-					Mardi il suffira juste alors de faire un tableau associatif, pareil si tu veux afficher 2.*/
+					nbWeek= getWeekNumber(laDate);
+					nbDay = laDate.getDay();
+					//nbDay = decaleJour(nbDay);
+					//console.log("-->" + nbDay);
+					
+					var defID = "Sem" + nbWeek + "jour" + nbDay + "heure" + heure;
+					//console.log(defID);
+					$("#" + defID).html(description);
 				} 
-				//$.each(result, function(){console.log(result);});
-				//console.log("Date cours:" + result.date);
-               	///console.log("resulat planning #" + result);
             },
             error : function(jqXHR, htmlStatus, htmlError) {
                 console.log("Status :" + htmlStatus + " \nError : " + htmlError);
@@ -223,6 +219,27 @@ $(document).ready( function() {
         });
 });
 
+	function getWeekNumber(uneDate) {
+		var d = new Date(uneDate);
+		var DoW = d.getDay();
+		d.setDate(d.getDate() - (DoW + 6) % 7 + 3); // Nearest Thu
+		var ms = d.valueOf(); // GMT
+		d.setMonth(0);
+		d.setDate(4); // Thu in Week 1
+		return Math.round((ms - d.valueOf()) / (7 * 864e5)) + 1;
+	}
+function decaleJour(numero){
+	if (numero > 0)
+	{
+		numero--; 	
+	}
+	else if (numero == 0)
+	{
+		numero = 7;	
+	}
+	else numero = -1;
+	return 	numero;
+}
 </script>
 <?php 
 function debug_to_console( $data ) {
