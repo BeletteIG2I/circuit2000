@@ -65,19 +65,26 @@ a {
 
 #menuAdmin{
 	position: fixed;
-	width: 13%;
+	width: 10%;
 	top: 17%;
 	right: 1%;
         #display:none;
 }
 
 #menuAdmin p{
+	
 	width: 100%;
 	height: 50px;
-	background-color: black;
+	background-color: grey;
 	color:white;
-	margin: 0px;
-	border: 1px solid grey;
+	text-align:center;
+	vertical-align:middle;
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+	margin: 3px;
+	#border:none;
+	border: 3px solid black;
+	border-radius:5px;
+
 }
 
 #menuClient p:hover{
@@ -85,11 +92,12 @@ a {
 }
 
 #menuClient{
-	position: fixed;
-	width: 13%;
+	position: absolute;
+	width: 10%;
+	font-style:Calibri Light;
 	top: 17%;
 	right: 1%;
-        display:none;
+    display:none;
 }
 
 #menuClient p{
@@ -199,7 +207,8 @@ a {
 #nos_services div {display:inline-block;vertical-align:middle;}
 
 #nos_services .prestations {
-	width:29.3%;
+	#width:29.3%;
+	width:25%;
 	margin:2% 0.5%;
 	background-repeat:no-repeat;
 	background-position:50% 0;
@@ -486,3 +495,4 @@ h1 {
 #carte_lievin {background-image:url(../images/bureau_lievin.png);}
 #carte_lens {background-image:url(../images/bureau_lens.png);}
 #carte_loison {background-image:url(../images/bureau_lievin.png);}
+
