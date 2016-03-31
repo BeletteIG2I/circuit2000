@@ -122,15 +122,17 @@ ob_start("ob_gzhandler");
                         </ul>
 
                         <div id="connexion">
-
-                                <label></label><input id="login" name="login" type="text" placeholder="Identifiant"/><br/>
-                                <label></label><input id="password" name="password" type="password" placeholder="Mot de passe"/><br/>
-                                <input type="hidden" name="action" value="get" />
-                                <input id="submit_connexion" type="submit" value="Se connecter" />
-                                <p><span id="oubliMdp">Mot de passe oublié ?</span></p>
-
+		
+                            <label></label><input id="login" name="login" type="text" placeholder="Identifiant"/><br/>
+                            <label></label><input id="password" name="password" type="password" placeholder="Mot de passe"/><br/>
+                            <input type="hidden" name="action" value="get" />
+                            <input id="submit_connexion" type="submit" value="Se connecter" /><br/>
+                            <a class="helpco" id="oubliMdp" href="page.html"> Mot de passe oublié ?</a>
+                            <a class="helpco" id="insc" href="page2.html"> Inscription</a>
+		
+		
+		
                         </div>
-
                         <!-- A INTEGRER
                         <div id="reseaux_sociaux">
                                 <a id="facebook" href="https://fr-fr.facebook.com/pages/Circuit-2000/376830679070353" target="blank"></a>

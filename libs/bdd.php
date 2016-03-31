@@ -7,34 +7,34 @@
 
 include("maLibSQL.php");
 
-function InsertClient($nom, $prenom, $mail) {
-    // On génère un mot de passe aléatoire de 8 caractères
-    $mdp = chaine_aleatoire(8);
-
+function InsertClientEleve($id) {
     // On insère l'utilisateur dans 'user' avec le champ 'fonction' à 0
-    $sql = "INSERT INTO user(nom,prenom,mail, mdp, fonction) VALUES ('$nom','$prenom','$mail', '$mdp', '0')";
-    $res = SQLInsert($sql);
-   
+    $sql = "INSERT INTO eleve(idEleve) VALUES ('$id')";
+    $res = SQLInsert($sql);   
 
     return $res;
 }
 
-function chaine_aleatoire($nb_car, $chaine = 'azertyuiopqsdfghjklmwxcvbn123456789') {
-    $nb_lettres = strlen($chaine) - 1;
-    $generation = '';
-    for($i=0; $i < $nb_car; $i++) {
-        $pos = mt_rand(0, $nb_lettres);
-        $car = $chaine[$pos];
-        $generation .= $car;
-    }
-    return $generation;
-}
+function InsertClient($nom, $prenom, $mail,$tel,$dateNaiss,$mdp,$numAdr,$rueAdr,$villeAdr,$codePostal) {
+
+    // On insère l'utilisateur dans 'user' avec le champ 'fonction' à 0
+    $sql = "INSERT INTO user(nom,prenom,mail,mdp,telephone,dateNaissance,fonction,numeroADR,rueADR,villeADR,codePostal) VALUES ('$nom','$prenom','$mail', '$mdp', '$tel','$dateNaiss','0','$numAdr', '$rueAdr', '$villeAdr', '$codePostal')";
+    $res = SQLInsert($sql);
+    return $res;
+}   
 
 function getClients() {
     $sql = "SELECT user.id, user.nom, user.prenom FROM user";
     $res = SQLSelect($sql);
 
     return parcoursRs($res);
+}
+
+function getLastClients() {
+    $sql = "SELECT MAX(user.id)FROM user";
+    $res = SQLGetChamp($sql);
+
+    return $res;
 }
 
 function getInfosClient($id) {

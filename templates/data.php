@@ -133,22 +133,22 @@ if($action = valider('action')) {
         case 'ajouterClient' : {
             $res = NULL;
             // Après avoir vérifié les champs passés en paramètres, on insère le nouveau client en base
-            if (($nomClient = valider("nomClient", "POST")) && ($prenomClient = valider("prenomClient", "POST")) && ($mailClient = valider("mailClient", "POST")) ) {
-                $res = InsertClient($nomClient, $prenomClient, $mailClient);
+           if (($nomClient = valider("nomClient", "GET")) && ($prenomClient = valider("prenomClient", "GET")) 
+						&& ($mailClient = valider("mailClient", "GET")) 
+						&& ($telClient = valider("telClient", "GET")) 
+						&& ($dateNaissClient = valider("dateNaissClient", "GET"))
+						&& ($mdpClient = valider("mdpClient", "GET"))
+						&& ($numAdrClient = valider("numAdrClient", "GET"))
+						&& ($rueAdrClient = valider("rueAdrClient", "GET"))
+						&& ($villeAdrClient = valider("villeAdrClient", "GET"))
+						&& ($codePostalClient = valider("codePostalAdrClient", "GET"))) {
+                $res = InsertClient($nomClient, $prenomClient, $mailClient,$telClient
+				,$dateNaissClient,$mdpClient,$numAdrClient,$rueAdrClient,$villeAdrClient,$codePostalClient);
+                $last = getLastClients();
+                $res2 = InsertClientEleve($last);
 
             	if($res != false) { // Si le mail passé en paramètre est valide
-					$i = 0;
-					$mdp = "";
-					$chaine = "abcdefghijklmnpqrstuvwxyABCDEFGHIJKLMNOPQRSUTVWXYZ0123456789";
-					$nb_chars = strlen($chaine);
-
-					for($i = 0 ; $i < 10 ; $i++) {
-					    $mdp .= $chaine[rand(0, ($nb_chars-1))];
-					}
-					$mdp_crypte = sha1(md5(sha1($mdp)));
-
-			    	UpdateMdp($res, $mdp_crypte);
-        
+					        
 		            $mail = $mailClient;//'maxencedelattre62@gmail.com'; // Déclaration de l'adresse de destination.
 		            if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail)) // On filtre les serveurs qui rencontrent des bogues.
 		                $passage_ligne = "\r\n";
