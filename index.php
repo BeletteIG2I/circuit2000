@@ -31,7 +31,7 @@ ob_start("ob_gzhandler");
 			$(document).ready(function() {
 				if(<?php echo((isset($_SESSION['connecte']) && $_SESSION['connecte']) ? 1 : 0);  ?>) {
 					// Si l'utilisateur est déjà connecté et que la page est rechargée pour une raison quelconque
-					afficherEspaceClients(); // Alors on affiche directement l'espace clients correspondant en lieu et place du formulaire d'identification
+					afficheMenu(); // Alors on affiche directement l'espace clients correspondant en lieu et place du formulaire d'identification
 				}
 				$("body").css("padding-top",0.115*$(window).height());
 				// Le menu à une hauteur de 11.5% selon la hauteur de la fenêtre
@@ -65,7 +65,11 @@ ob_start("ob_gzhandler");
 						else { // Si pas d'erreurs
 							$('#identification').hide(); // On cache le formulaire d'identification
 							$('#espace_clients').append(result); // On affiche l'espace perso
-							$("#connexion").hide();
+							
+                                                        
+                                                            
+                                                            
+                                                         
                                                         //$("#connexion").html("Bienvenue");
 						}
 					},
@@ -75,7 +79,12 @@ ob_start("ob_gzhandler");
 				});
 				
 				
-				$fonctionUser = <?php echo("'".$_SESSION["admin"]."'"); ?>;
+				
+			}
+                        
+                        function afficheMenu(){
+                            $("#connexion").hide();
+                            $fonctionUser = <?php echo("'".$_SESSION["admin"]."'"); ?>;
 				
                                 if($fonctionUser || $fonctionUser==0)
                                 {
@@ -93,7 +102,8 @@ ob_start("ob_gzhandler");
                                         break;
                                     }
                                 }
-			}
+                        }
+
 			
 		</script>
 	</head>

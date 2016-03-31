@@ -107,12 +107,14 @@ $(document).ready(function() {
 
 	$(document).on('click','#submit_connexion',function() { // Au clic sur le bouton de connexion dans le formulaire d'identification
 		afficherEspaceClients();
+                location.reload(true);
 	});
 
-	$(document).on('keypress','#identification input',function(e) { // Sur l'appui d'une touche dans un input du formulaire d'identification
+	$(document).on('keypress','#login',function(e) { // Sur l'appui d'une touche dans un input du formulaire d'identification
 		// Permet de taper sur "Entrée" lorsque l'on se situe dans le champ login ou le champ password
 		if(e.which == 13) // Si cette touche est la touche "Entrée"
 			afficherEspaceClients();
+                        location.reload(true);
 	});
 
 	$(document).on('click',"#oubliMdp",function() { // Au clic sur le bouton "Mot de passe oublié"
