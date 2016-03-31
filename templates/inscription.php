@@ -83,7 +83,7 @@
 <div id="modifs">
     
 				 
-					
+					<br/>
 					<fieldset>
 						<legend>Informations générales</legend>
 						  <label for="nom">Nom </label>
