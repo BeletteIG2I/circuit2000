@@ -60,11 +60,13 @@ ob_start("ob_gzhandler");
 							// On enlève la chaîne de caractères 'erreur:' pour afficher le message d'erreur
 							$('#msgErrorConnexion').show(); // On affiche le message
 							$('#msgErrorConnexion').fadeOut(4000,'easeInExpo'); // On le fait disparaître en 4s en easeInExpo
+                                                        
 						}
 						else { // Si pas d'erreurs
 							$('#identification').hide(); // On cache le formulaire d'identification
 							$('#espace_clients').append(result); // On affiche l'espace perso
-							
+							$("#connexion").hide();
+                                                        //$("#connexion").html("Bienvenue");
 						}
 					},
 			        error : function(resultat, statut, erreur) {
@@ -73,34 +75,26 @@ ob_start("ob_gzhandler");
 				});
 				
 				
-				$fonctionUser = <?php echo $_SESSION["admin"]; ?>;
+				$fonctionUser = <?php echo("'".$_SESSION["admin"]."'"); ?>;
 				
                                 if($fonctionUser || $fonctionUser==0)
                                 {
                                     switch($fonctionUser){
-                                        case 0:
+                                        case '0':
                                             $("#menuClient").show();
                                         break;
                                         
-                                        case 1:
+                                        case '1':
                                             $("#menuAdmin").show();
                                         break;
                                         
-                                        case 2:
+                                        case '2':
                                             $("#menuMoniteur").show();
                                         break;
                                     }
                                 }
 			}
 			
-			$(document).on("click","#submit_connexion", function() { // Au clic sur un item du menu de l'espace clients
-				//Lors du clic sur le bouton se connecter lance l'affichage Client
-				if($("#login").val() && $("#login").val()!= "" && $("#password").val() && $("#password").val() != "") {
-					alert("toto");
-					afficherEspaceClients(); // on affiche directement l'espace clients correspondant en lieu et place du formulaire d'identification
-				}
-				
-			});
 		</script>
 	</head>
 	<body>
@@ -138,25 +132,23 @@ ob_start("ob_gzhandler");
 		<section>
 		<div id="menuAdmin">
                     <p id="gTitre"><a href="templates/modifInfos2.php">Modifier les informations</a></p>
-                    <p id="g1"><a href="templates/planing.php">Planning</a></p>
+                    <p id="g1"><a href="templates/calendar.php">Planning</a></p>
                     <p id="g3"><a href="templates/tempsPause.php">Récapitulatif Temps de Pause</a></p>
-                    <p id="g4">Déconnexion</p>
+                    <p id="g4" class="deco">Déconnexion</p>
 		</div>
                     
                         
                 <div id="menuClient">    
                     <p id="gTitre"><a href="templates/modifInfos2.php">Modifier les informations</a></p>
                     <p id="g1"><a href="templates/planing.php">Planning</a></p>
-                    <p id="g2">Déconnexion</p>
+                    <p id="g2" class="deco">Déconnexion</p>
                 </div>
 
                 <div id="menuMoniteur">
                     <p id="gTitre"><a href="templates/modifInfos2.php">Modifier les informations</a></p>
-                    <p id="g1"><a href="templates/planing.php">Planning</a></p>
-                    <p id="g2"><a href="templates/planing.php">Eleve</a></p>
-                    <p id="g3"><a href="templates/planing.php">Moniteur</a></p>
-                    <p id="g4"><a href="templates/planing.php">Cours</a></p>
-                    <p id="g5">Déconnexion</p>
+                    <p id="g1"><a href="templates/calendar.php">Planning</a></p>
+                    <p id="g2"><a href="templates/TempsPause.php">Gestion de cours</a></p>
+                    <p id="g3" class="deco">Déconnexion</p>
                 </div>
 			
 			

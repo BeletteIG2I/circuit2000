@@ -89,6 +89,7 @@ a {
 
 #menuClient p:hover{
 	background-color: grey;
+        cursor: pointer;
 }
 
 #menuClient{
@@ -97,7 +98,7 @@ a {
 	font-style:Calibri Light;
 	top: 17%;
 	right: 1%;
-    display:none;
+        display:none;
 }
 
 #menuClient p{
@@ -111,6 +112,7 @@ a {
 
 #menuClient p:hover{
 	background-color: grey;
+        cursor: pointer;
 }
 
 #menuMoniteur{
@@ -119,6 +121,7 @@ a {
 	top: 17%;
 	right: 1%;
         display:none;
+        
 }
 
 #menuMoniteur p{
@@ -128,10 +131,12 @@ a {
 	color:white;
 	margin: 0px;
 	border: 1px solid grey;
+        
 }
 
 #menuMoniteur p:hover{
 	background-color: grey;
+        cursor: pointer;
 }
 
 

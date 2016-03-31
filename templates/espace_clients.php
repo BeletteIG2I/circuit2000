@@ -9,7 +9,6 @@
 
 <div id="espace_perso">
 	<?php include('sous_menu.php'); ?>
-	<div id="deco">Déconnexion</div>
 	<div id="container">
 		<div id="slider">
 			<ul>
