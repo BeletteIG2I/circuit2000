@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <style>
 body {
     background: #eeeeee none repeat scroll 0 0;
@@ -182,36 +183,41 @@ jQuery(function($){
                });
             });
 			
+			
 //Récupération des cours de la BDD et affichage dans le planning			
 $(document).ready( function() {
+	
 	$.ajax({
             type:"GET",
-            url:"data.php?action=recupInfoCours",
+            url:"data.php?action=recupInfoCours&id=<?php if($_SESSION['connecte']) echo $_SESSION['id'];?> ",
             success:function(result, htmlStatus, jqXHR) {
 				result = $.parseJSON(result);
-				for(i=0 ; i < result.length; i++)
-				{
-					//console.log(result[i]["date"]);
-					//console.log(i);
-					var laDate = result[i]["date"];
-					var description = result[i]["description"];
-					var Commentaire = result[i]["Commentaire"];
-					var annee = laDate.substring(0,4);
-					var mois = laDate.substring(5,7);	
-					var jour = laDate.substring(8,10);
-					var heure = parseFloat(laDate.substring(11,13));
-					//console.log("Le " + jour + "/" + mois + "/" + annee + " à " + heure + "H00 il y aura : " + description + ". Il portera sur : " + Commentaire);	
-					laDate = new Date(mois+'/'+jour+'/'+annee);
-					
-					nbWeek= getWeekNumber(laDate);
-					nbDay = laDate.getDay();
-					//nbDay = decaleJour(nbDay);
-					//console.log("-->" + nbDay);
-					
-					var defID = "Sem" + nbWeek + "jour" + nbDay + "heure" + heure;
-					//console.log(defID);
-					$("#" + defID).html(description);
-				} 
+				if(!result) console.log("Resultats Null");
+				else {
+					for(i=0 ; i < result.length; i++)
+					{
+						//console.log(result[i]["date"]);
+						//console.log(i);
+						var laDate = result[i]["date"];
+						var description = result[i]["description"];
+						var Commentaire = result[i]["Commentaire"];
+						var annee = laDate.substring(0,4);
+						var mois = laDate.substring(5,7);	
+						var jour = laDate.substring(8,10);
+						var heure = parseFloat(laDate.substring(11,13));
+						//console.log("Le " + jour + "/" + mois + "/" + annee + " à " + heure + "H00 il y aura : " + description + ". Il portera sur : " + Commentaire);	
+						laDate = new Date(mois+'/'+jour+'/'+annee);
+						
+						nbWeek= getWeekNumber(laDate);
+						nbDay = laDate.getDay();
+						//nbDay = decaleJour(nbDay);
+						//console.log("-->" + nbDay);
+						
+						var defID = "Sem" + nbWeek + "jour" + nbDay + "heure" + heure;
+						//console.log(defID);
+						$("#" + defID).html(description);
+					} 
+				}
             },
             error : function(jqXHR, htmlStatus, htmlError) {
                 console.log("Status :" + htmlStatus + " \nError : " + htmlError);
@@ -241,6 +247,7 @@ function decaleJour(numero){
 	return 	numero;
 }
 </script>
+<?php echo "Connecte".$_SESSION['connecte']; echo "ID".$_SESSION['idUser']; echo "Admin".$_SESSION['admin'];?>
 <?php 
 function debug_to_console( $data ) {
 

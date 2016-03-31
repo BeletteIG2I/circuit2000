@@ -28,8 +28,9 @@ class Date{
 			$y = $date->format('Y');
 			$m = $date->format('n');
 			$d = $date->format('j');
+			$semaine = $date->format('W');
 			$w = str_replace('0','7',$date->format('w'));
-			$r[$y][$m][$d] = $w;
+			$r[$y][$m][$semaine][$d] = $w;
 			$date->add(new DateInterval('P1D'));
 		}
 		return $r;
