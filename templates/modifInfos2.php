@@ -251,14 +251,14 @@
 <div id="modifs">
     
 				 
-					
+					<br/>
 					<fieldset>
 						<legend>Informations générales</legend>
-						  <label for="nom">Nom </label>
-						  <input id="nom" placeholder="Belette" autofocus="" required="" class="nom"><br>
-						  <label for="nom">Prénom </label>
-						  <input id="nom"  autofocus="" required="" class="prenom"><br>
-						  <label for="naiss">Date de naissance: </label>
+						  <label for="nom">Nom :</label>
+						  <input id="nom" placeholder="Dupont" autofocus="" required="" class="nom"><br>
+						  <label for="nom">Prénom :</label>
+						  <input id="nom"  placeholder="Jean" autofocus="" required="" class="prenom"><br>
+						  <label for="naiss">Date de naissance :</label>
 							<SELECT id="naiss" name="naiss" size="1" class="naissJour">
 							<option value="" disabled selected>Jour</option> 
 							<OPTION>1	
@@ -331,8 +331,8 @@
 							</SELECT></br>
 							
 						  
-						  <label for="email">Email </label>
-						  <input id="email" type="textarea" placeholder="flolafleur@kikoo.lol" required="" pattern="[a-zA-Z]*.[a-zA-Z]*@polytechnique.edu" class="mail"><br>
+						  <label for="email">Email :</label>
+						  <input id="email" type="textarea" placeholder="exemple@gmail.com" required="" pattern="[a-zA-Z]*.[a-zA-Z]*@polytechnique.edu" class="mail"><br>
 						  <label for="telephone">Portable</label>
 							  <input id="telephone" type="tel" placeholder="06xxxxxxxx" pattern="06[0-9]{8}" class="telephone"><br>
 					</fieldset>

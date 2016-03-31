@@ -56,7 +56,7 @@
 <nav>
 	<img id="logo" src="../images/CIRCUIT_2000.png">
 	<div id="entete"> 
-		<h2>Inscription</h2>
+		<h2>Récupération mot de passe</h2>
 	</div>
 	
 
@@ -64,13 +64,13 @@
 
 
 <div id="modifs">
-							
+		<br/>					
     <fieldset>	  
         <legend>Veuillez entrer votre e-mail</legend>
-	<label for="email">Email </label>
-	<input id="email" type="textarea" placeholder="flolafleur@kikoo.lol" required="" pattern="[a-zA-Z]*.[a-zA-Z]*@polytechnique.edu" class="mail"><br>
-	<label for="email2">Confirmer votre e-mail </label>
-	<input id="email2" type="textarea" placeholder="flolafleur@kikoo.lol" required="" pattern="[a-zA-Z]*.[a-zA-Z]*@polytechnique.edu" class="mail2"><br>					  
+	<label for="email">Email :</label>
+	<input id="email" type="textarea" placeholder="exemple@gmail.com" required="" pattern="[a-zA-Z]*.[a-zA-Z]*@polytechnique.edu" class="mail"><br>
+	<label for="email2">Confirmer votre e-mail :</label>
+	<input id="email2" type="textarea" placeholder="exemple@gmail.com" required="" pattern="[a-zA-Z]*.[a-zA-Z]*@polytechnique.edu" class="mail2"><br>					  
     </fieldset>
 	<p><input type="button" value="Soummettre" id="envoie"> <img src="../images/ajax-loader.gif" alt="chargement" id="chargement"/></p>
                                           
