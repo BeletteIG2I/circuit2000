@@ -174,12 +174,10 @@ nav {
 }
 
 .main aside {
-    color: white;
     padding: 0px 5% 10px;
 }
 
 .footer-container footer {
-    color: white;
     padding: 20px 0;
 }
 
@@ -194,7 +192,19 @@ nav {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
+	
+	@font-face { /* Police de l'auto école */
+		font-family: 'AutoMoto';
+		src: url('../polices/automoto-webfont.eot');
+		src: url('../polices/automoto-webfont.eot?#iefix') format('embedded-opentype'),
+			 url('../polices/automoto-webfont.woff') format('woff'),
+			 url('../polices/automoto-webfont.ttf') format('truetype'),
+			 url('../polices/automoto-webfont.svg#AutoMoto') format('svg');
+	}
+	
+	body {
+		color: white;
+	}
 
 
 
@@ -234,19 +244,91 @@ nav {
 	}
 	
 	
-	#trucrelou
-	{
-   -webkit-appearance: none;
-   text-align: center !important;
-	margin-top:5%;
-	width: 90%;
-	height: 34px;
-	overflow: hidden;
-	background: url(../images/new_arrow.jpg) no-repeat  right #ddd;
-	border: 1px solid #ccc;
+	#trucrelou {
+		-webkit-appearance: none;
+		text-align: center !important;
+		margin: 5% 30% 0 10%;
+		width: 60%;
+		height: 34px;
+		overflow: hidden;
+		background: url(../images/new_arrow.jpg) no-repeat  right #ddd;
+		border: 1px solid #ccc;
 	}
 	
+/* ====================
+    INTERMEDIATE: Main
+   ==================== */
+	
+	.main {
+		background-color: black;
+	}
+	
+    .main article {
+		display: block;
+    }
 
+    .main aside {
+    }
+	
+	#nos_services {
+		height: 500px;
+	}
+	
+	.prestations{
+		display: inline-block;
+		
+		width: 30%;
+		height: 250px;
+		
+		text-align: center;
+		font-family: 'AutoMoto';
+		font-size: 200%;
+		color: white;
+		
+		transition: all .5s cubic-bezier( .6, 2, .4, 1)
+	}
+	
+	.prestations:hover {
+		transform: scale(1.2);
+	}
+	
+	.prestations img {
+		width: 50%;
+		height: auto;
+	}
+	
+	#aac, #moto, #permis_am {
+		float: left;
+	}
+	
+	#forfait, #retrait {
+		float: right;
+	}
+	
+	#aac {
+		/*background-image: url(../images/logo_conduite_accompagnee.png);
+		background-repeat: no-repeat;*/
+	}
+	
+	#moto {
+		
+	}
+	
+	#forfait {
+		
+	}
+	
+	#permis_am, #retrait {
+		margin-top: 50px;
+	}
+	
+	#permis_am {
+		margin-left: 15%;
+	}
+	
+	#retrait {
+		margin-right: 15%;
+	}
 /* ========================
     INTERMEDIATE: IE Fixes
    ======================== */
@@ -313,15 +395,7 @@ nav {
     WIDE: Main
    ============ */
 
-    .main article {
-        float: left;
-        width: 57%;
-    }
-
-    .main aside {
-        float: right;
-        width: 28%;
-    }
+	
 }
 
 @media only screen and (min-width: 1140px) {
