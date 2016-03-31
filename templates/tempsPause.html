@@ -1,5 +1,101 @@
- <head> 
+﻿ <head> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+     <script src="../js/jquery.min.js" type="text/javascript"></script>
+     <script>
+
+        $(document).ready(function () {
+
+            function gestionErreurs(err) {
+                alert('Erreur' + err);
+                console.log('Erreur' + err);
+                return true;
+            }
+
+            window.onerror = gestionErreurs;
+
+            $.ajax({
+
+                type: "GET",
+                url: "../templates/data.php?action=recupMoniteurs",
+                success: function (result1, htmlStatus, jqXHR) {
+
+                    result1 = $.parseJSON(result1);
+                    console.log(result1);
+
+                    $.each(result1, function (i, value) {
+
+                        var obj = value;
+
+                        $("#tab").append('<tr id=' + i+ '>');
+
+                        $.each(obj, function (key, value2) {
+
+                            $("#"+i).append('<td>' + value2 + '</td>');
+
+                        });
+
+                        $("#tab").append('</tr>');
+
+                    });
+
+                },
+                error: function (jqXHR, htmlStatus, htmlError) {
+
+                    console.log("Status :" + htmlStatus + "\nError : " + htmlError);
+
+                }
+
+            });
+
+            $.ajax({
+
+                type: "GET",
+                url: "../templates/data.php?action=recupTpsPauseMoniteurs",
+                success: function (result2, htmlStatus, jqXHR) {
+
+                    result2 = $.parseJSON(result2);
+                    console.log(result2);
+                    var i = 0;
+
+                    $.each(result2, function (index, value3) {
+
+                        var total = 0;
+                        var j = index;
+
+                        if (index != i) {
+                            index = i;
+                        }
+                        while (result2[index].idMoniteur == result2[i].idMoniteur) {
+
+                            if (result2[index].temps_pause != null) {
+
+                                total = total + Number(result2[index].temps_pause);
+
+                            }
+                            index++;
+
+                        }
+                            $("#" + j).append('<td>' + total + '</td>');
+                            i = index;
+                            alert(i);
+
+
+                    });
+
+                },
+                error: function (jqXHR, htmlStatus, htmlError) {
+
+                    console.log("Status :" + htmlStatus + "\nError : " + htmlError);
+
+                }
+
+            });
+
+        });
+
+     </script>
+
 </head>
 
 
@@ -10,7 +106,7 @@
 <div id="barre_blanche">
 	<img id="logo" src="../images/CIRCUIT_2000.png">
 	<div id="entete"> 
-		<h2>Temps de pause<h2>
+		<h2>Récapitulatif Temps de pause</h2>
 	</div>
 </div>	
 
@@ -18,18 +114,15 @@
 <div id="pause">
 			<table id="tab">
 						   <tr>
+                               <th>Id</th>
 							   <th>Nom</th>
 							   <th>Prénom</th>
 							   <th>Immatriculation</th>
 							   <th>Temps de pause</th>
 						   </tr>
-						   <tr>
-							   
-							   <td>Hemery</td>
-							   <td>Adrien</td>
-							   <td>262d2dc</td>
-							   <td>8:00:00</td>
-						   </tr>
+
+
+                </table>
 			
 			
 			
