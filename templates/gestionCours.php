@@ -217,11 +217,10 @@
 			</fieldset>
 			
 			<div id="gestCompte">
-				<p id="gTitre">Gestion compte</p>
-				<p id="g1">Modifier les informations</p>
-				<p id="g2">Planning</p>
-				<p id="g3">Récapitulatif</p>
-				<p id="g4">Déconnexion</p>
+				
+                                <p id="g1"><a href="templates/calendar.php">Planning</a></p>
+                                <p id="g2"><a href="templates/gestionCours.php">Gestion de cours</a></p>
+                                
 			</div>
 </div>
 </body>

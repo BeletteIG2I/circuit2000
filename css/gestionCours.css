@@ -25,6 +25,11 @@ body {
 	font-size:1em;
 }
 
+a {
+    color:white;
+    text-decoration:none;
+}
+
 
 #barre_blanche {
 	top:0;

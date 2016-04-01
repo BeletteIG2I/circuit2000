@@ -127,8 +127,8 @@ ob_start("ob_gzhandler");
                             <label></label><input id="password" name="password" type="password" placeholder="Mot de passe"/><br/>
                             <input type="hidden" name="action" value="get" />
                             <input id="submit_connexion" type="submit" value="Se connecter" /><br/>
-                            <a class="helpco" id="oubliMdp" href="page.html"> Mot de passe oublié ?</a>
-                            <a class="helpco" id="insc" href="page2.html"> Inscription</a>
+                            <a class="helpco" id="oubliMdp" href="templates/mdpOublie.php"> Mot de passe oublié ?</a>
+                            <a class="helpco" id="insc" href="templates/inscription.php"> Inscription</a>
 		
 		
 		
@@ -145,21 +145,21 @@ ob_start("ob_gzhandler");
 		<div id="menuAdmin">
                     <p id="gTitre"><a href="templates/modifInfos2.php">Modifier les informations</a></p>
                     <p id="g1"><a href="templates/calendar.php">Planning</a></p>
-                    <p id="g3"><a href="templates/tempsPause.php">Récapitulatif Temps de Pause</a></p>
+                    <p id="g3"><a href="templates/tempsPause.html">Récapitulatif Temps de Pause</a></p>
                     <p id="g4" class="deco">Déconnexion</p>
 		</div>
                     
                         
                 <div id="menuClient">    
                     <p id="gTitre"><a href="templates/modifInfos2.php">Modifier les informations</a></p>
-                    <p id="g1"><a href="templates/planing.php">Planning</a></p>
+                    <p id="g1"><a href="templates/calendar.php">Planning</a></p>
                     <p id="g2" class="deco">Déconnexion</p>
                 </div>
 
                 <div id="menuMoniteur">
                     <p id="gTitre"><a href="templates/modifInfos2.php">Modifier les informations</a></p>
                     <p id="g1"><a href="templates/calendar.php">Planning</a></p>
-                    <p id="g2"><a href="templates/TempsPause.php">Gestion de cours</a></p>
+                    <p id="g2"><a href="templates/gestionCours.php">Gestion de cours</a></p>
                     <p id="g3" class="deco">Déconnexion</p>
                 </div>
 			

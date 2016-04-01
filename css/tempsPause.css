@@ -41,7 +41,10 @@ body {
 	z-index:3;
 }
 
-
+a {
+    color:white;
+    text-decoration:none;
+}
 #entete {
 	position: absolute;
 	list-style-type: none; 
@@ -112,6 +115,7 @@ h1 {
 	#border:none;
 	border: 3px solid black;
 	border-radius:5px;
+        cursor: pointer;
 }
 
 #pause
