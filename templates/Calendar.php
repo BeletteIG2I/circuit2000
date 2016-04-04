@@ -215,7 +215,7 @@ $(document).ready( function() {
 						
 						var defID = "Sem" + nbWeek + "jour" + nbDay + "heure" + heure;
 						//console.log(defID);
-						$("#" + defID).html(description);
+						$("." + defID).html(description);
 					} 
 				}
             },
@@ -350,7 +350,7 @@ $nbSem = 0;
                                 <tr>
                                     <td><?php echo $i."H00";?></td>
                                     <?php for($j=1;$j<=7;$j++) :?>
-                                        <td id="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>"><?php echo '' ;?></td>
+                                        <td class="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>"><?php echo '' ;?></td>
                                     <?php endfor;?>  
                                 </tr>
                         <?php endfor;?>   

@@ -76,14 +76,14 @@ if($action = valider('action')) {
 		
 		case 'recupInfoCours' : { // On récupère toutes les infos d'un client
 			if($_SESSION["admin"]==0){
-				$var = getCoursParEleve($_GET["idUser"]);
-				//$var = getCoursParEleve($_SESSION["idUser"]);
+				//$var = getCoursParEleve($_GET["idUser"]);
+				$var = getCoursParEleve($_SESSION["idUser"]);
 				
 				echo(json_encode($var));
 				
 			}else if($_SESSION["admin"]==2){
-				$var = getCoursParMoniteur($_GET["idUser"]);
-				//$var = getCoursParMoniteur($_SESSION["idUser"]);
+				//$var = getCoursParMoniteur($_GET["idUser"]);
+				$var = getCoursParMoniteur($_SESSION["idUser"]);
 				echo(json_encode($var));
 			}
             
