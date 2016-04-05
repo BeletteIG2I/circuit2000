@@ -168,41 +168,42 @@ table td:hover .daytitle {
 	jQuery(function($){	
 
         var now = new Date();
-		var current = now.getMonth() + 1;      //on récupère le numéro mois courant
-		var current2= getWeekNumber(now);		//on récupère le numéro semaine courante
-		for (i=1; i<13 ; i++)					//parcours de tous les mois pour cacher les numeros de semaines et tab
+		var current = now.getMonth() + 1;      							//on récupère le numéro mois courant
+		var current2= getWeekNumber(now);								//on récupère le numéro semaine courante
+		for (i=1; i<13 ; i++)											//parcours de tous les mois pour cacher les numeros de semaines et tab
 		  {
 			$('.nosMois'+i).hide();
 		  }
 		  
 		$('.nosMois'+current).show();									//on affiche les num semaine mois courant
-		$('#linkMonth'+current).addClass('active');						//sélectionne le mois courant (la c'est janvier pcq par défaut)
-		$('.sem').hide();													//cache tous les tableaux
-		$('#linkWeek'+current2).addClass('active');							//le sélectionne comme actif              
+		$('#linkMonth'+current).addClass('active');						//sélectionne le mois courant (CSS)
+		$('.sem').hide();												//cache tous les tableaux
+		$('#linkWeek'+current2).addClass('active');						//sélectionne la semaine courante (CSS)         
 			   
-		$('.months a').click(function(){									//quand on clique sur un mois	   
+		$('.months a').click(function(){								//quand on clique sur un mois	   
 			var month = $(this).attr('id').replace('linkMonth','');		//récup l'id du mois
 			
 			if(month != current){										//si on clique sur un autre que celui sélectionné
-				$('.nosMois'+current).hide(); 								//Cache la liste de l'ancien mois
-				current = month;		
-				$('.nosMois'+current).show();
+				$('.nosMois'+current).hide(); 							//cache la liste de l'ancien mois
+				current = month;										//le nouveau mois devient le mois courant
+				$('.nosMois'+current).show();							//affichage du mois sélectionné
 				$('.months a').removeClass('active'); 					//déselectionne l'ancien mois (CSS)
 				$('.months a#linkMonth'+month).addClass('active'); 		//sélectionne le mois choisi (CSS)
 			}
-			return false; 
+				return false; 
 		});
 			   
 		$('.week a').click(function(){									//quand on clique sur une semaine
 			var we = $(this).attr('id').replace('linkWeek','');			//récup id semaine
 
 			if(we != current){											//si on clique sur une autre que celle selectionné						
-				$('.sem').eq(current).hide();							//on cache le tableau sélectionné avant
-				$('.sem').eq(we).show();								//on affiche le tableau sélectionné 
+				$('.sem').eq(current2).hide();							//on cache le tableau sélectionné avant
+				current2 = we;											//la nouvelle semaine devient la semaine courante
+				$('.sem').eq(current2).show();							//on affiche le tableau sélectionné 
 				$('.week a').removeClass('active'); 					//deselectionne ancienne semaine (CSS)
-				$('.week a#linkWeek'+we).addClass('active'); 			//selectionne semaine choisi (CSS)
-				current = we;											//nouvelle semaine
-			} return false;
+				$('.week a#linkWeek'+we).addClass('active'); 			//selectionne semaine choisi (CSS)															
+			} 
+				return false;
 				 
 		});  
     });
