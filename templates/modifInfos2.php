@@ -6,13 +6,7 @@
 */
     session_start();
 ?>
-<head> 
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" href="../css/modifInfos2.css"/>
-    <script src="../js/jquery.min.js" type="text/javascript"></script>
 
-    
-</head>
 
 
 <script>
@@ -237,18 +231,64 @@
     </script>
 
 
-<div id="barre_blanche">
-<nav>
-	<img id="logo" src="../images/CIRCUIT_2000.png">
-	<div id="entete"> 
-		<h2>Modifier les informations</h2>
-	</div>
-	
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-</div>	
+    <title>Starter Template for Bootstrap</title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<div id="modifs">
+    <!-- Custom styles for this template -->
+    <link href="../css/modifInfos2.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.php"><img id="logo" src="../images/logosf.png"></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../index.php">Accueil</a></li>
+            <li><a href="#planning">Planning</a></li>
+            <li><a href="TempsPause.php">Pause</a></li>
+            <li class="active"><a href="modifInfos2.php">Modification des informations</a></li>
+			<li><a href="#logout">Déconnexion</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Modification des informations</h1>
+        <div id="modifs">
     
 				 
 					<br/>
@@ -258,9 +298,9 @@
 						  <input id="nom" placeholder="Dupont" autofocus="" required="" class="nom"><br>
 						  <label for="nom">Prénom :</label>
 						  <input id="nom"  placeholder="Jean" autofocus="" required="" class="prenom"><br>
-						  <label for="naiss">Date de naissance :</label>
-							<SELECT id="naiss" name="naiss" size="1" class="naissJour">
-							<option value="" disabled selected>Jour</option> 
+						  <label for="naiss">Né le :</label>
+							<SELECT id="naiss" name="naiss"  class="naissJour">
+							<option value="" disabled selected></option>
 							<OPTION>1	
 							<OPTION>2
 							<OPTION>3
@@ -297,7 +337,7 @@
 							
 							
 							<SELECT id="naiss" name="naiss" size="1" class="naissMois">
-							<option value="" disabled selected>Mois</option>
+							<option value="" disabled selected></option>
 							<OPTION>01	
 							<OPTION>02
 							<OPTION>03
@@ -315,7 +355,7 @@
 							
 							
 							<SELECT id="naiss" name="naiss" size="1" class="naissAnnee">
-							<option value="" disabled selected>Année</option>
+							<option value="" disabled selected></option>
 							<OPTION>1998	
 							<OPTION>1997
 							<OPTION>1996
@@ -333,7 +373,7 @@
 						  
 						  <label for="email">Email :</label>
 						  <input id="email" type="textarea" placeholder="exemple@gmail.com" required="" pattern="[a-zA-Z]*.[a-zA-Z]*@polytechnique.edu" class="mail"><br>
-						  <label for="telephone">Portable</label>
+						  <label for="telephone">Portable :</label>
 							  <input id="telephone" type="tel" placeholder="06xxxxxxxx" pattern="06[0-9]{8}" class="telephone"><br>
 					</fieldset>
 					  
@@ -372,3 +412,18 @@
 			</div>
 </div>
 
+
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
