@@ -51,6 +51,13 @@ if($action = valider('action')) {
             $moniteurs = getMoniteurs();
             echo(json_encode($moniteurs));
         }break;
+			
+        case 'recupTpsPauseMoniteurs' : {
+
+            $tpsPause = getTpsPauseMoniteur();
+            echo(json_encode($tpsPause));
+
+        }break;
 		
 		case 'recupVehicules' : { // On récupère les infos des vehicules
             $vehicule = getVehicules();
@@ -290,15 +297,24 @@ if($action = valider('action')) {
                 echo ("erreur:Echec de la modification de la date d'obtention du permis");
         }break;
 
-        case 'Arreter pause': // mettre à jour le temps de pause dans la base de données
+        case 'updateTpsPause':{
+            
+            $res = NULL;
+            //Après avoir vérifier le temps de pause et l'id, on modifie en base
+            if($tpsPause = valider("newTpsPause","GET") && $idCours = valider("idCours","GET"))
+                $res = UpdateTpsPause($_GET["idCours"], $_GET["newTpsPause"]);
 
-        $temps = $_GET['sec'];
-        $cours = $_GET['id'];
-        $tpspause = getTpsPauseParCours($cours) + $temps;
-        $sql = "UPDATE cours SET temps_pause='".$tpspause."' WHERE id=".$cours ;
+            if($res != NULL){
 
-        $res=SQLUpdate($sql);
+                $tpsPauseUpdate = getTpsPauseParCours($_GET["idCours"]);
+                $nouveauTpsPause = $tpsPauseUpdate[0]['temps_pause'];
+                
+                echo $nouveauTpsPause;
 
+            }
+            else
+                echo("erreur:Echec de la modification du temps de pause");
+        }        
 
         break;
 

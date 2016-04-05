@@ -6,13 +6,13 @@
 
         $(document).ready(function () {
 
-            function gestionErreurs(err) {
+            /*function gestionErreurs(err) {
                 alert('Erreur' + err);
                 console.log('Erreur' + err);
                 return true;
             }
 
-            window.onerror = gestionErreurs;
+            window.onerror = gestionErreurs;*/
 
             $.ajax({
 
@@ -21,21 +21,19 @@
                 success: function (result1, htmlStatus, jqXHR) {
 
                     result1 = $.parseJSON(result1);
-                    console.log(result1);
+                    
 
                     $.each(result1, function (i, value) {
 
                         var obj = value;
 
-                        $("#tab").append('<tr id=' + i+ '>');
+                        $("#tab").append('<tr id=' + i + '></tr>');
 
                         $.each(obj, function (key, value2) {
 
                             $("#"+i).append('<td>' + value2 + '</td>');
 
                         });
-
-                        $("#tab").append('</tr>');
 
                     });
 
@@ -55,7 +53,7 @@
                 success: function (result2, htmlStatus, jqXHR) {
 
                     result2 = $.parseJSON(result2);
-                    console.log(result2);
+
                     var i = 0;
 
                     $.each(result2, function (index, value3) {
@@ -78,7 +76,7 @@
                         }
                             $("#" + j).append('<td>' + total + '</td>');
                             i = index;
-                            alert(i);
+                            
 
 
                     });

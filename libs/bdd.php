@@ -73,6 +73,15 @@ function getTpsPauseMoniteur(){
     return parcoursRs($res);
 }
 
+function getTpsPauseParCours($idCours){
+
+    $sql = "SELECT temps_pause FROM cours WHERE id =".$idCours;
+    $res = SQLSelect($sql);
+
+    return parcoursRs($res);
+
+}
+
 function getVehicules() {
     $sql = "SELECT * FROM vehicule";
     $res = SQLSelect($sql);
@@ -99,6 +108,15 @@ function getCoursParMoniteur($idMoniteur) {
     $res = SQLSelect($sql);
 
     return parcoursRs($res);
+}
+
+function UpdateTpsPause($id,$newTpsPause){
+
+    $sql = "UPDATE cours SET temps_pause='".$newTpsPause."' WHERE id=".$id ;
+    $res=SQLUpdate($sql);
+
+    return parcoursRs($res);
+
 }
 
 function UpdateMail($id, $new_mail) {

@@ -11,7 +11,7 @@
                 var secon = 0;//initialise les secondes
                 var minu = 0; //initialise les minutes
                 var $idUser = <?php session_start(); echo $_SESSION["idUser"];?>;
-                //var $idUser = 3;
+                //var $idUser = 4;
 
                   // JavaScript source code
 
@@ -41,9 +41,6 @@
                 function rasee() { //fonction qui remet les compteurs � 0
 
                     clearTimeout(compte); //arr�te la fonction chrono()
-                    /*alert(secon);
-                    console.log(secon);
-                    console.log(id);*/
 
                     document.forsec.secc.value = " " + centi;
                     document.forsec.seca.value = " " + secon;
@@ -54,13 +51,14 @@
 
                 $(document).ready(function () {
 
-                    function gestionErreurs(err) {
+                // ICI FONCTION POUR LE DEVELOPPEMENT
+                    /*function gestionErreurs(err) {
                         alert('Erreur' + err);
                         console.log('Erreur' + err);
                         return true;
                     }
 
-                    window.onerror = gestionErreurs;
+                    window.onerror = gestionErreurs;*/
 
 
                     function maj() {
@@ -79,11 +77,11 @@
                     $.ajax({
 
                         type: "GET",
-                        url: "../templates/data.php?action=recupInfoCours&id=" + $idUser,
+                        url: "../templates/data.php?action=recupInfoCours&idUser=" + $idUser,
                         success: function (result, htmlStatus, jqXHR) {
 
                             result = $.parseJSON(result);
-                            alert($idUser);
+
                             $.each(result, function (i, value) {
 
                                 var obj = value;
@@ -110,15 +108,21 @@
 
                     // Quand on clique sur le bouton "Commencer pause", on mets bool � 1 ce qui permettra � la fonction maj() de lancer le chrono
                     $("#chrono").click(function () {
-                        bool = 1;
-                        maj();
+                        if (bool != 1){
+                            bool = 1;
+                            maj();
+                        }
+                        
                     });
 
 
                     // Quand on clique sur le bouton "Arreter pause", on mets bool � 0 ce qui permettra � la fonction maj() d'arr�ter le chrono
                     $("#finChrono").click(function () {
-                        bool = 0;
-                        maj();
+                        if (bool != 0){
+                            bool = 0;
+                            maj();
+                        }
+                        
                     });
 
                     /**Quand on clique sur le bouton "Sauver temps de pause", on r�cup�re l'id du cours ainsi que le nouveau temps de pause
@@ -144,7 +148,7 @@
                                 }
                                 else { //si pas d'erreurs
 
-                                    $(".tpsPause").val(nouveauTpsPause);
+                                    $(".newTpsPause").val(nouveauTpsPause);
 
                                 }
 
@@ -167,9 +171,6 @@
                 function getId(ele) {
                     id = ele.id;
                     document.forsec.id.value = " " + id;
-                    /*alert(id);
-                    console.log(id);
-                    */
                 }
 
     </script>
@@ -195,13 +196,7 @@
             <div id="infosCours">
 
             </div>
-
-			<p id="p1">Elève: Jean Belette</p>
-			<p id="p2">Date: 14/03/2016</p>
-			<p id="p1">Leçon n°: 12/25</p>
-			<p id="p2">Heure: 10h00</p>
-			<p id="p1">Description: Manoeuvres</p>
-			
+		
 			<fieldset>
 			<legend>Compteur</legend>
                 <form name="forsec">
@@ -210,7 +205,7 @@
                     <input type="text" size="3" name="seca" class="newTpsPause"> secondes
                     <input type="text" size="3" name="secc"> dixiemes
 
-                    <input type="button" value="Commencer pause" id="chrono">
+                    <input type="button" value="Commencer pause" id="chrono" >
                     <input type="button" value="Arreter pause" id="finChrono">
                     <input type="button" value="Sauver temps de pause" id="save">
                 </form> 
