@@ -165,8 +165,10 @@ table td:hover .daytitle {
 
 	jQuery(function($){				
               
-			   $('.nosMois1').hide();
-			   
+			  for (i=1; i<13 ; i++)
+			  {
+			   $('.nosMois'+i).hide();
+			  }
 			   $('.months a:first').addClass('active');								//sélectionne le mois courant (la c'est janvier pcq par défaut)
 			   $('.sem').hide();													//cache tous les tableaux
                //$('.sem:first').show();												//affiche le 1er tableau (par défaut semaine 0)
@@ -177,18 +179,20 @@ table td:hover .daytitle {
                     var month = $(this).attr('id').replace('linkMonth','');		//récup l'id du mois
 					console.log("Month:"+month);								//petit affichage
                     if(month != current){										//si on clique sur un autre que celui sélectionné
-					current=1;
+					//current=1;
 						/*console.log("Mois précédent"+$('#month')+current);
 						console.log("Mois actuel"+$('#month')+month);
 						console.log("current:"+current);
                         $("#month"+current).hide();
                         $("#month"+month).show();*/
                         //$('.nosMois').hide();
-						$('.nosMois'+current).hide();
-						$('.nosMois1').show();
+						$('.nosMois'+current).hide(); //Cache la liste de l'ancien mois
+						current = month;		
+						console.log('.nosMois'+current);
+						$('.nosMois'+current).show();
 						$('.months a').removeClass('active'); 					//déselectionne l'ancien mois (CSS)
                         $('.months a#linkMonth'+month).addClass('active'); 		//sélectionne le mois choisi (CSS)
-                        current = month;										//nouveau mois choisi
+                        								//nouveau mois choisi
                     }
                     return false; 
                });
@@ -278,20 +282,7 @@ function decaleJour(numero){
 	return 	numero;
 }
 </script>
-<?php# echo "Connecte".$_SESSION['connecte']; echo "ID".$_SESSION['idUser']; echo "Admin".$_SESSION['admin'];?>
-<?php 
-function debug_to_console( $data ) {
 
-	if ( is_array( $data ) )
-		$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
-	else
-		$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
-
-	echo $output;
-}
-
-
-?>
 <?php
 require('date.php');
 $date = new Date();
@@ -301,12 +292,13 @@ $flag = 0;
 $nbSem = 0;
 ?>
 
-<!-- div pour l'affichage des cours (pour les tests) --> 
-<div id="divDeTest"></div>
-<!-- ###################  -->
-
 <div class="periods">
+
+
+	<!-- #### AFFICHE L'annee courante #### -->
     <div class="year"><?php echo $year;?></div>
+    <!-- ################################## -->
+    
     
     <!-- On affiche la liste des mois de l'année -->
     <div class="months"> 
@@ -316,31 +308,23 @@ $nbSem = 0;
             <?php endforeach;?>
         </ul>
 	</div>
+   <!-- ######################################## -->
+   
    
    <!-- Affichage des semaines -->
 	<div class="week">	
 		<h2>Semaine</h2>
  
 		<?php 
-		
-		$dates = current($dates);
-		 foreach ($dates as $m=>$days):?>		
-		<div class="nosMois<?php echo $m;?>">	
-			<ul>
-			<!-- listage des numéros de semaines (en y ajoutant des liens vers les semaines -->
-				
-				
-				<?php 
-				echo $m;
-				/*echo "<script> console.log('".$m."');</script>";*/
-                
-				
-				$end = end($days);
-				
-				foreach ($days as $d=>$semaine):
-					
-					
-                   foreach ($semaine as $s=>$day):
+		$dates = current($dates);//On récupère les dates actuelles
+		foreach ($dates as $m=>$days):?> <!--On parcourt toutes les dates pour récupérer les mois -->
+			<ul class="nosMois<?php echo $m;?>"> <!-- listage des numéros de semaines (en y ajoutant des liens vers les semaines -->
+			<?php $end = end($days);
+			foreach ($days as $d=>$semaine): /* On parcourt tous les jours pour sortir des semaines*/
+			
+					/* On parcourt les semaines pour sortir les jours et ainsi définir le numéro de la semaine correspond au numéro du jour*/
+                   foreach ($semaine as $s=>$day): 
+				   		/*On regade les premiers jours pour savoir comment on doit compter les semaines d'une année*/
 					    if($s==1  && !$flag){
                                     //Si le premier jour du premier mois est <5 c'est à dire est lundi ou mardi ou mercredi ou jeudi
                                     //Alors la numérotation des semaine commence le 1 Janvier
@@ -357,138 +341,20 @@ $nbSem = 0;
 								if ($day == 1){
 									$nbSem += 1;	
 								}
-							 }
-							 //echo "J:".$s;
-							
-                       
+							 } 
                     endforeach;?>
                     
-                    <?php //echo "Sem:".$nbSem;?>
-					<li><a href="#" id="linkWeek<?php echo $nbSem;?>">
-					<?php echo $nbSem;?> </a></li>	
                     
-                    <!-- Affichage de chaque tableau pour chaque semaine -->
-                    <div class="sem" id="<?php echo $nbSem;?>"> </br></br>	
-                    <table id="TableWeek<?php echo $nbSem;?>">
-                        <tr>
-                            <td colspan= 1 class="padding"></td>
-                            <?php foreach ($date->days as $d):?>
-                                <th>
-                                <?php echo substr($d,0,3);?>
-                                </th>
-                            <?php endforeach;?>    
-                        </tr>
-                        <?php for($i=8;$i<=19;$i++) :?>
-                                <tr>
-                                    <td><?php echo $i."H00";?></td>
-                                    <?php for($j=1;$j<=7;$j++) :?>
-                                        <td class="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>"><?php echo '' ;?></td>
-                                    <?php endfor;?>  
-                                </tr>
-                        <?php endfor;?>   
-                            
-                    </table>
-                    </div>				
-				<?php 
-				//debug_to_console($semaine);
-				endforeach;?>
-			
-			</ul>
-		</div>
+					<li><a href="#" id="linkWeek<?php echo $nbSem;?>"><?php echo $nbSem;?></a></li>	
+                    
+               <?php endforeach; ?>     
+        	</ul> <!-- Fin de la liste des numeros de semaines propre a un mois			
+		<?php endforeach;?> <!-- FIN foreach qui recupere les mois -->		
+	</div> <!-- FIN AFFICHAGE DES SEMAINES --> 
+</div> <!-- FIN AFFFICHAGE PERIODS -->
 
-</div>
-
-
-
-
-
-
-</br></br></br></br>
-<!--
-			<table>
-				<tr>
-					<td colspan= 1 class="padding"></td>
-					<?php foreach ($date->days as $d):?>
-						<th>
-						<?php echo substr($d,0,3);?>
-						</th>
-					<?php endforeach;?>    
-				</tr>
-				<?php for($i=8;$i<=19;$i++) :?>
-						<tr>
-							<td><?php echo $i."H00";?></td>
-							<?php for($j=1;$j<=7;$j++) :?>
-								<td><?php echo '' ;?></td>
-							<?php endfor;?>  
-						</tr>
-				<?php endfor;?>   
-					
-			</table>
-				 
-		<?php endforeach;?>
-	</div>
        
-       --> 
-       
-       
-       
-       
-
     
-    
-    
-    
-    
-    
-    
-    
-    <!-- NE pas modifier ce qu'il y a en dessous !!!! 
-    
-    <?php $dates = current($dates);?>
-    <?php foreach ($dates as $m=>$days):?>
-       <div class="month relative" id="month<?php echo $m;?>">
-       		<table>
-            	<thead>
-                	<tr>
-                    <?php foreach ($date->days as $d):?>
-                    	<th>
-                        <?php echo substr($d,0,3);?>
-                        </th>
-                     <?php endforeach;?>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-					<?php $end = end($days); foreach ($days as $d=>$w):?>
-                    		<?php if($d ==1 && $w>1):?>
-                            	<td colspan="<?php echo $w-1;?> "class="padding">
-                                </td>
-							<?php endif;?>
-                            <td>
-                                <div class="relative">
-                                    <div class="day"><?php echo $d;?></div>
-                                </div>
-                                <ul class="events">
-                                <?php if($d ==2):?>
-                            	<li>Evènement le 2eme jour</li>
-								<?php endif;?>
-                                <li>Mon évènement </li>
-                                <li>Mon deuxième évènement</li>
-                                </ul>
-                            </td>
-                            <?php if($w == 7): ?>
-                                </tr><tr>
-                            <?php endif; ?>
-                    <?php endforeach;?>
-                    <?php if($end != 7): ?>
-                    	<td colspan="<?php echo 7-$end;?> "class="padding"></td>
-                    <?php endif;?>
-                </tr>
-                </tbody>
-            </table>
-       </div>-->      
-    <?php endforeach;?>
-</div>
 
 
 
