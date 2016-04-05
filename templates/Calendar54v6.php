@@ -212,7 +212,11 @@ table td:hover .daytitle {
 		});  
     });
 			
-/*			
+	
+	
+	
+	
+	
 //Récupération des cours de la BDD et affichage dans le planning			
 	$(document).ready( function() {
 	
@@ -225,8 +229,6 @@ table td:hover .daytitle {
 				else {
 					for(i=0 ; i < result.length; i++)
 					{
-						//console.log(result[i]["date"]);
-						//console.log(i);
 						var laDate = result[i]["date"];
 						var description = result[i]["description"];
 						var Commentaire = result[i]["Commentaire"];
@@ -234,16 +236,11 @@ table td:hover .daytitle {
 						var mois = laDate.substring(5,7);	
 						var jour = laDate.substring(8,10);
 						var heure = parseFloat(laDate.substring(11,13));
-						//console.log("Le " + jour + "/" + mois + "/" + annee + " à " + heure + "H00 il y aura : " + description + ". Il portera sur : " + Commentaire);	
 						laDate = new Date(mois+'/'+jour+'/'+annee);
 						
 						nbWeek= getWeekNumber(laDate);
 						nbDay = laDate.getDay();
-						//nbDay = decaleJour(nbDay);
-						//console.log("-->" + nbDay);
-						
 						var defID = "Sem" + nbWeek + "jour" + nbDay + "heure" + heure;
-						//console.log(defID);
 						$("." + defID).html(description);
 					} 
 				}
@@ -253,7 +250,12 @@ table td:hover .daytitle {
             }
         });
 	});
-*/
+
+
+
+
+
+
 	function getWeekNumber(uneDate) {
 		var d = new Date(uneDate);
 		var DoW = d.getDay();
