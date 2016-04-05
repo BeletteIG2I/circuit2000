@@ -165,9 +165,11 @@ table td:hover .daytitle {
 
 	jQuery(function($){				
               
+			   $('.nosMois1').hide();
+			   
 			   $('.months a:first').addClass('active');								//sélectionne le mois courant (la c'est janvier pcq par défaut)
 			   $('.sem').hide();													//cache tous les tableaux
-               $('.sem:first').show();												//affiche le 1er tableau (par défaut semaine 0)
+               //$('.sem:first').show();												//affiche le 1er tableau (par défaut semaine 0)
                $('.sem a:first').addClass('active');								//le sélectionne comme actif
                var current = 0;
 			   
@@ -175,14 +177,15 @@ table td:hover .daytitle {
                     var month = $(this).attr('id').replace('linkMonth','');		//récup l'id du mois
 					console.log("Month:"+month);								//petit affichage
                     if(month != current){										//si on clique sur un autre que celui sélectionné
-						//$('.nbS').hide();
-						
+					current=1;
 						/*console.log("Mois précédent"+$('#month')+current);
 						console.log("Mois actuel"+$('#month')+month);
 						console.log("current:"+current);
                         $("#month"+current).hide();
                         $("#month"+month).show();*/
-                        
+                        //$('.nosMois').hide();
+						$('.nosMois'+current).hide();
+						$('.nosMois1').show();
 						$('.months a').removeClass('active'); 					//déselectionne l'ancien mois (CSS)
                         $('.months a#linkMonth'+month).addClass('active'); 		//sélectionne le mois choisi (CSS)
                         current = month;										//nouveau mois choisi
@@ -322,11 +325,13 @@ $nbSem = 0;
 		
 		$dates = current($dates);
 		 foreach ($dates as $m=>$days):?>		
-				
-			<ul> <!-- listage des numéros de semaines (en y ajoutant des liens vers les semaines -->
+		<div class="nosMois<?php echo $m;?>">	
+			<ul>
+			<!-- listage des numéros de semaines (en y ajoutant des liens vers les semaines -->
 				
 				
 				<?php 
+				echo $m;
 				/*echo "<script> console.log('".$m."');</script>";*/
                 
 				
@@ -359,8 +364,7 @@ $nbSem = 0;
                     endforeach;?>
                     
                     <?php //echo "Sem:".$nbSem;?>
-	
-					<li class="nbS"><a href="#" id="linkWeek<?php echo $nbSem;?>">
+					<li><a href="#" id="linkWeek<?php echo $nbSem;?>">
 					<?php echo $nbSem;?> </a></li>	
                     
                     <!-- Affichage de chaque tableau pour chaque semaine -->
@@ -390,7 +394,7 @@ $nbSem = 0;
 				endforeach;?>
 			
 			</ul>
-
+		</div>
 
 </div>
 
