@@ -374,36 +374,24 @@ if($action = valider('action')) {
         /* *** FIN PARTIE CLIENT *** */
 
         /* *** PARTIE PLANNING *** */
-        /* Auteur : Maxime De Coster */
-        case 'ajouterPlanning' : {
-            $res = NULL;
-            $intitule = NULL;
-            
-            if(($date = valider("date", "POST"))&& ($hDebut = valider("hD", "POST")) && ($hFin = valider("hF", "POST"))) {
-                $intitule = valider("intitule", "POST");
-                $mDebut = valider("mD", "POST");
-                $mFin = valider("mF", "POST");
-                
-                if($mDebut == "0")
-                    $mDebut = "00";
-                if($mFin == "0")
-                    $mFin = "00";
-                    
-                $sql = "INSERT INTO choixsurplanning (id ,intitule ,dateDebut ,dateFin)";
-                //$sql.="   VALUES (NULL , 'test3', '".$date. "  " . $hDebut.":00:00', '".$date." ".$hFin.":00:00')";
-                $sql.=" VALUES (NULL , '$intitule', '$date $hDebut:$mDebut:00', '$date $hFin:$mFin:00')";
-                
-                $res = SQLInsert($sql); 
-            }
-            echo("$date , $hDebut , $hFin , $mDebut, $mFin, $intitule</br>\n");
-            echo("$_POST[date], $_POST[hD], $_POST[hF], $_POST[mD], $_POST[mF] </br>\n");
-                            
-            if($res != NULL)
-                echo("Id associé à l'insertion sur planning : " . $res);
-            else
-                echo("Problème");
-            
-        }break;
+        
+		case 'ajouterPlanning' : {
+
+			if(($date = valider("date", "POST")){
+				$description = valider("description", "POST");
+				$idEleve = valider("idEleve", "POST");
+				$idMoniteur = valider("idMoniteur","POST");
+			   
+				$var = CreationCoursPlanning($idMoniteur,$idEleve,$description,$date);			
+				echo(json_encode($var));				
+			}
+		}	
+		break;
+	
+		
+		
+		/* Auteur : Maxime De Coster */
+
 
         case 'consulterPlanning' : {                
             $res = NULL;

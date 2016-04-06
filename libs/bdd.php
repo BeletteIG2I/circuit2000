@@ -7,6 +7,32 @@
 
 include("maLibSQL.php");
 
+
+
+	function CreationCoursPlanning($idMoniteur,$idEleve,$description,$date){
+		$sql = "INSERT INTO cours (idMoniteur, idEleve, description , date) VALUES ('".$idMoniteur."', '".$idEleve."', '".$description."', '".$date."')";
+		$res = SQLInsert($sql); 
+		return $res;
+
+	}
+
+
+	function getNomPrenomMoniteurs(){
+		$sql="SELECT nom, prenom FROM user WHERE fonction=2";
+		$res = SQLSelect($sql);
+
+		return parcoursRs($res);
+	}
+
+	function getNomPrenomEleves(){
+		$sql="SELECT nom, prenom FROM user WHERE fonction=0";
+		$res = SQLSelect($sql);
+
+		return parcoursRs($res);
+	}
+
+
+
 function InsertClientEleve($id) {
     // On insère l'utilisateur dans 'user' avec le champ 'fonction' à 0
     $sql = "INSERT INTO eleve(idEleve) VALUES ('$id')";

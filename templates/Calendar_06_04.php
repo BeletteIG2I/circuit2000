@@ -158,12 +158,12 @@ table td:hover .daytitle {
 }
 
 
+
+
 </style>
 <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
-
-
 
 	jQuery(function($){	
 
@@ -215,7 +215,7 @@ table td:hover .daytitle {
 	
 	
 	
-	
+	/*	
 	
 //Récupération des cours de la BDD et affichage dans le planning			
 	$(document).ready( function() {
@@ -252,9 +252,30 @@ table td:hover .daytitle {
 	});
 
 
+$('NOMDUBOUTON').click(fuction(){ //on le fait quand on appui sur le bouton VALIDER du PopUp
+		$.ajax({
+            type:"POST",
+            url:"data.php?action=ajouterPlanning&id=<?php if($_SESSION['connecte']) echo $_SESSION['id'];?> ",
+            success:function(result, htmlStatus, jqXHR) {
+				if(!result) console.log("Resultats Null");	
+				
+				else {
+					????				
+				}
+			},
+            error : function(jqXHR, htmlStatus, htmlError) {
+			console.log("Status :" + htmlStatus + " \nError : " + htmlError);
+			}
+        });
+	});
+*/
 
 
-
+	function Popup(page,largeur,hauteur,options) {
+	  var top=(screen.height-hauteur)/2;
+	  var left=(screen.width-largeur)/2;
+	  window.open(page,"","top="+top+",left="+left+",width="+largeur+",height="+hauteur+","+options);
+	}
 
 	function getWeekNumber(uneDate) {
 		var d = new Date(uneDate);
@@ -266,18 +287,18 @@ table td:hover .daytitle {
 		return Math.round((ms - d.valueOf()) / (7 * 864e5)) + 1;
 	}
 	
-function decaleJour(numero){
-	if (numero > 0)
-	{
-		numero--; 	
+	function decaleJour(numero){
+		if (numero > 0)
+		{
+			numero--; 	
+		}
+		else if (numero == 0)
+		{
+			numero = 7;	
+		}
+		else numero = -1;
+		return 	numero;
 	}
-	else if (numero == 0)
-	{
-		numero = 7;	
-	}
-	else numero = -1;
-	return 	numero;
-}
 </script>
 
 <?php
@@ -290,7 +311,9 @@ $nbSem = 0;
 ?>
 
 <div class="periods">
-
+<form>Creer cour (provisoire) : 
+	<input type='button' value='Pop Up' onClick='PopupCentrer("popUpCalendar.php",1000,700,"menubar=no,scrollbars=no,statusbar=no")'>
+</form>
 
 	<!-- #### AFFICHE L'annee courante #### -->
     <div class="year"><?php echo $year;?></div>
@@ -315,7 +338,7 @@ $nbSem = 0;
 		<?php 
 		$dates = current($dates);//On récupère les dates actuelles
 		foreach ($dates as $m=>$days):?> <!--On parcourt toutes les dates pour récupérer les mois -->
-			<ul class="nosMois<?php echo $m;?>"> <!-- listage des numéros de semaines (en y ajoutant des liens vers les semaines -->
+			<ul class="nosMois<?php echo $m;?>"> <!-- listage des numéros de semaines (en y ajoutant des liens vers les semaines) -->
 			<?php $end = end($days);
 			foreach ($days as $d=>$semaine): /* On parcourt tous les jours pour sortir des semaines*/
 			
@@ -351,9 +374,9 @@ $nbSem = 0;
                         <table id="TableWeek<?php echo $nbSem;?>">
                             <tr>
                                 <td colspan= 1 class="padding"></td>
-                                <?php foreach ($date->days as $d):?>
+                                <?php foreach ($date->days as $nomJour):?>
                                     <th>
-                                    <?php echo substr($d,0,3);?>
+                                    <?php echo substr($nomJour,0,3);?>
                                     </th>
                                 <?php endforeach;?>    
                             </tr>
@@ -361,7 +384,8 @@ $nbSem = 0;
                                     <tr>
                                         <td><?php echo $i."H00";?></td>
                                         <?php for($j=1;$j<=7;$j++) :?>
-                                            <td class="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>"><?php echo '' ;?></td>
+                                            <td class="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>" onClick='Popup("popUpCalendar.php",1000,700,"menubar=no,scrollbars=no,statusbar=no")'>
+											<?php echo '' ;?></td>
                                         <?php endfor;?>  
                                     </tr>
                             <?php endfor;?>   
