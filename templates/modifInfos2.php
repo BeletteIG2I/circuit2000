@@ -276,8 +276,9 @@
           <ul class="nav navbar-nav">
             <li><a href="../index.php">Accueil</a></li>
             <li><a href="#planning">Planning</a></li>
-            <li><a href="TempsPause.php">Pause</a></li>
-            <li class="active"><a href="modifInfos2.php">Modification des informations</a></li>
+            <li><a href="gestionCours.php">Cours</a></li>
+            <li class="active"><a href="modifInfos2.php">Modifications</a></li>
+			<li><a href="tempsPause.html">Temps de pause</a></li>
 			<li><a href="#logout">Déconnexion</a></li>
           </ul>
         </div><!--/.nav-collapse -->
