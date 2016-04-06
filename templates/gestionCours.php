@@ -90,7 +90,7 @@
 
                                 $.each(obj, function (key, value2) {
 
-                                   $("#"+i).append('     <div>' + key + ' : ' + value2 + '</div></br>');
+                                   $("#"+i).append('     <div class="info">' + key + ' : ' + value2 + '</div></br>');
 
                                 });
 
@@ -179,43 +179,102 @@
 
 
 
-<link rel="stylesheet" type="text/css" href="../css/gestionCours.css"/>
+<html lang="en">
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
- <body>
-<div id="barre_blanche">
-	<img id="logo" src="../images/CIRCUIT_2000.png">
-	<div id="entete"> 
-		<h2>Gestion de cours<h2>
-	</div>
-</div>	
+    <title>Starter Template for Bootstrap</title>
 
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-<div id="cours">
+    <!-- Custom styles for this template -->
+    <link href="../css/gestionCours.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.php"><img id="logo" src="../images/logosf.png"></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../index.php">Accueil</a></li>
+            <li><a href="#planning">Planning</a></li>
+			<li class="active"><a href="gestionCours.php">Cours</a></li>
+            <li><a href="modifInfos2.php">Modifications</a></li>
+            <li><a href="tempsPause.html">Temps de pause</a></li>
+			<li><a href="#logout">Déconnexion</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+
+    <div class="container">
+
+		<div class="starter-template">
+		<h1>Gestion cours</h1>
+		<div id="cours">
 			</br>
 
             <div id="infosCours">
 
             </div>
 		
-			<fieldset>
+			<fieldset class="formu">
 			<legend>Compteur</legend>
                 <form name="forsec">
                     <input type="hidden" name="id" class="idCours">
-                    <input type="text" size="3" name="secb"> minute(s)
-                    <input type="text" size="3" name="seca" class="newTpsPause"> secondes
-                    <input type="text" size="3" name="secc"> dixiemes
-
+                    <input readonly type="text" size="1" name="secb" placeholder="00"> minute(s)
+                    <input readonly type="text" size="1" name="seca" placeholder="00" class="newTpsPause"> secondes
+                    <input readonly type="text" size="1" name="secc" placeholder="00"> dixiemes
+					<br/><br/>
                     <input type="button" value="Commencer pause" id="chrono" >
                     <input type="button" value="Arreter pause" id="finChrono">
                     <input type="button" value="Sauver temps de pause" id="save">
                 </form> 
 			</fieldset>
 			
-			<div id="gestCompte">
-				
-                                <p id="g1"><a href="templates/calendar.php">Planning</a></p>
-                                <p id="g2"><a href="templates/gestionCours.php">Gestion de cours</a></p>
-                                
-			</div>
-</div>
-</body>
+		</div>
+
+
+    </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+ </body>
+ 	
+
+
+
