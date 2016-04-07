@@ -59,6 +59,8 @@ body {
     color: #d90000;
 }
 
+
+
 h2{	
 float:left;
 }
@@ -155,39 +157,74 @@ table td:hover .daytitle {
     clear: both;
 }
 
+#AjouterCours{
+float:right;
+display:none;
+<!-- A PLACER A COTE DU TABLEAU PLANNING SVP AVEC UN JOLI CADRE, AMUSE TOI BIEN ADRIEN -->
+}
+
 
 </style>
 <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 
-jQuery(function($){
-               $('.month').hide();
-               $('.month:first').show();
-               $('.months a:first').addClass('active');
-               var current = 1;
-               $('.months a').click(function(){
-                    var month = $(this).attr('id').replace('linkMonth','');
-					console.log("Month:"+month);
-                    if(month != current){
-						console.log("Mois précédent"+$('#month')+current);
-						console.log("Mois actuel"+$('#month')+month);
-						console.log("current:"+current);
-                        $("#month"+current).hide();
-                        $("#month"+month).show();
-                        $('.months a').removeClass('active'); 
-                        $('.months a#linkMonth'+month).addClass('active'); 
-                        current = month;
-                    }
-                    return false; 
-               });
-            });
+	jQuery(function($){	
+
+        var now = new Date();
+		var current = now.getMonth() + 1;      							//on récupère le numéro mois courant
+		var current2= getWeekNumber(now);								//on récupère le numéro semaine courante
+		for (i=1; i<13 ; i++)											//parcours de tous les mois pour cacher les numeros de semaines et tab
+		  {
+			$('.nosMois'+i).hide();
+		  }
+		  
+		$('.nosMois'+current).show();									//on affiche les num semaine mois courant
+		$('#linkMonth'+current).addClass('active');						//sélectionne le mois courant (CSS)
+		for (j=0; j<55 ; j++)											//parcours de toutes les semaines pour cacher les tab
+		  {
+			$('.tableSem'+j).hide();
+		  }					
+		$('.tableSem'+current2).show();									//affichage du tableau de la semaine courante
+		$('#linkWeek'+current2).addClass('active');						//sélectionne la semaine courante (CSS)         
+			   
+		$('.months a').click(function(){								//quand on clique sur un mois	   
+			var month = $(this).attr('id').replace('linkMonth','');		//récup l'id du mois
 			
+			if(month != current){										//si on clique sur un autre que celui sélectionné
+				$('.nosMois'+current).hide(); 							//cache la liste de l'ancien mois
+				current = month;										//le nouveau mois devient le mois courant
+				$('.nosMois'+current).show();							//affichage du mois sélectionné
+				$('.months a').removeClass('active'); 					//déselectionne l'ancien mois (CSS)
+				$('.months a#linkMonth'+month).addClass('active'); 		//sélectionne le mois choisi (CSS)
+			}
+				return false; 
+		});
+			   
+		$('.week a').click(function(){									//quand on clique sur une semaine
+			var we = $(this).attr('id').replace('linkWeek','');			//récup id semaine
+
+			if(we != current2){											//si on clique sur une autre que celle selectionné						
+				$('.tableSem'+current2).hide();							//on cache le tableau sélectionné avant
+				current2 = we;											//la nouvelle semaine devient la semaine courante
+				$('.tableSem'+current2).show();							//on affiche le tableau sélectionné 
+				$('.week a').removeClass('active'); 					//deselectionne ancienne semaine (CSS)
+				$('.week a#linkWeek'+we).addClass('active'); 			//selectionne semaine choisi (CSS)															
+			} 
+				return false;
+				 
+		});  
+    });
 			
-//Récupération des cours de la BDD et affichage dans le planning			
-$(document).ready( function() {
 	
-	$.ajax({
+	
+	
+	/*	
+	
+//Récupération des cours de la BDD et affichage dans le planning			
+	$(document).ready( function() {
+	
+		$.ajax({
             type:"GET",
             url:"data.php?action=recupInfoCours&id=<?php if($_SESSION['connecte']) echo $_SESSION['id'];?> ",
             success:function(result, htmlStatus, jqXHR) {
@@ -196,8 +233,6 @@ $(document).ready( function() {
 				else {
 					for(i=0 ; i < result.length; i++)
 					{
-						//console.log(result[i]["date"]);
-						//console.log(i);
 						var laDate = result[i]["date"];
 						var description = result[i]["description"];
 						var Commentaire = result[i]["Commentaire"];
@@ -205,16 +240,11 @@ $(document).ready( function() {
 						var mois = laDate.substring(5,7);	
 						var jour = laDate.substring(8,10);
 						var heure = parseFloat(laDate.substring(11,13));
-						//console.log("Le " + jour + "/" + mois + "/" + annee + " à " + heure + "H00 il y aura : " + description + ". Il portera sur : " + Commentaire);	
 						laDate = new Date(mois+'/'+jour+'/'+annee);
 						
 						nbWeek= getWeekNumber(laDate);
 						nbDay = laDate.getDay();
-						//nbDay = decaleJour(nbDay);
-						//console.log("-->" + nbDay);
-						
 						var defID = "Sem" + nbWeek + "jour" + nbDay + "heure" + heure;
-						//console.log(defID);
 						$("." + defID).html(description);
 					} 
 				}
@@ -223,7 +253,37 @@ $(document).ready( function() {
                 console.log("Status :" + htmlStatus + " \nError : " + htmlError);
             }
         });
-});
+	});
+
+
+	$(document).on("click","input[type=button][value=Valider]", function(){ //on le fait quand on appui sur le bouton VALIDER du PopUp
+		$.ajax({
+            type:"POST",
+            url:"data.php?action=ajouterPlanning",
+			data:'idMoniteur=' + moniteur + '&idEleve=' + eleve + '&description=' + description + '&date=' $year-$m-$j $i:00:00,
+			
+            success:function(result, htmlStatus, jqXHR) {
+				alert("Ajout réussi ! ");
+			},
+            error : function(jqXHR, htmlStatus, htmlError) {
+			console.log("Status :" + htmlStatus + " \nError : " + htmlError);
+			}
+        });
+	});
+*/
+
+
+	var bool=false;
+	function cacher(id){
+		if(bool==true){
+			document.getElementById(id).style.display='none';
+			bool=false;
+		} 
+		else{
+			document.getElementById(id).style.display='block';
+			bool=true;
+		}
+	}
 
 	function getWeekNumber(uneDate) {
 		var d = new Date(uneDate);
@@ -234,33 +294,21 @@ $(document).ready( function() {
 		d.setDate(4); // Thu in Week 1
 		return Math.round((ms - d.valueOf()) / (7 * 864e5)) + 1;
 	}
-function decaleJour(numero){
-	if (numero > 0)
-	{
-		numero--; 	
+	
+	function decaleJour(numero){
+		if (numero > 0)
+		{
+			numero--; 	
+		}
+		else if (numero == 0)
+		{
+			numero = 7;	
+		}
+		else numero = -1;
+		return 	numero;
 	}
-	else if (numero == 0)
-	{
-		numero = 7;	
-	}
-	else numero = -1;
-	return 	numero;
-}
 </script>
-<?php echo "Connecte".$_SESSION['connecte']; echo "ID".$_SESSION['idUser']; echo "Admin".$_SESSION['admin'];?>
-<?php 
-function debug_to_console( $data ) {
 
-	if ( is_array( $data ) )
-		$output = "<script>console.log( 'Debug Objects: " . implode( ',', $data) . "' );</script>";
-	else
-		$output = "<script>console.log( 'Debug Objects: " . $data . "' );</script>";
-
-	echo $output;
-}
-
-
-?>
 <?php
 require('date.php');
 $date = new Date();
@@ -268,14 +316,22 @@ $year = date('Y');
 $dates = $date->getAll($year);
 $flag = 0;
 $nbSem = 0;
+
+include('../libs/bdd.php');
+$moniteur=getNomPrenomMoniteurs();  
+$eleve=getNomPrenomEleves();
+		
 ?>
 
-<!-- div pour l'affichage des cours (pour les tests) --> 
-<div id="divDeTest"></div>
-<!-- ###################  -->
-
 <div class="periods">
+<form>Creer cour (provisoire) : 
+	<input type='button' value='Pop Up' onClick='PopupCentrer("popUpCalendar.php",1000,700,"menubar=no,scrollbars=no,statusbar=no")'>
+</form>
+
+	<!-- #### AFFICHE L'annee courante #### -->
     <div class="year"><?php echo $year;?></div>
+    <!-- ################################## -->
+    
     
     <!-- On affiche la liste des mois de l'année -->
     <div class="months"> 
@@ -285,30 +341,24 @@ $nbSem = 0;
             <?php endforeach;?>
         </ul>
 	</div>
+   <!-- ######################################## -->
+   
    
    <!-- Affichage des semaines -->
 	<div class="week">	
 		<h2>Semaine</h2>
  
 		<?php 
-		
-		$dates = current($dates);?>
-		<?php foreach ($dates as $m=>$days):?>		
-				
-			<ul> <!-- listage des numéros de semaines (en y ajoutant des liens vers les semaines -->
-				
-				
-				<?php 
-				/*echo "<script> console.log('".$m."');</script>";*/
-                
-				
-				$end = end($days);
-				
-				foreach ($days as $d=>$semaine):?>
-					
-					
-                   <?php foreach ($semaine as $s=>$day):?>
-					   <?php if($s==1  && !$flag){
+		$dates = current($dates);//On récupère les dates actuelles
+		foreach ($dates as $m=>$days):?> <!--On parcourt toutes les dates pour récupérer les mois -->
+			<ul class="nosMois<?php echo $m;?>"> <!-- listage des numéros de semaines (en y ajoutant des liens vers les semaines) -->
+			<?php $end = end($days);
+			foreach ($days as $d=>$semaine): /* On parcourt tous les jours pour sortir des semaines*/
+			
+					/* On parcourt les semaines pour sortir les jours et ainsi définir le numéro de la semaine correspond au numéro du jour*/
+                   foreach ($semaine as $s=>$day): 
+				   		/*On regade les premiers jours pour savoir comment on doit compter les semaines d'une année*/
+					    if($s==1  && !$flag){
                                     //Si le premier jour du premier mois est <5 c'est à dire est lundi ou mardi ou mercredi ou jeudi
                                     //Alors la numérotation des semaine commence le 1 Janvier
                                     //Sinon on attend le premier lundi de Janvier
@@ -324,139 +374,87 @@ $nbSem = 0;
 								if ($day == 1){
 									$nbSem += 1;	
 								}
-							 }
-							 //echo "J:".$s;
-							
-                       ?>
-                   <?php endforeach;?>
+							 } 
+                    endforeach;?>
                     
-                    <?php //echo "Sem:".$nbSem;?>
-	
-					<li><a href="#" id="linkWeek<?php echo $nbSem;?>">
-					<?php echo $nbSem;?> </a></li>	
                     
+					<li><a href="#" id="linkWeek<?php echo $nbSem;?>"><?php echo $nbSem;?></a></li>	
+                   
+                   
                     <!-- Affichage de chaque tableau pour chaque semaine -->
-                    	
-                    <table id="TableWeek<?php echo $nbSem;?>">
-                        <tr>
-                            <td colspan= 1 class="padding"></td>
-                            <?php foreach ($date->days as $d):?>
-                                <th>
-                                <?php echo substr($d,0,3);?>
-                                </th>
-                            <?php endforeach;?>    
-                        </tr>
-                        <?php for($i=8;$i<=19;$i++) :?>
-                                <tr>
-                                    <td><?php echo $i."H00";?></td>
-                                    <?php for($j=1;$j<=7;$j++) :?>
-                                        <td class="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>"><?php echo '' ;?></td>
-                                    <?php endfor;?>  
-                                </tr>
-                        <?php endfor;?>   
-                            
-                    </table>
-                    				
-				<?php 
-				//debug_to_console($semaine);
-				endforeach;?>
-			
-			</ul>
-
-
-
-
-
-
-
-
-
-</br></br></br></br>
-<!--
-			<table>
-				<tr>
-					<td colspan= 1 class="padding"></td>
-					<?php foreach ($date->days as $d):?>
-						<th>
-						<?php echo substr($d,0,3);?>
-						</th>
-					<?php endforeach;?>    
-				</tr>
-				<?php for($i=8;$i<=19;$i++) :?>
-						<tr>
-							<td><?php echo $i."H00";?></td>
-							<?php for($j=1;$j<=7;$j++) :?>
-								<td><?php echo '' ;?></td>
-							<?php endfor;?>  
-						</tr>
-				<?php endfor;?>   
+                    
+					<div class="tableSem<?php echo $nbSem;?>"> </br></br>	
+                        <table id="TableWeek<?php echo $nbSem;?>">
+                            <tr>
+                                <td colspan= 1 class="padding"></td>
+                                <?php foreach ($date->days as $nomJour):?>
+                                    <th>
+                                    <?php echo substr($nomJour,0,3);?>
+                                    </th>
+                                <?php endforeach;?>    
+                            </tr>
+                            <?php for($i=8;$i<=19;$i++) :?>
+                                    <tr>
+                                        <td><?php echo $i."H00";?></td>
+                                        <?php for($j=1;$j<=7;$j++) :?>
+                                            <td class="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>" onClick="cacher('AjouterCours')">
+											<?php echo '' ;?></td>
+                                        <?php endfor;?>  
+                                    </tr>
+                            <?php endfor;?>   
+                                
+                        </table>
+                    </div>
 					
-			</table>
-				 
-		<?php endforeach;?>
-	</div>
-       
-       --> 
-       
-       
-       
-       
+                    
+                    
+               <?php endforeach; ?> 
+               
+               
+                   
+        	</ul> <!-- Fin de la liste des numeros de semaines propre a un mois	   		
+		<?php endforeach;?> <!-- FIN foreach qui recupere les mois -->		
+	</div> <!-- FIN AFFICHAGE DES SEMAINES --> 
+	
+	<!-- FORMULAIRE AJOUT COURS -->
+	<div id="AjouterCours">			
+		<form id="FormAjouterCours method="post" action="../templates/data.php">		 
+			<label for="moniteur">Moniteur</label><br />			
+				<select name="moniteur" id="moniteur">
+				<optgroup label="Sélectionnez le moniteur">				
+					<?php foreach ($moniteur as $data):?>		
+					<option value="<?php echo $data['nom']; ?>"> <?php echo $data['nom'] .' '. $data['prenom']; ?></option>
+					<?php endforeach;?>	
+				</optgroup>
+				</select>
+		
+			</br></br>
 
+		
+			<label for="eleve">Eleve</label><br />			
+			<select name="eleve" id="eleve">
+				<optgroup label="Sélectionnez l'eleve">
+					<?php foreach ($eleve as $donnees):?>
+					<option value="<?php echo $donnees['nom']; ?>"> <?php echo $donnees['nom'] .' '. $donnees['prenom']; ?></option>
+					<?php endforeach;?>
+				</optgroup>	
+			</select>
+		
+			</br></br>
+		
+		
+			<label for="description">Description :</label>
+			<input type="text" name="descripion" id="descripion" />
+			</br></br>
+			<input id="boutonValider" type="button" value="Valider" />
+		
+		</form>
+	</div>	<!-- FIN FORMULAIRE AJOUT COURS -->
+		
+</div> <!-- FIN AFFFICHAGE PERIODS -->
+
+       
     
-    
-    
-    
-    
-    
-    
-    
-    <!-- NE pas modifier ce qu'il y a en dessous !!!! 
-    
-    <?php $dates = current($dates);?>
-    <?php foreach ($dates as $m=>$days):?>
-       <div class="month relative" id="month<?php echo $m;?>">
-       		<table>
-            	<thead>
-                	<tr>
-                    <?php foreach ($date->days as $d):?>
-                    	<th>
-                        <?php echo substr($d,0,3);?>
-                        </th>
-                     <?php endforeach;?>
-                    </tr>
-                </thead>
-                <tbody>
-                <tr>
-					<?php $end = end($days); foreach ($days as $d=>$w):?>
-                    		<?php if($d ==1 && $w>1):?>
-                            	<td colspan="<?php echo $w-1;?> "class="padding">
-                                </td>
-							<?php endif;?>
-                            <td>
-                                <div class="relative">
-                                    <div class="day"><?php echo $d;?></div>
-                                </div>
-                                <ul class="events">
-                                <?php if($d ==2):?>
-                            	<li>Evènement le 2eme jour</li>
-								<?php endif;?>
-                                <li>Mon évènement </li>
-                                <li>Mon deuxième évènement</li>
-                                </ul>
-                            </td>
-                            <?php if($w == 7): ?>
-                                </tr><tr>
-                            <?php endif; ?>
-                    <?php endforeach;?>
-                    <?php if($end != 7): ?>
-                    	<td colspan="<?php echo 7-$end;?> "class="padding"></td>
-                    <?php endif;?>
-                </tr>
-                </tbody>
-            </table>
-       </div>-->      
-    <?php endforeach;?>
-</div>
 
 
 

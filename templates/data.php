@@ -51,8 +51,8 @@ if($action = valider('action')) {
             $moniteurs = getMoniteurs();
             echo(json_encode($moniteurs));
         }break;
-			
-        case 'recupTpsPauseMoniteurs' : {
+		
+	    case 'recupTpsPauseMoniteurs' : {
 
             $tpsPause = getTpsPauseMoniteur();
             echo(json_encode($tpsPause));
@@ -304,12 +304,13 @@ if($action = valider('action')) {
             if($tpsPause = valider("newTpsPause","GET") && $idCours = valider("idCours","GET"))
                 $res = UpdateTpsPause($_GET["idCours"], $_GET["newTpsPause"]);
 
-            if($res != NULL){
-
-                $tpsPauseUpdate = getTpsPauseParCours($_GET["idCours"]);
-                $nouveauTpsPause = $tpsPauseUpdate[0]['temps_pause'];
+			
+		 if($res != NULL){
+			
+			$tpsPauseUpdate = getTpsPauseParCours($_GET["idCours"]);
+			$nouveauTpsPause = $tpsPauseUpdate[0]['temps_pause'];
                 
-                echo $nouveauTpsPause;
+            echo $nouveauTpsPause;
 
             }
             else
@@ -374,26 +375,22 @@ if($action = valider('action')) {
         /* *** FIN PARTIE CLIENT *** */
 
         /* *** PARTIE PLANNING *** */
-        
-		case 'ajouterPlanning' : {
 
-			if(($date = valider("date", "POST")){
-				$description = valider("description", "POST");
-				$idEleve = valider("idEleve", "POST");
-				$idMoniteur = valider("idMoniteur","POST");
-			   
-				$var = CreationCoursPlanning($idMoniteur,$idEleve,$description,$date);			
-				echo(json_encode($var));				
+		case 'ajouterPlanning' : {
+			
+			$res = NULL
+			if(($idMoniteur = valider("idMoniteur","POST")) && ($idEleve = valider("idEleve", "POST")) 
+				&& ($description = valider("description", "POST")) && ($date = valider("date", "POST")))
+			{  
+				$res = CreationCoursPlanning($idMoniteur,$idEleve,$description,$date);			
+				echo(json_encode($res));				
 			}
 		}	
 		break;
-	
-		
 		
 		/* Auteur : Maxime De Coster */
-
-
-        case 'consulterPlanning' : {                
+        
+		case 'consulterPlanning' : {                
             $res = NULL;
             $tab = array();
             
@@ -422,7 +419,7 @@ if($action = valider('action')) {
         case 'supprimerCreneau' : {
             $res = NULL;
             if(isset($_GET["id"])) {
-                $sql = "DELETE FROM choixsurplanning WHERE id = " . $_GET["id"];
+                $sql = "DELETE FROM cours WHERE id = " . $_GET["id"];
                 $res = SQLInsert($sql);
             }
             else {
