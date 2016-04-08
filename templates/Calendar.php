@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+<html>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 
@@ -48,25 +50,26 @@
 		});  
     });
 	
-var now = new Date();
-var year = now.getFullYear();
-var mois = $(this).val().split("/")[10];
-var jour = $(this).val().split("/")[4];
-var heure = $(this).val().split("/")[6];;
-var datebdd = year + '-' + mois + '-' + jour;
-var heurebdd = heure + ':00:00';
+
 
 	
-	/*	
+	
 	
 //Récupération des cours de la BDD et affichage dans le planning			
 	$(document).ready( function() {
-	
-		$.ajax({
+            var now = new Date();
+            var year = now.getFullYear();
+            var mois = "";
+            var jour = "";
+            var heure = "";
+            var datebdd = "";
+            var heurebdd = "";
+            $.ajax({
             type:"GET",
-            url:"data.php?action=recupInfoCours&id=<?php if($_SESSION['connecte']) echo $_SESSION['id'];?> ",
+            url:"data.php?action=recupInfoCours&id=<?php if($_SESSION['connecte']) echo $_SESSION['idUser'];?> ",
             success:function(result, htmlStatus, jqXHR) {
 				result = $.parseJSON(result);
+                               // console.log(result);
 				if(!result) console.log("Resultats Null");
 				else {
 					for(i=0 ; i < result.length; i++)
@@ -79,11 +82,57 @@ var heurebdd = heure + ':00:00';
 						var jour = laDate.substring(8,10);
 						var heure = parseFloat(laDate.substring(11,13));
 						laDate = new Date(mois+'/'+jour+'/'+annee);
+                                                
+                                                
+                                                
+                                                
+                                               
+                                                var idEleve =  result[i]["idEleve"];
+                                                
+                                                
 						
 						nbWeek= getWeekNumber(laDate);
 						nbDay = laDate.getDay();
 						var defID = "Sem" + nbWeek + "jour" + nbDay + "heure" + heure;
-						$("." + defID).html(description);
+                                                
+                                                $.ajax({
+                                                    type:"GET",
+                                                    url:"../templates/data.php?action=recupIdUserEleve&idEleve=" +idEleve,
+                                                    success:function(result, htmlStatus, jqXHR) {
+                                                        
+                                                        idUserEleve = result; 
+                                                        
+                                                        $.ajax({
+                                                            type:"GET",
+                                                            url:"../templates/data.php?action=recupInfoUserPlanning&idUs=" + idUserEleve,
+                                                            success:function(result2, htmlStatus, jqXHR) {
+                                                                console.log(result2);
+                                                                result2 = $.parseJSON(result2);
+                                                                
+                                                                var nom = result2[0]["nom"];
+                                                                var prenom = result2[0].prenom;
+                                                                var telephone = result2[0].telephone;
+
+
+                                                                var numADR = result2[0].numeroADR;
+                                                                var rueADR = result2[0].rueADR;
+                                                                var villeADR = result2[0].villeADR;
+                                                                var codePostal = result2[0].codePostal;
+                                                                
+                                                                $("." + defID).html(nom +"-"+prenom +"-"+ telephone +"<br/>"+ numADR +" "+ rueADR +" "+ villeADR +" "+ codePostal +"<br/>"+description);
+                                                            },
+                                                            error : function(jqXHR, htmlStatus, htmlError) {
+                                                                console.log("Status :" + htmlStatus + " \nError : " + htmlError);
+                                                            }
+                                                        });
+                                                    },
+                                                    error : function(jqXHR, htmlStatus, htmlError) {
+                                                        console.log("Status :" + htmlStatus + " \nError : " + htmlError);
+                                                    }
+                                                });
+                                                
+                                                
+                                                
 					} 
 				}
             },
@@ -91,25 +140,49 @@ var heurebdd = heure + ':00:00';
                 console.log("Status :" + htmlStatus + " \nError : " + htmlError);
             }
         });
-	});
-
-*/
-
-	$("#boutonValider").click (function(){ 
-		$.ajax({
-            type:"POST",
-            url:"data.php?action=ajouterPlanning",
-			data:'idMoniteur=' + moniteur + '&idEleve=' + eleve + '&description=' + description + '&date=' + datebdd + heurebdd,
-			
-            success : function(result, htmlStatus, jqXHR) {
-				alert("Ajout réussi ! ");
-			},
-            error : function(jqXHR, htmlStatus, htmlError) {
-				alert("Echec !");
-			}
+        
+      
+          $(document).on("click","td",function(){
+            now = new Date();
+            year = now.getFullYear();
+            mois = this.id.split("/")[0];
+            jour = this.id.split("/")[1];
+            heure = this.id.split("/")[2].replace(" ","");
+            datebdd = year + '-' + mois + '-' + jour;
+            heurebdd = heure + ':00:00';
+            console.log(heure);
+            heurebdd.replace(" ","");
+            console.log(datebdd + heurebdd);
+            
         });
-	});
+        
+        $("#boutonValider").click(function(){ 
+                moniteur = $("#moniteur").val();
+                eleve = $("#eleve").val();
+                description = $("#description").val();
+		
+                
+                $.ajax({
+                        type:"POST",
+                        url:"data.php?action=ajouterPlanning",
+                                    data:'idMoniteur=' + moniteur + '&idEleve=' + eleve + '&description=' + description + '&date=' + datebdd + " " + heurebdd,
 
+                        success : function(result, htmlStatus, jqXHR) {
+                                            alert("Ajout réussi ! ");
+                                    },
+                        error : function(jqXHR, htmlStatus, htmlError) {
+                                            alert("Echec !");
+                        }
+                });
+	});
+        
+        
+
+    });
+
+        
+        
+	
 
 
 	var bool=false;
@@ -120,7 +193,7 @@ var heurebdd = heure + ':00:00';
 		} 
 		else{
 			document.getElementById(id).style.display='block';
-			bool=true;
+			
 		}
 	}
 
@@ -168,7 +241,7 @@ var heurebdd = heure + ':00:00';
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="../assets/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -203,43 +276,24 @@ var heurebdd = heure + ':00:00';
       </div>
     </div>
 	
-	<?php
-require('date.php');
-$date = new Date();
-$year = date('Y');
-$dates = $date->getAll($year);
-$flag = 0;
-$nbSem = 0;
+    <?php
+        require('date.php');
+        $date = new Date();
+        $year = date('Y');
+        $dates = $date->getAll($year);
+        $flag = 0;
+        $nbSem = 0;
 
-include('../libs/bdd.php');
-$moniteur=getNomPrenomMoniteurs();  
-$eleve=getNomPrenomEleves();
+        include('../libs/bdd.php');
+        $moniteur=getNomPrenomMoniteurs();  
+        $eleve=getNomPrenomEleves();
 		
-?>
+    ?>
 
-<<<<<<< HEAD
-<div class="periods">
-
-
-	<!-- #### AFFICHE L'annee courante #### -->
-    <div class="year"><?php echo $year;?></div>
-    <!-- ################################## -->
-    
-    
-    <!-- On affiche la liste des mois de l'année -->
-    <div class="months"> 
-        <ul>
-            <?php foreach ($date->months as $id=>$m):?>
-                <li><a href="#" id="linkMonth<?php echo $id+1;?>"><?php echo utf8_encode(substr(utf8_decode($m),0,3));?></a></li>
-            <?php endforeach;?>
-        </ul>
-	</div>
-   <!-- ######################################## -->
    
    
-   <!-- Affichage des semaines -->
-	<div class="week">	
-=======
+	
+
     <div class="container">
 
       <div class="starter-template">
@@ -268,7 +322,7 @@ $eleve=getNomPrenomEleves();
 	   
 	   <!-- Affichage des semaines -->
 		<div class="week">	
->>>>>>> c9766d54876f0b79602f604e1fbeb4796f80271d
+
 		<h2>Semaine</h2>
  
 		<?php 
@@ -316,13 +370,13 @@ $eleve=getNomPrenomEleves();
                                     </th>
                                 <?php endforeach;?>    
                             </tr>
-                            <?php for($i=8;$i<=19;$i++) :?>
+                            <?php for($i=8;$i<=19;$i++):?>
                                     <tr>
                                         <td><?php echo $i."H00";?></td>
                                         <?php for($j=1;$j<=7;$j++) :?>
-                                            <td class="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>" value="Sem"."/".$nbSem."/"."jour"."/".$j."/"."heure"."/".$i ."/" "Mois" ."/" . $m"
+                                        <td class="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>" id="<?php echo $m."/".$j."/".$i; ?> "
 												onClick="cacher('AjouterCours')">
-											<?php echo '' ;?></td>
+					</td>
                                         <?php endfor;?>  
                                     </tr>
                             <?php endfor;?>   
@@ -341,18 +395,17 @@ $eleve=getNomPrenomEleves();
 	</div> <!-- FIN AFFICHAGE DES SEMAINES --> 
 	
 	<!-- FORMULAIRE AJOUT COURS -->
-<<<<<<< HEAD
-	<div id="AjouterCours">			
-		<form id="FormAjouterCours" method="post" action="../templates/data.php">		 
-=======
+
+	 
+
 	<div id="AjouterCours" class="oModal">			
-		<form id="FormAjouterCours method="post" action="../templates/data.php">		 
->>>>>>> c9766d54876f0b79602f604e1fbeb4796f80271d
+				 
+
 			<label for="moniteur">Moniteur</label><br />			
 				<select name="moniteur" id="moniteur">
 				<optgroup label="Sélectionnez le moniteur">				
 					<?php foreach ($moniteur as $data):?>		
-					<option value="<?php echo $data['id']; ?>"> <?php echo $data['nom'] .' '. $data['prenom']; ?></option>
+                                            <option value="<?php echo $data['id']; ?>"> <?php echo $data['nom'] .' '. $data['prenom']; ?></option>
 					<?php endforeach;?>	
 				</optgroup>
 				</select>
@@ -364,25 +417,23 @@ $eleve=getNomPrenomEleves();
 			<select name="eleve" id="eleve">
 				<optgroup label="Sélectionnez l'eleve">
 					<?php foreach ($eleve as $donnees):?>
-					<option value="<?php echo $donnees['id']; ?>"> <?php echo $donnees['nom'] .' '. $donnees['prenom']; ?></option>
+                                            <option value="<?php echo $donnees['id']; ?>"> <?php echo $donnees['nom'] .' '. $donnees['prenom']; ?></option>
 					<?php endforeach;?>
 				</optgroup>	
 			</select>
 		
 			</br></br>
 		
-		
-<<<<<<< HEAD
+
 			<label for="description">Description :</label>
 			<input type="text" name="description" id="description" />
-=======
-			<label for="description">Description :</label><br/>
-			<input type="text" name="descripion" id="descripion" />
->>>>>>> c9766d54876f0b79602f604e1fbeb4796f80271d
+
+			
+
 			</br></br>
-			<input id="boutonValider" type="submit" value="Valider" />
+			<input id="boutonValider" type="button" value="Valider" />
 					
-		</form>
+		
 	</div>	<!-- FIN FORMULAIRE AJOUT COURS -->
 		
 </div> <!-- FIN AFFFICHAGE PERIODS -->

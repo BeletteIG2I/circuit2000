@@ -122,19 +122,35 @@ function getCours() {
     return parcoursRs($res);
 }
 
-function getCoursParEleve($idEleve) {
+function getCoursParEleve($idUser) {
+    $sql = "SELECT idEleve FROM cours WHERE id =" . $idUser;
+    $idEleve = SQLGetChamp($sql);
+    
     $sql = "SELECT * FROM cours WHERE idEleve =" . $idEleve;
     $res = SQLSelect($sql);
 
     return parcoursRs($res);
 }
 
-function getCoursParMoniteur($idMoniteur) {
+function getCoursParMoniteur($idUser) {
+    
+    $sql = "SELECT idMoniteur FROM cours WHERE id =" . $idUser;
+    $idMoniteur = SQLGetChamp($sql);
+    
     $sql = "SELECT * FROM cours WHERE idMoniteur =" . $idMoniteur;
     $res = SQLSelect($sql);
 
     return parcoursRs($res);
 }
+
+function getIdUserEleve($idEleve) {
+    
+    $sql = "SELECT id FROM eleve WHERE idEleve =" . $idEleve;
+    $idUser= SQLGetChamp($sql);
+
+    return $idUser;
+}
+
 
 function UpdateTpsPause($id,$newTpsPause){
 

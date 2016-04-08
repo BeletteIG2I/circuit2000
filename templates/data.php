@@ -59,7 +59,7 @@ if($action = valider('action')) {
 
         }break;
 		
-		case 'recupVehicules' : { // On récupère les infos des vehicules
+        case 'recupVehicules' : { // On récupère les infos des vehicules
             $vehicule = getVehicules();
             echo(json_encode($vehicule));
         }break;
@@ -72,6 +72,18 @@ if($action = valider('action')) {
         case 'recupInfoUser' : { // On récupère toutes les infos d'un client
             $var = getInfosClient($_GET["id"]);
             echo(json_encode($var));
+			
+        }break;
+    
+        case 'recupInfoUserPlanning' : { // On récupère toutes les infos d'un client
+            $var = getInfosClient($_GET["idUs"]);
+            echo(json_encode($var));
+			
+        }break;
+    
+        case 'recupIdUserEleve' : { // On récupère toutes les infos d'un client
+            $var = getIdUserEleve($_GET["idEleve"]);
+            echo($var);
 			
         }break;
 		
