@@ -223,7 +223,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li><a href="../index.php">Accueil</a></li>
-            <li><a href="#planning">Planning</a></li>
+            <li><a href="calendar.php">Planning</a></li>
 			<li class="active"><a href="gestionCours.php">Cours</a></li>
             <li><a href="modifInfos2.php">Modifications</a></li>
             <li><a href="tempsPause.html">Temps de pause</a></li>
