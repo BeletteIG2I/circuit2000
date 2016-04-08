@@ -307,7 +307,7 @@ if($action = valider('action')) {
 			
 		 if($res != NULL){
 			
-			$tpsPauseUpdate = getTpsPauseParCours($_GET["idCours"]);
+				$tpsPauseUpdate = getTpsPauseParCours($_GET["idCours"]);
 			$nouveauTpsPause = $tpsPauseUpdate[0]['temps_pause'];
                 
             echo $nouveauTpsPause;
@@ -378,15 +378,20 @@ if($action = valider('action')) {
 
 		case 'ajouterPlanning' : {
 			
-			$res = NULL
-			if(($idMoniteur = valider("idMoniteur","POST")) && ($idEleve = valider("idEleve", "POST")) 
-				&& ($description = valider("description", "POST")) && ($date = valider("date", "POST")))
-			{  
+			$res = NULL;
+			  
+				$idMoniteur = $_POST['idMoniteur'];
+				$idEleve = $_POST['idEleve'];
+				$description = $_POST['description'];
+				$date = $_POST['date'];
+				
 				$res = CreationCoursPlanning($idMoniteur,$idEleve,$description,$date);			
 				echo(json_encode($res));				
-			}
+			
+			
 		}	
 		break;
+		
 		
 		/* Auteur : Maxime De Coster */
         

@@ -18,14 +18,14 @@ include("maLibSQL.php");
 
 
 	function getNomPrenomMoniteurs(){
-		$sql="SELECT nom, prenom FROM user WHERE fonction=2";
+		$sql="SELECT id, nom, prenom FROM user WHERE fonction=2";
 		$res = SQLSelect($sql);
 
 		return parcoursRs($res);
 	}
 
 	function getNomPrenomEleves(){
-		$sql="SELECT nom, prenom FROM user WHERE fonction=0";
+		$sql="SELECT id, nom, prenom FROM user WHERE fonction=0";
 		$res = SQLSelect($sql);
 
 		return parcoursRs($res);

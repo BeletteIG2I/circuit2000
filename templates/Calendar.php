@@ -1,171 +1,3 @@
-<?php session_start(); ?>
-<style>
-body {
-    background: #eeeeee none repeat scroll 0 0;
-    font-family: Helvetica;
-    letter-spacing: 1px;
-    padding: 10px;
-}
-.year {
-    color: #d90000;
-    font-size: 85px;
-}
-.relative {
-    position: relative;
-}
-
-.month {
-    margin-top: 30px;
-}
-.months ul {
-    list-style: outside none none;
-    margin: 0;
-    padding: 0;
-}
-.months ul li a {
-    color: #888888;
-    float: left;
-    font-size: 20px;
-    font-weight: bold;
-    margin: -1px;
-    padding: 0 15px 0 0;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-.months ul li a:hover, .months ul li a.active {
-    color: #d90000;
-}
-
-
-.week {
-    margin-top: 30px;
-
-}
-.week ul {
-    list-style: outside none none;
- 
-}
-.week ul li a {
-    color: #888888;
-    float: left;
-    font-size: 20px;
-    font-weight: bold;
-    margin: -1px;
-    padding: 24px 10px;
-    text-decoration: none;
-    text-transform: uppercase;
-}
-.week ul li a:hover, .week ul li a.active {
-    color: #d90000;
-}
-
-
-
-h2{	
-float:left;
-}
-
-
-table {
-    border-collapse: collapse;
-}
-table td {
-    border: 1px solid #a3a3a3;
-    height: 80px;
-    width: 80px;
-}
-table td.today {
-    border: 2px solid #d90000;
-    height: 80px;
-    width: 80px;
-}
-table td.padding {
-    border: medium none;
-}
-table td:hover {
-    background: #dfdfdf none repeat scroll 0 0;
-    cursor: pointer;
-}
-table th {
-    color: #a8a8a8;
-    font-weight: normal;
-}
-table td .day {
-    bottom: -40px;
-    color: #8c8c8c;
-    font-size: 24.3pt;
-    font-weight: bold;
-    position: absolute;
-    right: 5px;
-}
-table td .events {
-    height: 0;
-    margin: -39px 0 0;
-    padding: 0;
-    position: relative;
-    width: 79px;
-}
-table td .events li {
-    background: #000 none repeat scroll 0 0;
-    border-radius: 10px;
-    float: left;
-    height: 10px;
-    margin-left: 6px;
-    overflow: hidden;
-    text-indent: -3000px;
-    width: 10px;
-}
-table td:hover .events {
-    left: 582px;
-    list-style: outside none none;
-    margin: 0;
-    padding: 11px 0 0;
-    position: absolute;
-    top: 66px;
-    width: 442px;
-}
-table td:hover .events li {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-    border-bottom: 1px solid #d6d6d6;
-    font-weight: bold;
-    height: 40px;
-    line-height: 40px;
-    padding-left: 41px;
-    text-indent: 0;
-    width: 500px;
-}
-table td:hover .events li:first-child {
-    border-top: 1px solid #d6d6d6;
-}
-table td .daytitle {
-    display: none;
-}
-table td:hover .daytitle {
-    color: #d90000;
-    display: block;
-    font-size: 41px;
-    font-weight: bold;
-    left: 582px;
-    list-style: outside none none;
-    margin: 0 0 0 16px;
-    padding: 0;
-    position: absolute;
-    top: 21px;
-    width: 442px;
-}
-.clear {
-    clear: both;
-}
-
-#AjouterCours{
-float:right;
-display:none;
-<!-- A PLACER A COTE DU TABLEAU PLANNING SVP AVEC UN JOLI CADRE, AMUSE TOI BIEN ADRIEN -->
-}
-
-
-</style>
-<!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
 <script type="text/javascript">
 
@@ -217,7 +49,7 @@ display:none;
     });
 	
 var now = new Date();
-var year = now.getYear();
+var year = now.getFullYear();
 var mois = $(this).val().split("/")[10];
 var jour = $(this).val().split("/")[4];
 var heure = $(this).val().split("/")[6];;
@@ -316,7 +148,62 @@ var heurebdd = heure + ':00:00';
 	}
 </script>
 
-<?php
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/Calendar.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.php"><img id="logo" src="../images/logosf.png"></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="../index.php">Accueil</a></li>
+            <li class="active"><a href="calendar.php">Planning</a></li>
+            <li><a href="gestionCours.php">Cours</a></li>
+            <li><a href="modifInfos2.php">Modifications</a></li>
+			<li><a href="tempsPause.html">Temps de pause</a></li>
+			<li><a href="#logout">Déconnexion</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
+	
+	<?php
 require('date.php');
 $date = new Date();
 $year = date('Y');
@@ -330,6 +217,7 @@ $eleve=getNomPrenomEleves();
 		
 ?>
 
+<<<<<<< HEAD
 <div class="periods">
 
 
@@ -351,6 +239,36 @@ $eleve=getNomPrenomEleves();
    
    <!-- Affichage des semaines -->
 	<div class="week">	
+=======
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Planning</h1>
+		<div id="body">
+			<div class="periods">
+			<form>Creer cour (provisoire) : 
+				<input type='button' value='Pop Up' onClick='PopupCentrer("popUpCalendar.php",1000,700,"menubar=no,scrollbars=no,statusbar=no")'>
+			</form>
+
+				<!-- #### AFFICHE L'annee courante #### -->
+				<div class="year"><?php echo $year;?></div>
+				<!-- ################################## -->
+				
+				
+				<!-- On affiche la liste des mois de l'année -->
+				<div class="months"> 
+					<ul>
+						<?php foreach ($date->months as $id=>$m):?>
+							<li><a href="#" id="linkMonth<?php echo $id+1;?>"><?php echo utf8_encode(substr(utf8_decode($m),0,3));?></a></li>
+						<?php endforeach;?>
+					</ul>
+				</div>
+			   <!-- ######################################## -->
+	   
+	   
+	   <!-- Affichage des semaines -->
+		<div class="week">	
+>>>>>>> c9766d54876f0b79602f604e1fbeb4796f80271d
 		<h2>Semaine</h2>
  
 		<?php 
@@ -423,13 +341,18 @@ $eleve=getNomPrenomEleves();
 	</div> <!-- FIN AFFICHAGE DES SEMAINES --> 
 	
 	<!-- FORMULAIRE AJOUT COURS -->
+<<<<<<< HEAD
 	<div id="AjouterCours">			
 		<form id="FormAjouterCours" method="post" action="../templates/data.php">		 
+=======
+	<div id="AjouterCours" class="oModal">			
+		<form id="FormAjouterCours method="post" action="../templates/data.php">		 
+>>>>>>> c9766d54876f0b79602f604e1fbeb4796f80271d
 			<label for="moniteur">Moniteur</label><br />			
 				<select name="moniteur" id="moniteur">
 				<optgroup label="Sélectionnez le moniteur">				
 					<?php foreach ($moniteur as $data):?>		
-					<option value="<?php echo $data['nom']; ?>"> <?php echo $data['nom'] .' '. $data['prenom']; ?></option>
+					<option value="<?php echo $data['id']; ?>"> <?php echo $data['nom'] .' '. $data['prenom']; ?></option>
 					<?php endforeach;?>	
 				</optgroup>
 				</select>
@@ -441,7 +364,7 @@ $eleve=getNomPrenomEleves();
 			<select name="eleve" id="eleve">
 				<optgroup label="Sélectionnez l'eleve">
 					<?php foreach ($eleve as $donnees):?>
-					<option value="<?php echo $donnees['nom']; ?>"> <?php echo $donnees['nom'] .' '. $donnees['prenom']; ?></option>
+					<option value="<?php echo $donnees['id']; ?>"> <?php echo $donnees['nom'] .' '. $donnees['prenom']; ?></option>
 					<?php endforeach;?>
 				</optgroup>	
 			</select>
@@ -449,23 +372,34 @@ $eleve=getNomPrenomEleves();
 			</br></br>
 		
 		
+<<<<<<< HEAD
 			<label for="description">Description :</label>
 			<input type="text" name="description" id="description" />
+=======
+			<label for="description">Description :</label><br/>
+			<input type="text" name="descripion" id="descripion" />
+>>>>>>> c9766d54876f0b79602f604e1fbeb4796f80271d
 			</br></br>
-			<input id="boutonValider" type="button" value="Valider" />
+			<input id="boutonValider" type="submit" value="Valider" />
 					
 		</form>
 	</div>	<!-- FIN FORMULAIRE AJOUT COURS -->
 		
 </div> <!-- FIN AFFFICHAGE PERIODS -->
 
-       
-    
+
+		</div>
+      </div>
+
+    </div><!-- /.container -->
 
 
-
-
-
-
-
-
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

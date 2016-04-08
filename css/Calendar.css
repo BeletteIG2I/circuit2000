@@ -1,0 +1,189 @@
+body {
+	margin-top: 50px;
+    background: #eeeeee none repeat scroll 0 0;
+	font-family: Helvetica;
+    letter-spacing: 1px;
+    padding: 10px;
+}
+
+#logo{
+	margin-top:-17px;
+	width:100px;
+	
+}
+
+h1{
+	color:white;
+}
+
+
+
+.year {
+    color: #d90000;
+    font-size: 85px;
+}
+.relative {
+    position: relative;
+}
+
+.month {
+    margin-top: 30px;
+}
+.months ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+.months ul li a {
+    color: #888888;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -1px;
+    padding: 0 15px 0 0;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.months ul li a:hover, .months ul li a.active {
+    color: #d90000;
+}
+
+
+.week {
+    margin-top: 30px;
+
+}
+.week ul {
+    list-style: outside none none;
+ 
+}
+.week ul li a {
+    color: #888888;
+    float: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin: -1px;
+    padding: 24px 10px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.week ul li a:hover, .week ul li a.active {
+    color: #d90000;
+}
+
+
+
+h2{	
+float:left;
+}
+
+
+table {
+    border-collapse: collapse;
+}
+table td {
+    border: 1px solid #a3a3a3;
+    height: 80px;
+    width: 80px;
+}
+table td.today {
+    border: 2px solid #d90000;
+    height: 80px;
+    width: 80px;
+}
+table td.padding {
+    border: medium none;
+}
+table td:hover {
+    background: #dfdfdf none repeat scroll 0 0;
+    cursor: pointer;
+}
+table th {
+    color: #a8a8a8;
+    font-weight: normal;
+}
+table td .day {
+    bottom: -40px;
+    color: #8c8c8c;
+    font-size: 24.3pt;
+    font-weight: bold;
+    position: absolute;
+    right: 5px;
+}
+table td .events {
+    height: 0;
+    margin: -39px 0 0;
+    padding: 0;
+    position: relative;
+    width: 79px;
+}
+table td .events li {
+    background: #000 none repeat scroll 0 0;
+    border-radius: 10px;
+    float: left;
+    height: 10px;
+    margin-left: 6px;
+    overflow: hidden;
+    text-indent: -3000px;
+    width: 10px;
+}
+table td:hover .events {
+    left: 582px;
+    list-style: outside none none;
+    margin: 0;
+    padding: 11px 0 0;
+    position: absolute;
+    top: 66px;
+    width: 442px;
+}
+table td:hover .events li {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border-bottom: 1px solid #d6d6d6;
+    font-weight: bold;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 41px;
+    text-indent: 0;
+    width: 500px;
+}
+table td:hover .events li:first-child {
+    border-top: 1px solid #d6d6d6;
+}
+table td .daytitle {
+    display: none;
+}
+table td:hover .daytitle {
+    color: #d90000;
+    display: block;
+    font-size: 41px;
+    font-weight: bold;
+    left: 582px;
+    list-style: outside none none;
+    margin: 0 0 0 16px;
+    padding: 0;
+    position: absolute;
+    top: 21px;
+    width: 442px;
+}
+.clear {
+    clear: both;
+}
+
+#AjouterCours{
+	#position:fixed;
+	z-index:2px;
+	background-color: black;
+	#border:10px black;
+	#position:absolute;	
+	#margin-top:-70%;
+	#margin-left:-6%;
+	position: absolute; 
+    top: windowHeight / 2 - popupHeight / 2;
+    left: windowWidth / 2 - popupWidth / 2;
+	#margin-bottom:20%;
+	#margin-left:35%;
+	#margin-right:35%;
+	#margin-top:20%;
+	display:none;
+}
+
