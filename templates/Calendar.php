@@ -215,9 +215,15 @@ display:none;
 				 
 		});  
     });
-			
 	
-	
+var now = new Date();
+var year = now.getYear();
+var mois = $(this).val().split("/")[10];
+var jour = $(this).val().split("/")[4];
+var heure = $(this).val().split("/")[6];;
+var datebdd = year + '-' + mois + '-' + jour;
+var heurebdd = heure + ':00:00';
+
 	
 	/*	
 	
@@ -255,22 +261,23 @@ display:none;
         });
 	});
 
+*/
 
-	$(document).on("click","input[type=button][value=Valider]", function(){ //on le fait quand on appui sur le bouton VALIDER du PopUp
+	$("#boutonValider").click (function(){ 
 		$.ajax({
             type:"POST",
             url:"data.php?action=ajouterPlanning",
-			data:'idMoniteur=' + moniteur + '&idEleve=' + eleve + '&description=' + description + '&date=' $year-$m-$j $i:00:00,
+			data:'idMoniteur=' + moniteur + '&idEleve=' + eleve + '&description=' + description + '&date=' + datebdd + heurebdd,
 			
-            success:function(result, htmlStatus, jqXHR) {
+            success : function(result, htmlStatus, jqXHR) {
 				alert("Ajout réussi ! ");
 			},
             error : function(jqXHR, htmlStatus, htmlError) {
-			console.log("Status :" + htmlStatus + " \nError : " + htmlError);
+				alert("Echec !");
 			}
         });
 	});
-*/
+
 
 
 	var bool=false;
@@ -324,9 +331,7 @@ $eleve=getNomPrenomEleves();
 ?>
 
 <div class="periods">
-<form>Creer cour (provisoire) : 
-	<input type='button' value='Pop Up' onClick='PopupCentrer("popUpCalendar.php",1000,700,"menubar=no,scrollbars=no,statusbar=no")'>
-</form>
+
 
 	<!-- #### AFFICHE L'annee courante #### -->
     <div class="year"><?php echo $year;?></div>
@@ -397,7 +402,8 @@ $eleve=getNomPrenomEleves();
                                     <tr>
                                         <td><?php echo $i."H00";?></td>
                                         <?php for($j=1;$j<=7;$j++) :?>
-                                            <td class="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>" onClick="cacher('AjouterCours')">
+                                            <td class="<?php echo "Sem".$nbSem."jour".$j."heure".$i;?>" value="Sem"."/".$nbSem."/"."jour"."/".$j."/"."heure"."/".$i ."/" "Mois" ."/" . $m"
+												onClick="cacher('AjouterCours')">
 											<?php echo '' ;?></td>
                                         <?php endfor;?>  
                                     </tr>
@@ -418,7 +424,7 @@ $eleve=getNomPrenomEleves();
 	
 	<!-- FORMULAIRE AJOUT COURS -->
 	<div id="AjouterCours">			
-		<form id="FormAjouterCours method="post" action="../templates/data.php">		 
+		<form id="FormAjouterCours" method="post" action="../templates/data.php">		 
 			<label for="moniteur">Moniteur</label><br />			
 				<select name="moniteur" id="moniteur">
 				<optgroup label="Sélectionnez le moniteur">				
@@ -444,10 +450,10 @@ $eleve=getNomPrenomEleves();
 		
 		
 			<label for="description">Description :</label>
-			<input type="text" name="descripion" id="descripion" />
+			<input type="text" name="description" id="description" />
 			</br></br>
 			<input id="boutonValider" type="button" value="Valider" />
-		
+					
 		</form>
 	</div>	<!-- FIN FORMULAIRE AJOUT COURS -->
 		
