@@ -107,12 +107,14 @@ $(document).ready(function() {
 
 	$(document).on('click','#submit_connexion',function() { // Au clic sur le bouton de connexion dans le formulaire d'identification
 		afficherEspaceClients();
+                location.reload(true);
 	});
 
-	$(document).on('keypress','#identification input',function(e) { // Sur l'appui d'une touche dans un input du formulaire d'identification
+	$(document).on('keypress','#password',function(e) { // Sur l'appui d'une touche dans un input du formulaire d'identification
 		// Permet de taper sur "Entrée" lorsque l'on se situe dans le champ login ou le champ password
-		if(e.which == 13) // Si cette touche est la touche "Entrée"
+		if(e.which == 13){ // Si cette touche est la touche "Entrée"
 			afficherEspaceClients();
+                        location.reload(true);}
 	});
 
 	$(document).on('click',"#oubliMdp",function() { // Au clic sur le bouton "Mot de passe oublié"
@@ -205,14 +207,18 @@ $(document).ready(function() {
 		$('#new_password').hide();
 	});
 
-	$(document).on('click','#deco',function() { // Au clic sur le bouton de déconnexion
+	$(document).on('click','.deco',function() { // Au clic sur le bouton de déconnexion
 		$.ajax({
 			type:'POST',
 			url:'./templates/recup_data.php',
 			data:{action:"deconnecter"},
 			success:function(result, textStatus, jqXHR) {
 				$('#identification').show(); // On réaffiche la page de connexion
-				$('#espace_perso').remove(); // On retire du DOM l'espace perso
+				$('#espace_perso').remove();// On retire du DOM l'espace perso
+                                $('#menuAdmin').hide();
+                                $('#menuClient').hide();
+                                $('#menuMoniteur').hide();  
+                                $("#connexion").show();
 			},
 	        error : function(resultat, statut, erreur) {
 	            console.log('Erreur AJAX sur le chargement de l\'espace clients');
