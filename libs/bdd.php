@@ -134,7 +134,7 @@ function getCoursParEleve($idUser) {
 
 function getCoursParMoniteur($idUser) {
     
-    $sql = "SELECT idMoniteur FROM cours WHERE id =" . $idUser;
+    $sql = "SELECT idMoniteur FROM moniteur WHERE id =" . $idUser;
     $idMoniteur = SQLGetChamp($sql);
     
     $sql = "SELECT * FROM cours WHERE idMoniteur =" . $idMoniteur;
@@ -157,7 +157,7 @@ function UpdateTpsPause($id,$newTpsPause){
     $sql = "UPDATE cours SET temps_pause='".$newTpsPause."' WHERE id=".$id ;
     $res=SQLUpdate($sql);
 
-    return parcoursRs($res);
+    return $res;
 
 }
 

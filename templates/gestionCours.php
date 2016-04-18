@@ -79,23 +79,36 @@
                         type: "GET",
                         url: "../templates/data.php?action=recupInfoCours&idUser=" + $idUser,
                         success: function (result, htmlStatus, jqXHR) {
-
+                            
                             result = $.parseJSON(result);
-
+                            var laDate = new Date();
+                            console.log(laDate);
                             $.each(result, function (i, value) {
 
                                 var obj = value;
+                                joursCours = obj.date.split('-')[2].substring(0,2);
+                                moisCours = obj.date.split('-')[1];
+                                anneeCours = obj.date.split('-')[0];
+                                
+                                if(joursCours.substring(0,1)==="0")
+                                {
+                                    joursCours = joursCours.replace("0","");
+                                }
+                                
+                                if(moisCours.substring(0,1)==="0")
+                                {
+                                    moisCours = moisCours.replace("0","");
+                                }
+                                $("#infosCours").prepend('<div id=' + i + '>'+'</div>');
+                                if(joursCours == laDate.getDate() && moisCours == (laDate.getMonth()+1) && anneeCours == laDate.getFullYear()){
+                                    $.each(obj, function (key, value2) {
 
-                                $("#infosCours").prepend('<div id=' + i + '>'+ +'</div>');
+                                       $("#"+i).append('     <div class="info">' + key + ' : ' + value2 + '</div></br>');
 
-                                $.each(obj, function (key, value2) {
+                                    });
 
-                                   $("#"+i).append('     <div class="info">' + key + ' : ' + value2 + '</div></br>');
-
-                                });
-
-                                $("#"+i).append('<input type="button" class ="btn" value="Lancer le cours" id="' + result[i].id + '" onclick="getId(this)" />');
-
+                                    $("#"+i).append('<input type="button" class ="btn" value="Lancer le cours" id="' + result[i].id + '" onclick="getId(this)" />');
+                                }        
                             });
 
 
@@ -141,15 +154,14 @@
 
                                 if (result.search('erreur:') != -1) {
 
-                                    $('#msgError').text(result.substring(7, result.length));
-                                    $('#msgError').css("border-color", "red");
-                                    // On enl�ve la cha�ne de caract�res 'erreur:' pour afficher le message d'erreur
+                                    alert(result.substring(7, result.length));
+                                    
 
                                 }
                                 else { //si pas d'erreurs
 
                                     $(".newTpsPause").val(nouveauTpsPause);
-
+                                    alert("Temps bien enregistré");
                                 }
 
                                 $('#msgError').show();// On affiche le message
@@ -171,6 +183,7 @@
                 function getId(ele) {
                     id = ele.id;
                     document.forsec.id.value = " " + id;
+                    
                 }
 
     </script>

@@ -45,7 +45,7 @@ ob_start("ob_gzhandler");
 			});
 
 			function afficherEspaceClients() { // Affiche l'espace client correspondant à l'utilisateur connecté
-				var chaine = "";
+				
                                 
                                 
                                 
@@ -56,20 +56,12 @@ ob_start("ob_gzhandler");
 					success:function(result, textStatus, jqXHR) {
 						if(result.search('problem:') != -1) {
 							
-							$('#msgErrorConnexion').text(result.substring(8,result.length));
-							// On enlève la chaîne de caractères 'erreur:' pour afficher le message d'erreur
-							$('#msgErrorConnexion').show(); // On affiche le message
-							$('#msgErrorConnexion').fadeOut(4000,'easeInExpo'); // On le fait disparaître en 4s en easeInExpo
+							alert(result.substring(8,result.length));
+							
                                                         
 						}
 						else { // Si pas d'erreurs
-							$('#identification').hide(); // On cache le formulaire d'identification
-							$('#espace_clients').append(result); // On affiche l'espace perso
-							
-                                                        
-                                                            
-                                                            
-                                                         
+						
                                                         //$("#connexion").html("Bienvenue");
 						}
 					},
@@ -84,7 +76,8 @@ ob_start("ob_gzhandler");
                         
                         function afficheMenu(){
                             $("#connexion").hide();
-                            $fonctionUser = <?php echo("'".$_SESSION["admin"]."'"); ?>;
+                            if(<?php echo((isset($_SESSION['admin']) && $_SESSION['admin']) ? 1 : 0);  ?>)
+                                $fonctionUser = <?php echo("'".$_SESSION["admin"]."'"); ?>;
 				
                                 if($fonctionUser || $fonctionUser==0)
                                 {

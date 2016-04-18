@@ -64,7 +64,7 @@ if($action = valider('action')) {
             echo(json_encode($vehicule));
         }break;
 		
-		case 'recupCours' : { // On récupère les id, noms, prénoms et immatVoiture des moniteurs
+	case 'recupCours' : { // On récupère les id, noms, prénoms et immatVoiture des moniteurs
             $cours = getCours();
             echo(json_encode($cours));
         }break;
@@ -94,17 +94,9 @@ if($action = valider('action')) {
         }break;
 		
 		case 'recupInfoCours' : { // On récupère toutes les infos d'un client
-			if($_SESSION["admin"]==0){
-				//$var = getCoursParEleve($_GET["idUser"]);
-				$var = getCoursParEleve($_SESSION["idUser"]);
-				
-				echo(json_encode($var));
-				
-			}else if($_SESSION["admin"]==2){
-				//$var = getCoursParMoniteur($_GET["idUser"]);
-				$var = getCoursParMoniteur($_SESSION["idUser"]);
-				echo(json_encode($var));
-			}
+		
+                    $var = getCoursParMoniteur($_SESSION["idUser"]);
+                    echo(json_encode($var));
             
 			
         }break;
@@ -317,12 +309,12 @@ if($action = valider('action')) {
                 $res = UpdateTpsPause($_GET["idCours"], $_GET["newTpsPause"]);
 
 			
-		 if($res != NULL){
+		 if($res==1){
 			
-				$tpsPauseUpdate = getTpsPauseParCours($_GET["idCours"]);
+			$tpsPauseUpdate = getTpsPauseParCours($_GET["idCours"]);
 			$nouveauTpsPause = $tpsPauseUpdate[0]['temps_pause'];
                 
-            echo $nouveauTpsPause;
+                        echo $nouveauTpsPause;
 
             }
             else
