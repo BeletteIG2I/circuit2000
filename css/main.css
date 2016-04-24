@@ -260,7 +260,7 @@ nav {
 		margin: 0;
 	}
 	
-	#faq, #espace_clients, #contact {
+	#faq, #contact {
 		padding: 20px 10px;
 	}
 	
@@ -324,6 +324,14 @@ nav {
 	
 	#menuTel p {
 		margin: 27px 0;
+	}
+	
+	.navigateur.btnMenu1 {
+		margin-left: 5%;
+	}
+	
+	.navigateur.btnMenu4 {
+		margin-left: 20%;
 	}
 	
 /* ====================
@@ -407,7 +415,7 @@ nav {
 		height: 100px;
 	}
 	
-	#faq, #espace_clients, #contact {
+	#faq, #contact {
 		padding: 30px;
 	}
 	

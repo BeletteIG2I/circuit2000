@@ -56,9 +56,6 @@
 						case 'navigateur btnMenu4':
 							$("#faq").removeClass("hidden");
 						break;
-						case 'navigateur btnMenu5':
-							$("#espace_clients").removeClass("hidden");
-						break;
 						case 'navigateur btnMenu6':
 							$("#contact").removeClass("hidden");
 						break;
@@ -99,13 +96,7 @@
 			});
 			
 			function cacherCorps() {
-				$("#connexionTel ,#nos_services ,#l_auto_ecole ,#nos_bureaux ,#faq ,#espace_clients ,#contact").addClass("hidden");
-				/*$("#nos_services").addClass("hidden");
-				$("#l_auto_ecole").addClass("hidden");
-				$("#nos_bureaux").addClass("hidden");
-				$("#faq").addClass("hidden");
-				$("#espace_clients").addClass("hidden");
-				$("#contact").addClass("hidden");*/
+				$("#connexionTel ,#nos_services ,#l_auto_ecole ,#nos_bureaux ,#faq ,#contact").addClass("hidden");
 			}
 			
 			function cacherLi() {
