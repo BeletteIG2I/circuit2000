@@ -76,7 +76,7 @@ ob_start("ob_gzhandler");
                         
                         function afficheMenu(){
                             $("#connexion").hide();
-                            if(<?php echo((isset($_SESSION['admin']) && $_SESSION['admin']) ? 1 : 0);  ?>)
+                            
                                 $fonctionUser = <?php echo("'".$_SESSION["admin"]."'"); ?>;
 				
                                 if($fonctionUser || $fonctionUser=='0')
@@ -94,8 +94,9 @@ ob_start("ob_gzhandler");
                                             $("#menuMoniteur").show();
                                         break;
                                     }
-                                }
+                                
                         }
+                    }
 
 			
 		</script>
