@@ -79,7 +79,7 @@ ob_start("ob_gzhandler");
                             if(<?php echo((isset($_SESSION['admin']) && $_SESSION['admin']) ? 1 : 0);  ?>)
                                 $fonctionUser = <?php echo("'".$_SESSION["admin"]."'"); ?>;
 				
-                                if($fonctionUser || $fonctionUser==0)
+                                if($fonctionUser || $fonctionUser=='0')
                                 {
                                     switch($fonctionUser){
                                         case '0':
