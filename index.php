@@ -123,24 +123,34 @@
 				</article>
 				<article id="nos_services">
 					<div id="bloc1">
-						<div id="aac" class="prestations blocH">
-							<img id="img_aac" src="images/logo_conduite_accompagnee.png">
-							<span>Conduite accompagnée</span>
+						<div id="aac" class="prestations blocH" onclick="">
+							<a href="/prestations/aac.html">
+								<img id="img_aac" src="images/logo_conduite_accompagnee.png">
+								<span>Conduite accompagnée</span>
+							</a>
 						</div><div id="moto" class="prestations blocH">
-							<img id="img_moto" src="images/logo_moto.png">
-							<span>Moto</span>
+							<a href="/prestations/moto.html">
+								<img id="img_moto" src="images/logo_moto.png">
+								<span>Moto</span>
+							</a>
 						</div><div id="forfait" class="prestations blocH">
-							<img id="img_forfait" src="images/logo_conduite_accompagnee.png">
-							<span>Forfait</span>
+							<a href="/prestations/forfait.html">
+								<img id="img_forfait" src="images/logo_conduite_accompagnee.png">
+								<span>Forfait</span>
+							</a>
 						</div>
 					</div>
 					<div id="bloc2">
 						<div id="permis_am" class="prestations blocB">
-							<img id="img_permis_am" src="images/logo_permis_am.png">
-							<span>Permis AM</span>
+							<a href="/prestations/permis_am.html">
+								<img id="img_permis_am" src="images/logo_permis_am.png">
+								<span>Permis AM</span>
+							</a>
 						</div><div id="retrait" class="prestations blocB">
-							<img id="img_retrait" src="images/logo_retrait.png">
-							<span>Retrait</span>
+							<a href="/prestations/retrait.html">
+								<img id="img_retrait" src="images/logo_retrait.png">
+								<span>Retrait</span>
+							</a>
 						</div>
 					</div>
 				</article>

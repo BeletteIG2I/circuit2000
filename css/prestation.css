@@ -1,0 +1,41 @@
+body {
+	background-image: url(../images/fond.png);
+	margin: 0;
+}
+
+img {
+	width: 20px;
+}
+
+@font-face { /* Police de l'auto école */
+		font-family: 'AutoMoto';
+		src: url('../polices/automoto-webfont.eot');
+		src: url('../polices/automoto-webfont.eot?#iefix') format('embedded-opentype'),
+			 url('../polices/automoto-webfont.woff') format('woff'),
+			 url('../polices/automoto-webfont.ttf') format('truetype'),
+			 url('../polices/automoto-webfont.svg#AutoMoto') format('svg');
+}
+
+.prestation {
+	background-color: black;
+	color: white;
+	
+	margin: 50px auto;
+	padding: 20px 50px;
+	
+	width: 80%;
+	
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+}
+
+.prestation h1 {
+	font-family: 'AutoMoto';
+	
+	text-align: center;
+}
+
+.prestation article, .prestation aside {
+	border-top: 1px white solid;
+}

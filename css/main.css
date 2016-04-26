@@ -289,10 +289,13 @@ nav {
 			 url('../polices/automoto-webfont.svg#AutoMoto') format('svg');
 	}
 	
-	body {
+	body, a {
 		color: white;
 	}
 	
+	a {
+		text-decoration: none;
+	}
 /* ==========================================================================
    Media Queries
    ========================================================================== */
