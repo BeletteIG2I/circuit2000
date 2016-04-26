@@ -1,0 +1,50 @@
+h2{
+	font-size:100%;
+	
+}
+#infos{
+	margin-left:10%;
+	margin-right:10%;
+	
+}
+
+#suivi td{
+	#border: 2px solid white;
+	
+}
+
+#infos .gauche {
+	width:15%;
+}
+
+#infos .milieu{
+	width:80%;
+}
+
+#infos .droite{
+	width:15%;
+}
+
+#suivi{
+	margin-left:10%;
+	margin-right:10%;
+}
+
+#suivi .gauche{
+	width:50%;
+}
+
+#suivi .droite{
+	width:50%;
+}
+
+button {
+	
+	margin-top:10px;
+}
+
+
+
+
+
+

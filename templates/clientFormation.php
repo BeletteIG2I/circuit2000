@@ -15,7 +15,7 @@
     //$id=1;
     //$leClient = getInfosClient($_SESSION["idUser"]);
 ?>
-<link rel="stylesheet" type="html/css" href="../css/client.css">
+<link rel="stylesheet" type="html/css" href="../css/client2.css">
 <script type="html/javascript">
     
     $(document).ready( function() {
@@ -288,7 +288,7 @@
 <!-- <script type="html/javascript" src="js/clientFormation.min.js"></script> -->
 <div id="infosFormation">
     <h1>Mes Informations</h1>
-    <table>
+    <table id="infos">
         <tr>
             <td class="gauche"> <h2> Adresse :  </h2> </td>
             <td class="milieu" id="htmlAdresseClient"></td>
@@ -319,7 +319,7 @@
 <div id="suiviFormation">
     <h1> Suivi de ma Formation </h1> 
 
-    <table>
+    <table id="suivi">
         <tr>
             <td class="gauche"> <h2> Date d'obtention du code : </h2> </td>
             <td class="droite" id="dateCode"></td>
@@ -329,10 +329,10 @@
             <td class="droite" id="datePermis"></td>
         </tr>
     </table>
-
+	<br/>
     <div id="requetes">
-        <input type="button" id="requete1" value="Où en suis-je dans ma formation ?" /> <br/>
-        <input type="button" id="requete2" value="Combien me reste-t-il à payer ?" /> <br/>
+        <input type="button" id="requete1" value="Où en suis-je dans ma formation ?" /> 
+        <input type="button" id="requete2" value="Combien me reste-t-il à payer ?" /> <br/><br/>
         <input type="button" id="requete3" value="Pouvez-vous me transmettre ma dernière facture ?" />
     </div>
 

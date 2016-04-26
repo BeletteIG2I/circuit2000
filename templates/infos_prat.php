@@ -8,9 +8,11 @@
 
 <link rel="stylesheet" type="text/css" href="../css/infos_prat.css">
 <script type="text/javascript" src="../js/infos_prat.js"></script>
+<br/><br/><br/>
 <div id="infos_prat">
 	<?php if(isset($_SESSION['admin']) && $_SESSION['admin']) { ?>
 	<div id="conseils">
+	
 		<h1>Conseils et astuces</h1>
 		<div class="form">
 			<textarea></textarea>
@@ -35,16 +37,18 @@
 	<div id="verif">
 		<h1>Vérifications intérieures</h1>
 		<div id="clic_verif_inter">
-			<!-- <img src="./images/verif_inter.png"> -->
+			<img id="img" src="../images/verif_inter.png">
 		</div>
+		
 		<h1 class="titre2">Vérifications extérieures</h1>
 		<div id="clic_verif_exter">
-			<!-- <img src="./images/verif_exter.png"> -->
+			 <img id="img" src="../images/verif_exter.png"> 
 		</div>
 	</div>
 	<div class="separateur"></div>
+
 	<div id="conseils_fichiers">
-		<h1>Conseils et astuces</h1>
+		<h1 class="titre2">Conseils et astuces</h1>
 		<div id="conseils_astuces">
 
 		</div>

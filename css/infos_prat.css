@@ -5,7 +5,7 @@
 */
 
 #infos_prat {margin:0 1%;width:98%;}
-#infos_prat div {vertical-align:top;display:inline-block;}
+#infos_prat div {#vertical-align:top;#display:inline-block;}
 #infos_prat .form {display:block;}
 
 #espace_clients .separateur {
@@ -18,7 +18,7 @@
 	background-color:white;
 }
 
-#fichiers, #conseils, #verif, #conseils_fichiers {width:49%;}
+#fichiers, #conseils, #verif, #conseils_fichiers {width:100%;}
 
 #espace_clients h1 {
 	color:white;
@@ -67,11 +67,16 @@
 	background-size:100%;
 }
 
-#clic_verif_inter {background-image:url(../images/verif_inter.png);}
-#clic_verif_exter {background-image:url(../images/verif_exter.png);}
+#clic_verif_inter {#background-image:url(../images/verif_inter.png);}
+#clic_verif_exter {#background-image:url(../images/verif_exter.png);}
 #clic_verif_inter:hover, #clic_verif_exter:hover {cursor:pointer;}
 #infos_prat h1 {margin:0;}
-#infos_prat .titre2 {margin-top:20px;}
+#infos_prat .titre2 {margin-top:20%;}
+
+#img{
+	margin-left:5%;
+	width:100%; 	
+}
 
 .file {
 	background:transparent;
