@@ -83,7 +83,7 @@ table {
 }
 table td {
     border: 1px solid #a3a3a3;
-    height: 80px;
+    height: 60px;
     width: 80px;
 }
 table td.today {
@@ -170,16 +170,20 @@ table td:hover .daytitle {
 }
 
 #AjouterCours{
-	#position:fixed;
-	z-index:2px;
-	background-color: black;
-	#border:10px black;
+	position:absolute;
+	z-index:2;
+	background-color: silver;
+	border-width:3px;
+	border-style:solid;
+	border-color:black;
+	border-radius:10px;
+	padding: 5px 5px 5px 5px;
 	#position:absolute;	
 	#margin-top:-70%;
 	#margin-left:-6%;
 	position: absolute; 
-    top: windowHeight / 2 - popupHeight / 2;
-    left: windowWidth / 2 - popupWidth / 2;
+    top: 100%;
+    left: 35%;
 	#margin-bottom:20%;
 	#margin-left:35%;
 	#margin-right:35%;
