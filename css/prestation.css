@@ -3,6 +3,27 @@ body {
 	margin: 0;
 }
 
+table, tbody, tr, td {
+	border: 1px white solid;
+	border-collapse: collapse;
+}
+
+article, aside {
+	margin-top: 20px;
+}
+
+article {
+	display: inline-block;
+	
+	width: 50%;
+}
+
+aside {
+	float: right;
+	
+	width: 40%;
+}
+
 img {
 	width: 20px;
 }
@@ -14,6 +35,26 @@ img {
 			 url('../polices/automoto-webfont.woff') format('woff'),
 			 url('../polices/automoto-webfont.ttf') format('truetype'),
 			 url('../polices/automoto-webfont.svg#AutoMoto') format('svg');
+}
+
+body a {
+	position: absolute;
+	
+	top: 0; right: 0;
+	
+	width: 50px;
+	height: 50px;
+	
+	padding-left: 5px;
+	padding-bottom: 5px;
+	
+	border-left: 2px black solid;
+	border-bottom: 2px black solid;
+}
+
+body a img {
+	width: 100%;
+	height: 100%;
 }
 
 .prestation {
@@ -34,8 +75,18 @@ img {
 	font-family: 'AutoMoto';
 	
 	text-align: center;
+	border-bottom: 1px white solid;
 }
 
-.prestation article, .prestation aside {
-	border-top: 1px white solid;
+.table2 {
+	margin-top: 20px;
 }
+
+.rouge {
+	background-color: red;
+}
+
+.vert {
+	background-color: green;
+}
+

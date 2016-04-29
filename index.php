@@ -71,7 +71,10 @@
 					$("#connexionTel").removeClass("hidden");
 				});
 				
-				
+				$(".mdp_oublie").on('click', function(){
+					cacherCorps();
+					$("#espace_clients").removeClass("hidden");
+				});
 			
 			});
 			
@@ -96,7 +99,7 @@
 			});
 			
 			function cacherCorps() {
-				$("#connexionTel ,#nos_services ,#l_auto_ecole ,#nos_bureaux ,#faq ,#contact").addClass("hidden");
+				$("#connexionTel ,#nos_services ,#l_auto_ecole ,#nos_bureaux ,#faq ,#contact, #espace_clients").addClass("hidden");
 			}
 			
 			function cacherLi() {
@@ -116,7 +119,7 @@
 					<div>
 						<p>Identifiant :</p>
 						<input class="champForm" id="identifiant" type="text"/>
-						<p>Mot de passe :</p>
+						<p>Mot de passe : <img class="mdp_oublie" src="images/ask.png"/></p>
 						<input class="champForm" id="passe" type="password"/></br>
 						<input id="butConnexion" type="button" value="Se connecter"/>
 					</div>
@@ -231,7 +234,7 @@
 					<div id='identification'>
 						<div id="new_password">
 							<div>
-								<h2>Réinitialisation de mot de passe</h2><div id="image_new_password"></div>
+								<h1>Réinitialisation de mot de passe</h1><div id="image_new_password"></div>
 							</div>
 							<p>Vous avez oublié votre mot de passe, celui-ci va être réinitialisé.</p>
 							<p>Le nouveau mot de passe va être envoyé à l'adresse e-mail suivante : </p>

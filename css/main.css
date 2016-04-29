@@ -194,6 +194,13 @@ nav {
 		margin: 12px 0;
 	}
 	
+	.mdp_oublie {
+		width: 16px;
+		height: 16px;
+		
+		cursor: pointer;
+	}
+	
 /* ==============
     MOBILE: Main
    ============== */
@@ -260,7 +267,7 @@ nav {
 		margin: 0;
 	}
 	
-	#faq, #contact {
+	#faq, #contact, #espace_clients {
 		padding: 20px 10px;
 	}
 	
@@ -418,7 +425,7 @@ nav {
 		height: 100px;
 	}
 	
-	#faq, #contact {
+	#faq, #contact, #espace_clients {
 		padding: 30px;
 	}
 	
