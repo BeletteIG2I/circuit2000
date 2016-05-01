@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="../images/icon.png">
 
-    <title>Starter Template for Bootstrap</title>
+    <title>Circuit 2000</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,9 +41,10 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="../index.php">Accueil</a></li>
+            <li><a href="accueil.html">Menu</a></li>
             <li><a href="calendar.php">Planning</a></li>
 			<li><a href="gestionCours.php">Cours</a></li>
+			<li class="active"><a href="infoEleve2.php">Informations</a></li>
             <li><a href="modifInfos2.php">Modifications</a></li>
             <li><a href="tempsPause.html">Temps de pause</a></li>
             <li><a href="infoEleve2.php">Infos élève</a></li>
