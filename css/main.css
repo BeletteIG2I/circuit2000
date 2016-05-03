@@ -485,14 +485,13 @@ nav {
 		border-bottom: 0px solid grey;
 	}
 	
-	#menu .navigateur span {
-		
+	#menu .navigateur:hover, .lienInscription {
+		cursor: pointer;
+		color: blue;
 	}
 	
 	#menu .navigateur:hover {
-		color: blue;
 		text-decoration: underline;
-		cursor: pointer;
 	}
 	
 	

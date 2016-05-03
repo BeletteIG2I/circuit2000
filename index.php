@@ -117,7 +117,7 @@
             <div class="main wrapper clearfix">
 				<article id="connexionTel" class="hidden">
 					<div>
-						<p>Identifiant :</p>
+						<p>Identifiant : <a class="lienInscription" href="">(Inscription)</a></p>
 						<input class="champForm" id="identifiant" type="text"/>
 						<p>Mot de passe : <img class="mdp_oublie" src="images/ask.png"/></p>
 						<input class="champForm" id="passe" type="password"/></br>
