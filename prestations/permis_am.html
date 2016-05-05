@@ -1,88 +1,102 @@
-<!--
- * Nom de fichier : permis_am.html
- * Description : Fichier HTML contenant la structure de la présentation de la prestation Permis AM
- * Auteur(s) : Maxence DELATTRE
--->
+<!doctype html>
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <link rel="icon" type="image/png" href="../images/icon.png" />
+        <title>Auto-école Circuit 2000 - Prestation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<div id="prestation">
-	<h1>PERMIS AM</h1>
-	<article>
-		<div class="space"></div>
-		<div class="space"></div>
-		<table class="table1 margin_right">
-			<tbody>
-				<tr>
-					<td>Permis AM</td>
-					<td>Rapide</td>
-					<td>Session par 2</td>
-				</tr>
-				<tr>
-					<td>Conduite</td>
-					<td colspan="2">6 heures</td>
-				</tr>
-				<tr>
-					<td>Théorique</td>
-					<td colspan="2">1 heure</td>
-				</tr>
-				<tr>
-					<td>Dossier Administratif</td>
-					<td><img class="check" src="./images/check.png"></td>
-					<td><img class="check" src="./images/check.png"></td>
-				</tr>
-				<tr class="recap">
-					<td class="intitule_prix">PRIX (TTC)</td>
-					<td class="prix recap_milieu">250,00€</td>
-					<td class="prix">180,00€</td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="space"></div>
-		<div class="space"></div>
-		<div class="space"></div>
-		<table class="table2">
-			<tbody>
-				<tr>
-					<td rowspan="3">CODE</td>
-					<td class="jour">LUN</td>
-					<td class="jour">MAR</td>
-					<td class="jour">MER</td>
-					<td class="jour">JEU</td>
-					<td class="jour">VEN</td>
-					<td class="jour">SAM</td>
-					<td rowspan="3">24h de code</td>
-				</tr>
-				<tr>
-					<td class="rouge"></td>
-					<td class="vert">10h-12h</td>
-					<td class="rouge"></td>
-					<td class="rouge"></td>
-					<td class="vert">10h-12h</td>
-					<td class="vert">10h-12h</td>
-				</tr>
-				<tr>
-					<td class="vert">16h15-19h</td>
-					<td class="vert">14h-19h</td>
-					<td class="vert">16h15-19h</td>
-					<td class="vert">14-19h</td>
-					<td class="rouge"></td>
-					<td class="vert">14h-16h</td>
-				</tr>
-			</tbody>
-		</table>
-		<div class="home"></div>
-	</article>
-	<aside>
-		<p>
-			DOCUMENTS A FOURNIR LORS DE L'INSCRIPTION : 
-			<ul>
-				<li>2 photos d'identité</li>
-				<li>1 photocopies de la carte d'identité recto/verso</li>
-				<li>Photocopie de l'ASSR 1 et ASSR2 (titulaire)</li>
-				<li>1 photocopies de la carte d'identité d'un des parents recto/verso</li>
-				<li>1 photocopies d'un justificatif de domicile datant de moins de 3 mois</li>
-				<li>1 photocopies d'une lettre certifiant sur l'honneur hébergé votre enfant</li>
-			</ul>
-		</p>
-		<p class="n_agrement">Numéro d'agrément : 0306209480</p>
-	</aside>
-</div>
+		<link rel="stylesheet" href="../css/prestation.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+</head>
+<body>
+	<a href="../index.php">
+		<img id="img_ret_acc" src="../images/home.png">
+	</a>
+	<div class="prestation">
+		<h1>PERMIS AM</h1>
+		<article>
+			<div class="space"></div>
+			<div class="space"></div>
+			<table class="table1 margin_right">
+				<tbody>
+					<tr>
+						<td>Permis AM</td>
+						<td>Rapide</td>
+						<td>Session par 2</td>
+					</tr>
+					<tr>
+						<td>Conduite</td>
+						<td colspan="2">6 heures</td>
+					</tr>
+					<tr>
+						<td>Théorique</td>
+						<td colspan="2">1 heure</td>
+					</tr>
+					<tr>
+						<td>Dossier Administratif</td>
+						<td><img class="check" src="/images/check.png"></td>
+						<td><img class="check" src="/images/check.png"></td>
+					</tr>
+					<tr class="recap">
+						<td class="intitule_prix">PRIX (TTC)</td>
+						<td class="prix recap_milieu">250,00€</td>
+						<td class="prix">180,00€</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="space"></div>
+			<div class="space"></div>
+			<div class="space"></div>
+			<table class="table2">
+				<tbody>
+					<tr>
+						<td rowspan="3">CODE</td>
+						<td class="jour">LUN</td>
+						<td class="jour">MAR</td>
+						<td class="jour">MER</td>
+						<td class="jour">JEU</td>
+						<td class="jour">VEN</td>
+						<td class="jour">SAM</td>
+						<td rowspan="3">24h de code</td>
+					</tr>
+					<tr>
+						<td class="rouge"></td>
+						<td class="vert">10h-12h</td>
+						<td class="rouge"></td>
+						<td class="rouge"></td>
+						<td class="vert">10h-12h</td>
+						<td class="vert">10h-12h</td>
+					</tr>
+					<tr>
+						<td class="vert">16h15-19h</td>
+						<td class="vert">14h-19h</td>
+						<td class="vert">16h15-19h</td>
+						<td class="vert">14-19h</td>
+						<td class="rouge"></td>
+						<td class="vert">14h-16h</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="home"></div>
+		</article>
+		<aside>
+			<p>
+				DOCUMENTS A FOURNIR LORS DE L'INSCRIPTION : 
+				<ul>
+					<li>4 photos d'identité</li>
+					<li>2 photocopies de la carte d'identité recto/verso</li>
+					<li>Photocopie de l'ASSR 1 et ASSR2 (titulaire)</li>
+					<li>2 photocopies de la carte d'identité d'un des parents recto/verso</li>
+					<li>2 photocopies d'un justificatif de domicile datant de moins de 3 mois</li>
+					<li>2 photocopies d'une lettre certifiant sur l'honneur hébergé votre enfant</li>
+				</ul>
+			</p>
+			<p class="n_agrement">Numéro d'agrément : 0306209480</p>
+		</aside>
+	</div>
+</body>

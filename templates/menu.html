@@ -1,38 +1,33 @@
-<!--
- * Nom de fichier : menu.html
- * Description : Fichier HTML contenant la structure du menu du site
- * Auteur(s) : Maxence DELATTRE
--->
-
-<div id="barre_blanche"></div>
-<nav>
-	<img id="logo" src="images/CIRCUIT_2000.png">
-	<ul id="menu">
-		<li><a href="#nos_services">Nos services</a></li>
-		<li><a href="#l_auto_ecole">L'auto école</a></li>
-		<li><a href="#nos_bureaux">Nos bureaux</a></li>
-		<li><a href="#faq">FAQ</a></li>
-		<li><a href="#contact">Nous contacter</a></li>
-	</ul>
-	
-	<div id="connexion">
-		
-		<label></label><input id="login" name="login" type="text" placeholder="Identifiant"/><br/>
-		<label></label><input id="password" name="password" type="password" placeholder="Mot de passe"/><br/>
-		<input type="hidden" name="action" value="get" />
-		<input id="submit_connexion" type="submit" value="Se connecter" /><br/>
-		<a class="helpco" id="oubliMdp" href="page.html"> Mot de passe oublié ?</a>
-		<a class="helpco" id="insc" href="page2.html"> Inscription</a>
+<header class="wrapper clearfix">
+	<!-- -->
+	<div id="plogo"><img id="logo" src="images/CIRCUIT_2000.png"/>
+        <script src="js/script.js"></script>
+	</div><div id="menu">
+		<div id="menuTel" class="hidden">
+			<p>Menu</p>
+			<ul  class="hidden">
+				<li class="navigateur btnMenu1">Nos Services</li>
+				<li class="navigateur btnMenu2">L'Auto Ecole</li>
+				<li class="navigateur btnMenu3">Nos Bureaux</li>
+				<li class="navigateur btnMenu4">FAQ</li>
+				<li class="navigateur btnMenu6">Contact</li>
+			</ul>
+		</div>
 		
 		
-		
+		<div id="menuNorm" class="hidden"><div class="navigateur btnMenu1"><span>NOS SERVICES</span>
+		</div><div class="navigateur btnMenu2"><span>L'AUTO ÉCOLE</span>
+		</div><div class="navigateur btnMenu3"><span>NOS BUREAUX</span>
+		</div><div class="navigateur btnMenu4"><span>FAQ</span>
+		</div><div class="navigateur btnMenu6"><span>CONTACT</span></div></div>
+	</div><div id="connexion">
+		<img class="hidden" id="iconeConnexion" src="images/login.png">
+		<div class="hidden" id="zoneCo">
+			<p>Identifiant : <a class="lienInscription" href="">(Inscription)</a></p>
+			<input class="champForm" id="identifiant" type="text"/>
+			<p>Mot de passe : <img class="mdp_oublie" src="images/ask.png"/></p>
+			<input class="champForm" id="passe" type="password"/>
+			<input id="butConnexion" type="button" />
+		</div>
 	</div>
-	
-	<!-- A INTEGRER
-	<div id="reseaux_sociaux">
-		<a id="facebook" href="https://fr-fr.facebook.com/pages/Circuit-2000/376830679070353" target="blank"></a>
-		<a id="twitter" href="https://twitter.com/circuit2000" target="blank"></a>
-		<a id="instagram" href="https://instagram.com/circuit2000" target="blank"></a>
-	</div>
-	-->
-</nav>
+</header>
