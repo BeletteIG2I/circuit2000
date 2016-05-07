@@ -355,10 +355,48 @@
 							 } 
                     endforeach;?>
                     
+                  <li><a href="#" id="linkWeek<?php echo $nbSem;?>"><?php echo $nbSem;?></a></li>
+					
                     
-					<li><a href="#" id="linkWeek<?php echo $nbSem;?>"><?php echo $nbSem;?></a></li>	
+                    
+               <?php endforeach; ?> 
+               
+               
                    
-                   
+        	</ul> <!-- Fin de la liste des numeros de semaines propre a un mois	   		
+		<?php endforeach;?> <!-- FIN foreach qui recupere les mois -->
+        </br></br>
+        <?php
+		$flag = 0;
+        $nbSem = 0;
+        foreach ($dates as $m=>$days):?> <!--On parcourt toutes les dates pour récupérer les mois -->
+				<ul class="nosMois<?php echo $m;?>"> <!-- listage des numéros de semaines (en y ajoutant des liens vers les semaines) -->
+			<?php $end = end($days);
+			foreach ($days as $d=>$semaine): /* On parcourt tous les jours pour sortir des semaines*/
+			
+					/* On parcourt les semaines pour sortir les jours et ainsi définir le numéro de la semaine correspond au numéro du jour*/
+                   foreach ($semaine as $s=>$day): 
+				   		/*On regade les premiers jours pour savoir comment on doit compter les semaines d'une année*/
+					    if($s==1  && !$flag){
+                                    //Si le premier jour du premier mois est <5 c'est à dire est lundi ou mardi ou mercredi ou jeudi
+                                    //Alors la numérotation des semaine commence le 1 Janvier
+                                    //Sinon on attend le premier lundi de Janvier
+                                    if ($day < 5){
+                                        $nbSem = 1;
+                                    }
+                                    else $nbSem = 0;
+									$flag = 1;
+                             }
+							 if($s >= 1){
+								 //Si on change de semaine, on regarde si c'est un lundi
+								 //Si oui alors on incrémente le numéro de la semaine
+								if ($day == 1){
+									$nbSem += 1;	
+								}
+							 } 
+                    endforeach;?>
+                    
+               
                     <!-- Affichage de chaque tableau pour chaque semaine -->
                     
 					<div class="tableSem<?php echo $nbSem;?>"> </br></br>	
@@ -391,8 +429,10 @@
                
                
                    
-        	</ul> <!-- Fin de la liste des numeros de semaines propre a un mois	   		
-		<?php endforeach;?> <!-- FIN foreach qui recupere les mois -->		
+        	</ul> <!-- Fin de la liste des numeros de semaines propre a un mois
+		<?php endforeach;?> <!-- FIN foreach qui recupere les mois -->	
+        
+        		
 	</div> <!-- FIN AFFICHAGE DES SEMAINES --> 
 	
 	<!-- FORMULAIRE AJOUT COURS -->
