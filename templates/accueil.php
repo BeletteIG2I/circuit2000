@@ -8,12 +8,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../images/icon.png">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../js/jquery.min.js" type="text/javascript"></script>
     <title>Circuit 2000</title>
-
+    
     <!-- Bootstrap core CSS -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+    
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -83,22 +83,20 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="accueil.html">Menu</a></li>
                     <li><a href="calendar.php">Planning</a></li>
-                    
                     <li><a href="infoEleve2.php">Informations</a></li>
                     <li><a href="modifInfos2.php">Modifications</a></li>
                     
-                    <li><a href="#logout">Déconnexion</a></li>
+                    <li id="deco"><a href="#logout">Déconnexion</a></li>
                 </ul>
             </div >
             <div id="menuAdmin">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="accueil.html">Menu</a></li>
-                    <li><a href="calendar.php">Planning</a></li>
-                    
+
                     <li><a href="infoEleve2.php">Informations</a></li>
                     <li><a href="modifInfos2.php">Modifications</a></li>
                     <li><a href="tempsPause.html">Temps de pause</a></li>
-                    <li><a href="#logout">Déconnexion</a></li>
+                    <li id="deco"><a href="#logout">Déconnexion</a></li>
                 </ul>
             </div>
             <div id="menuMoniteur">
@@ -107,7 +105,7 @@
                     <li><a href="calendar.php">Planning</a></li>
                     <li><a href="gestionCours.php">Cours</a></li>
                     <li><a href="modifInfos2.php">Modifications</a></li>
-                    <li><a href="#logout">Déconnexion</a></li>
+                    <li id="deco2"><a href="#logout">Déconnexion</a></li>
                   </ul>
             </div>
           
@@ -148,7 +146,7 @@
           <p>Revenir à la page vitrine du site</p>
         </div><!-- /.col-lg-4 -->
 		<div class="col-lg-4">
-          <a href="#"><img class="img-circle" src="../images/logos/power.png" alt="Generic placeholder image" width="140" height="140"></a>
+          <a href="#"><img id="deco" class="img-circle" src="../images/logos/power.png" alt="Generic placeholder image" width="140" height="140"></a>
           <h2>Déconnexion</h2>
           <p>Déconnectez vous et retourner à la page d'accueil</p>
         </div><!-- /.col-lg-4 -->
@@ -160,12 +158,7 @@
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-lg-4">
-          <a href="calendar.php"><img class="img-circle" src="../images/logos/calendar.png" alt="Generic placeholder image"  width="140" height="140"></a>
-          <h2>Planning</h2>
-          <p>Accedez à votre planning</p>
-        </div><!-- /.col-lg-4 -->
-        
+
 		<div class="col-lg-4">
           <a href="infoEleve2.php"><img class="img-circle" src="../images/logos/list.png" alt="Generic placeholder image" width="140" height="140"></a>
           <h2>Informations</h2>
@@ -187,7 +180,7 @@
           <p>Revenir à la page vitrine du site</p>
         </div><!-- /.col-lg-4 -->
 		<div class="col-lg-4">
-          <a href="#"><img class="img-circle" src="../images/logos/power.png" alt="Generic placeholder image" width="140" height="140"></a>
+          <a href="#"><img class="img-circle" id="deco" src="../images/logos/power.png" alt="Generic placeholder image" width="140" height="140"></a>
           <h2>Déconnexion</h2>
           <p>Déconnectez vous et retourner à la page d'accueil</p>
         </div><!-- /.col-lg-4 -->
@@ -226,7 +219,7 @@
           <p>Revenir à la page vitrine du site</p>
         </div><!-- /.col-lg-4 -->
 		<div class="col-lg-4">
-          <a href="#"><img class="img-circle" src="../images/logos/power.png" alt="Generic placeholder image" width="140" height="140"></a>
+          <a href="#"><img class="img-circle" id="deco" src="../images/logos/power.png" alt="Generic placeholder image" width="140" height="140"></a>
           <h2>Déconnexion</h2>
           <p>Déconnectez vous et retourner à la page d'accueil</p>
         </div><!-- /.col-lg-4 -->
@@ -234,7 +227,22 @@
 
     </div><!-- /.container -->
  
+    <script type="text/javascript">
+			function downloadJSAtOnload() {
+				var element = document.createElement("script");
+				var element1 = document.createElement("script");
+				element.src = "../js/script.js";
+				document.body.appendChild(element);
+				element1.src = "../js/jquery-ui.min.js";
+				document.body.appendChild(element1);
+			}
 
+			if (window.addEventListener)
+				window.addEventListener("load", downloadJSAtOnload, false);
+			else if (window.attachEvent)
+				window.attachEvent("onload", downloadJSAtOnload);
+			else window.onload = downloadJSAtOnload;
+		</script>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

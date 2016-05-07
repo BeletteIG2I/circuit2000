@@ -12,6 +12,7 @@ $clients = getClients();
 <link rel="stylesheet" type="text/css" href="../css/client.css">
 <script type="text/javascript" src="../js/datepicker-fr.js"></script>
 <script type="text/javascript" src="../js/adminClient.js"></script>
+<script src="../js/jquery.min.js" type="text/javascript"></script>
 <div id="client">
     <div id="infoClient">
         <h1>Informations Clients</h1>

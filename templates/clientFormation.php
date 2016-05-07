@@ -16,6 +16,7 @@
     //$leClient = getInfosClient($_SESSION["idUser"]);
 ?>
 <link rel="stylesheet" type="html/css" href="../css/client2.css">
+<script src="../js/jquery.min.js" type="text/javascript"></script>
 <script type="html/javascript">
     
     $(document).ready( function() {

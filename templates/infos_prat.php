@@ -8,6 +8,7 @@
 
 <link rel="stylesheet" type="text/css" href="../css/infos_prat.css">
 <script type="text/javascript" src="../js/infos_prat.js"></script>
+<script src="../js/jquery.min.js" type="text/javascript"></script>
 <br/><br/><br/>
 <div id="infos_prat">
 	<?php if(isset($_SESSION['admin']) && $_SESSION['admin']) { ?>

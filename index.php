@@ -34,7 +34,7 @@ ob_start("ob_gzhandler");
         <link rel="stylesheet" href="css/main.css">
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
-		<script src="js/jquery.min.js"></script>
+	<script src="js/jquery.min.js"></script>
 		
 		<script>
 			$( document ).ready(function() {
@@ -96,16 +96,8 @@ ob_start("ob_gzhandler");
                                 
                                 if(<?php echo((isset($_SESSION['connecte']) && $_SESSION['connecte']) ? 1 : 0);  ?>) {
 					$("#zoneCo").hide();
-                                        $("#connexion").append('<input id="lienAccueil" type="button" value="Acceuil"/>');
-				}
-				$("body").css("padding-top",0.115*$(window).height());
-				// Le menu à une hauteur de 11.5% selon la hauteur de la fenêtre
-				// Il faut donc appliquer un padding en haut du body de 11.5% x la hauteur de la fenêtre
-				// Pour que le corps du texte commence en dessous du menu
-				$("article").css("height",0.885*$(window).height());
-				// On applique donc une hauteur de 100% - 11,5% = 88,5% à la page affichée pour qu'elle couvre la hauteur de la fenêtre pas plus pas moins
-				$(".historique").css("height",0.885*$(window).height());
-				// On fait la même chose pour les éléments de classe historique (page de présentation de l'auto-école et page de la faq)
+                                        $("#connexion").append('<a href="../templates/accueil.php"><input id="lienAccueil" type="button" value="Acceuil"/></a>');
+                                }
 			
 			});
 			
@@ -138,9 +130,6 @@ ob_start("ob_gzhandler");
 			}
                         
                         function afficherEspaceClients() { // Affiche l'espace client correspondant à l'utilisateur connecté
-				
-                                
-                                
                                 
 				$.ajax({
 					type:'POST',
@@ -154,7 +143,7 @@ ob_start("ob_gzhandler");
                                                         
 						}
 						else { // Si pas d'erreurs
-						
+                                                        document.location.href="../templates/accueil.php";
                                                         //$("#connexion").html("Bienvenue");
 						}
 					},
@@ -162,9 +151,7 @@ ob_start("ob_gzhandler");
 			            console.log('Erreur AJAX sur le chargement de l\'espace clients');
 			        }
 				});
-				
-				
-				
+
 			}
                         
 		

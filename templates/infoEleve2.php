@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../images/icon.png">
-
+    <script src="../js/jquery.min.js" type="text/javascript"></script>
     <title>Circuit 2000</title>
 
     <!-- Bootstrap core CSS -->
@@ -41,7 +41,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="accueil.html">Menu</a></li>
+            <li><a href="accueil.php">Menu</a></li>
             <li><a href="calendar.php">Planning</a></li>
 			<li><a href="gestionCours.php">Cours</a></li>
 			<li class="active"><a href="infoEleve2.php">Informations</a></li>

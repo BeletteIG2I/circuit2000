@@ -1,5 +1,5 @@
 
-
+<script src="../js/jquery.min.js" type="text/javascript"></script>
 <script>
         $(document).ready(function(){
            //recupération du user connecté

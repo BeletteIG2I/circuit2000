@@ -79,7 +79,7 @@ function getInfosEleve($id) {
 
 
 function getMoniteurs() {
-    $sql = "SELECT user.id, user.nom, user.prenom, moniteur.immatVoiture FROM user,moniteur WHERE user.id = moniteur.idMoniteur";
+    $sql = "SELECT user.id, user.nom, user.prenom, moniteur.immatVoiture FROM user,moniteur WHERE user.id = moniteur.id";
     $res = SQLSelect($sql);
 
     return parcoursRs($res);

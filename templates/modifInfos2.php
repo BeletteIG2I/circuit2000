@@ -8,7 +8,7 @@
 ?>
 
 
-
+<script src="../js/jquery.min.js" type="text/javascript"></script>
 <script>
         $(document).ready(function(){
             $idUser = <?php echo $_SESSION["idUser"]; ?>;
@@ -274,13 +274,13 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="accueil.html">Menu</a></li>
+            <li><a href="accueil.php">Menu</a></li>
             <li><a href="calendar.php">Planning</a></li>
             <li><a href="gestionCours.php">Cours</a></li>
-			<li><a href="infoEleve2.php">Informations</a></li>
+            <li><a href="infoEleve2.php">Informations</a></li>
             <li class="active"><a href="modifInfos2.php">Modifications</a></li>
-			<li><a href="tempsPause.html">Temps de pause</a></li>
-			<li><a href="#logout">Déconnexion</a></li>
+            <li><a href="tempsPause.html">Temps de pause</a></li>
+            <li><a href="#logout">Déconnexion</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>

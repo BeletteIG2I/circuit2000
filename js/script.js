@@ -107,14 +107,14 @@ $(document).ready(function() {
 
 	$(document).on('click','#butConnexion',function() { // Au clic sur le bouton de connexion dans le formulaire d'identification
 		afficherEspaceClients();
-                document.location.href="../accueil.php";
+                
 	});
 
 	$(document).on('keypress','#passe',function(e) { // Sur l'appui d'une touche dans un input du formulaire d'identification
 		// Permet de taper sur "Entrée" lorsque l'on se situe dans le champ login ou le champ password
 		if(e.which == 13){ // Si cette touche est la touche "Entrée"
 			afficherEspaceClients();
-                        document.location.href="../accueil.php";
+                        
                     }
 	});
 
@@ -208,22 +208,20 @@ $(document).ready(function() {
 		$('#new_password').hide();
 	});
 
-	$(document).on('click','.deco',function() { // Au clic sur le bouton de déconnexion
+	$(document).on('click','#deco',function() { // Au clic sur le bouton de déconnexion
 		$.ajax({
 			type:'POST',
-			url:'./templates/recup_data.php',
+			url:'../templates/recup_data.php',
 			data:{action:"deconnecter"},
 			success:function(result, textStatus, jqXHR) {
-				$('#identification').show(); // On réaffiche la page de connexion
-				$('#espace_perso').remove();// On retire du DOM l'espace perso
-                                $('#menuAdmin').hide();
-                                $('#menuClient').hide();
-                                $('#menuMoniteur').hide();  
-                                $("#connexion").show();
-			},
-	        error : function(resultat, statut, erreur) {
-	            console.log('Erreur AJAX sur le chargement de l\'espace clients');
-	        }
+				
+                                document.location.href="../index.php";
+                                $("#zoneCo").show();
+                                $("#lienAccueil").hide();
+			}
+	       /* error : function(resultat, statut, erreur) {
+	            console.log(resultat);
+	        }*/
 		});
 	});
 });
