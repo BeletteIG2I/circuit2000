@@ -86,6 +86,15 @@
 	
 //Récupération des cours de la BDD et affichage dans le planning			
 	$(document).ready( function() {
+		
+		//Cache la popUp lors du clique sur la croix
+			$("#quitPopUp").click(function(){
+				bool=true;
+				cacher('AjouterCours');
+			});
+			
+			
+			
               afficheMenu();
             var now = new Date();
             var year = now.getFullYear();
@@ -249,6 +258,8 @@
 		else numero = -1;
 		return 	numero;
 	}
+	
+	
 </script>
 
 
@@ -351,9 +362,7 @@
         <h1>Planning</h1>
 		<div id="body">
 			<div class="periods">
-			<form>Creer cour (provisoire) : 
-				<input type='button' value='Pop Up' onClick='PopupCentrer("popUpCalendar.php",1000,700,"menubar=no,scrollbars=no,statusbar=no")'>
-			</form>
+			
 
 				<!-- #### AFFICHE L'annee courante #### -->
 				<div class="year"><?php echo $year;?></div>
@@ -491,7 +500,8 @@
 
 	<div id="AjouterCours" class="oModal">			
 				 
-
+			
+            
 			<label for="moniteur">Moniteur</label><br />			
 				<select name="moniteur" id="moniteur">
 				<optgroup label="Sélectionnez le moniteur">				
@@ -523,7 +533,7 @@
 
 			</br></br>
 			<input id="boutonValider" type="button" value="Valider" />
-					
+			<img id="quitPopUp" src="../images/back.png" alt="Quitter" title="Quitter" />		
 		
 	</div>	<!-- FIN FORMULAIRE AJOUT COURS -->
 		
