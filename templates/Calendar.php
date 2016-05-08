@@ -144,10 +144,16 @@
 						var prenom = result[0].prenom;
 						var telephone = result[0].telephone;
 						var numADR = result[0].numeroADR;
+						if(numADR == null) numADR = "";
 						var rueADR = result[0].rueADR;
+						if(rueADR == null) rueADR = "";
 						var villeADR = result[0].villeADR;
+						if(villeADR == null) villeADR = "";
 						var codePostal = result[0].codePostal;
-						$("." + defID).html(nom +"-"+prenom +"-"+ telephone +"<br/>"+ numADR +" "+ rueADR +" "+ villeADR +" "+ codePostal +"<br/>"+description);
+						if(codePostal == null) codePostal = "";
+						
+						
+						$("." + defID).html("<b>"+nom+"</b>"+"<br/>"+"<b>"+prenom+"</b>" +"<br/>"+ telephone +"<br/>"+ numADR +" "+ rueADR +" "+ villeADR +" "+ codePostal +"<br/><b>// </b>"+description);
 						
                 
                                                 
