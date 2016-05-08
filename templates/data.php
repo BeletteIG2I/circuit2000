@@ -74,9 +74,22 @@ if($action = valider('action')) {
             echo(json_encode($var));
 			
         }break;
-    
-        case 'recupInfoUserPlanning' : { // On récupère toutes les infos d'un client
-            $var = getInfosClient($_GET["idUs"]);
+		
+    	case 'recupFctUsr':
+		{
+			$fctUsr = getFunctionUsr($_GET["id"]);
+			echo(json_encode($fctUsr));
+		}break;
+		
+		
+        case 'recupInfoClientPlanning' : { // On récupère toutes les infos d'un client
+            $var = getInfosClient2($_GET["idUs"]);
+            echo(json_encode($var));
+			
+        }break;
+		
+		case 'recupInfoMoniteurPlanning' : { // On récupère toutes les infos d'un client
+            $var = getInfosMoniteur2($_GET["idUs"]);
             echo(json_encode($var));
 			
         }break;
@@ -95,7 +108,23 @@ if($action = valider('action')) {
 		
 		case 'recupInfoCours' : { // On récupère toutes les infos d'un client
 		
-                    $var = getCoursParMoniteur($_SESSION["idUser"]);
+					$fctUsr = getFunctionUsr($_GET["id"]);
+					$fctUsr = $fctUsr[0]["fonction"];
+					if($fctUsr == 2) //si on demande les cours d'un moniteur
+					{
+						//echo "on recupere les cours d un moniteur";
+						$var = getCoursParMoniteur($_GET["id"]);
+					}
+					else if ($fctUsr == 0) //Si on demande les cours d'un client
+					{
+						//echo "on recupere les cours d un client";
+						$var = getCoursParEleve($_GET["id"]);
+					}
+					else if ($fctUsr == 1) //Si on fait une demande d'une ADMIN
+					{
+						
+					}
+					else echo "Vous êtes qui ?";
                     echo(json_encode($var));
             
 			

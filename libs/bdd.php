@@ -15,8 +15,32 @@ include("maLibSQL.php");
 		return $res;
 
 	}
+	function getFunctionUsr($idUser)
+	{
+		$sql="SELECT fonction FROM user WHERE id=".$idUser;
+		$res = SQLSelect($sql);
 
-
+		return parcoursRs($res);
+	}
+	function getInfosClient2($id) {
+		
+		$sql = "SELECT id FROM eleve WHERE idEleve=".$id;
+		$idUser= SQLGetChamp($sql);
+		
+		$sql = "SELECT * FROM user WHERE id=".$idUser;
+		$res = SQLSelect($sql);
+	
+		return parcoursRs($res);
+	}
+	function getInfosMoniteur2($id) {
+		$sql = "SELECT id FROM moniteur WHERE idMoniteur=".$id;
+		$idUser= SQLGetChamp($sql);
+		
+		$sql = "SELECT * FROM user WHERE id=".$idUser;
+		$res = SQLSelect($sql);
+	
+		return parcoursRs($res);
+	}
 	function getNomPrenomMoniteurs(){
 		$sql="SELECT id, nom, prenom FROM user WHERE fonction=2";
 		$res = SQLSelect($sql);
@@ -127,10 +151,10 @@ function getCours() {
 }
 
 function getCoursParEleve($idUser) {
-    $sql = "SELECT idEleve FROM cours WHERE id =" . $idUser;
+    $sql = "SELECT idEleve FROM eleve WHERE id=".$idUser;
     $idEleve = SQLGetChamp($sql);
     
-    $sql = "SELECT * FROM cours WHERE idEleve =" . $idEleve;
+    $sql = "SELECT * FROM cours WHERE idEleve=".$idEleve;
     $res = SQLSelect($sql);
 
     return parcoursRs($res);
@@ -138,10 +162,10 @@ function getCoursParEleve($idUser) {
 
 function getCoursParMoniteur($idUser) {
     
-    $sql = "SELECT idMoniteur FROM moniteur WHERE id =" . $idUser;
+    $sql = "SELECT idMoniteur FROM moniteur WHERE id=".$idUser;
     $idMoniteur = SQLGetChamp($sql);
-    
-    $sql = "SELECT * FROM cours WHERE idMoniteur =" . $idMoniteur;
+
+    $sql = "SELECT * FROM cours WHERE idMoniteur=".$idMoniteur;
     $res = SQLSelect($sql);
 
     return parcoursRs($res);

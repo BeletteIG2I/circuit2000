@@ -103,16 +103,20 @@
             var heure = "";
             var datebdd = "";
             var heurebdd = "";
+					
             $.ajax({
             type:"GET",
             url:"data.php?action=recupInfoCours&id=<?php if($_SESSION['connecte']) echo $_SESSION['idUser'];?> ",
             success:function(result, htmlStatus, jqXHR) {
+				//console.log(result);
 				result = $.parseJSON(result);
-                               // console.log(result);
+                //console.log(result); 
 				if(!result) console.log("Resultats Null");
 				else {
+					
 					for(i=0 ; i < result.length; i++)
 					{
+						
 						var laDate = result[i]["date"];
 						var description = result[i]["description"];
 						var Commentaire = result[i]["Commentaire"];
@@ -121,54 +125,81 @@
 						var jour = laDate.substring(8,10);
 						var heure = parseFloat(laDate.substring(11,13));
 						laDate = new Date(mois+'/'+jour+'/'+annee);
-                                                
-                                                
-                                                
-                                                
-                                               
-                                                var idEleve =  result[i]["idEleve"];
-                                                
+						var idEleve =  result[i]["idEleve"];
+                        var idMoniteur = result[i]["idMoniteur"];                        
                                                 
 						
 						nbWeek= getWeekNumber(laDate);
 						nbDay = laDate.getDay();
+						nbDay +=1;
 						var defID = "Sem" + nbWeek + "jour" + nbDay + "heure" + heure;
-                                                
-                                                $.ajax({
-                                                    type:"GET",
-                                                    url:"../templates/data.php?action=recupIdUserEleve&idEleve=" +idEleve,
-                                                    success:function(result, htmlStatus, jqXHR) {
-                                                        
-                                                        idUserEleve = result; 
-                                                        
-                                                        $.ajax({
-                                                            type:"GET",
-                                                            url:"../templates/data.php?action=recupInfoUserPlanning&idUs=" + idUserEleve,
-                                                            success:function(result2, htmlStatus, jqXHR) {
-                                                                console.log(result2);
-                                                                result2 = $.parseJSON(result2);
-                                                                
-                                                                var nom = result2[0]["nom"];
-                                                                var prenom = result2[0].prenom;
-                                                                var telephone = result2[0].telephone;
+                          
+						console.log("##"+ defID);
+						                   
+						$.ajax({type:"GET",url:"data.php?action=recupFctUsr&id=<?php echo $_SESSION['idUser'];?>",
+							success:function(result2, htmlStatus, jqXHR) {
+									result2 = $.parseJSON(result2);
+									var fonctionUsr = result2[0]["fonction"]; //fonctionUsr vaut le numero de fonction de l'usr
+									if(fonctionUsr == 0) // Si c'est un Client
+									{
+										//Alors on affiches les coordonnees du moniteur
+										$.ajax({
+												type:"GET",
+												url:"../templates/data.php?action=recupInfoMoniteurPlanning&idUs="+ idMoniteur,
+												success:function(result2, htmlStatus, jqXHR) {
+													result2 = $.parseJSON(result2);
+													
+													var nom = result2[0]["nom"];
+													var prenom = result2[0].prenom;
+													var telephone = result2[0].telephone;
+													
+													$("." + defID).html(nom +"-"+prenom +"<br/>"+ telephone +"<br/>"+description);
+												},
+												error : function(jqXHR, htmlStatus, htmlError) {
+													console.log("Status :" + htmlStatus + " \nError : " + htmlError);
+												}
+											});
+											
+											
+									}
+									else if(fonctionUsr == 2) //Si c'est un Moniteur
+									{
+										
+										//Alors on affiches les coordonnees du client
+										$.ajax({
+												type:"GET",
+												url:"../templates/data.php?action=recupInfoClientPlanning&idUs="+ idEleve,
+												success:function(result2, htmlStatus, jqXHR) {
+													result2 = $.parseJSON(result2);
+													
+													var nom = result2[0]["nom"];
+													var prenom = result2[0].prenom;
+													var telephone = result2[0].telephone;
+			
+			
+													var numADR = result2[0].numeroADR;
+													var rueADR = result2[0].rueADR;
+													var villeADR = result2[0].villeADR;
+													var codePostal = result2[0].codePostal;
+													
+													$("." + defID).html(nom +"-"+prenom +"-"+ telephone +"<br/>"+ numADR +" "+ rueADR +" "+ villeADR +" "+ codePostal +"<br/>"+description);
+												},
+												error : function(jqXHR, htmlStatus, htmlError) {
+													console.log("Status :" + htmlStatus + " \nError : " + htmlError);
+												}
+											});
+										
+										
+									}
+	
+								},
+								error : function(jqXHR, htmlStatus, htmlError) {
+									console.log("Status :" + htmlStatus + " \nError : " + htmlError);
+								}
+							});
+							
 
-
-                                                                var numADR = result2[0].numeroADR;
-                                                                var rueADR = result2[0].rueADR;
-                                                                var villeADR = result2[0].villeADR;
-                                                                var codePostal = result2[0].codePostal;
-                                                                
-                                                                $("." + defID).html(nom +"-"+prenom +"-"+ telephone +"<br/>"+ numADR +" "+ rueADR +" "+ villeADR +" "+ codePostal +"<br/>"+description);
-                                                            },
-                                                            error : function(jqXHR, htmlStatus, htmlError) {
-                                                                console.log("Status :" + htmlStatus + " \nError : " + htmlError);
-                                                            }
-                                                        });
-                                                    },
-                                                    error : function(jqXHR, htmlStatus, htmlError) {
-                                                        console.log("Status :" + htmlStatus + " \nError : " + htmlError);
-                                                    }
-                                                });
+							
                                                 
                                                 
                                                 
