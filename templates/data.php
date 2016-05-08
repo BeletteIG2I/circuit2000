@@ -454,7 +454,9 @@ if($action = valider('action')) {
 			$res = NULL;
 			  
 				$idMoniteur = $_POST['idMoniteur'];
+				$idMoniteur = getIdMoniteurFromId($idMoniteur);
 				$idEleve = $_POST['idEleve'];
+				$idEleve = getIdEleveFromId($idEleve);
 				$description = $_POST['description'];
 				$date = $_POST['date'];
 				

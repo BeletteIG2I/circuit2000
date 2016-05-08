@@ -177,6 +177,18 @@ function getIdUserEleve($idEleve) {
 
     return $idUser;
 }
+function getIdEleveFromId($id){
+	$sql = "SELECT idEleve FROM eleve WHERE id=".$id;
+    $idUser= SQLGetChamp($sql);
+
+    return $idUser;
+}
+function getIdMoniteurFromId($id){
+	$sql = "SELECT idMoniteur FROM moniteur WHERE id=".$id;
+    $idUser= SQLGetChamp($sql);
+
+    return $idUser;
+}
 function getIdUserMoniteur($idMoniteur) {
     
     $sql = "SELECT id FROM moniteur WHERE idMoniteur =".$idMoniteur;
