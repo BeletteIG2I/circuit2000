@@ -93,11 +93,13 @@ ob_start("ob_gzhandler");
 					cacherCorps();
 					$("#espace_clients").removeClass("hidden");
 				});
-                                
-                                if(<?php echo((isset($_SESSION['connecte']) && $_SESSION['connecte']) ? 1 : 0);  ?>) {
+				
+				if(<?php echo((isset($_SESSION['connecte']) && $_SESSION['connecte']) ? 1 : 0);  ?>) {
 					$("#zoneCo").hide();
-                                        $("#connexion").append('<a href="../templates/accueil.php"><input id="lienAccueil" type="button" value="Acceuil"/></a>');
-                                }
+					$("#iconeConnexion").hide();
+					$("#connexion").append('<div><img class="imgMenuCo" id="deco" src="images/logos/power_2.png"/></div>');
+					$("#connexion").append('<a id="lienAccueil" href="templates/accueil.php"><img class="imgMenuCo" src="images/logos/accueil.png"/></a>');
+				}
 			
 			});
 			
@@ -106,12 +108,12 @@ ob_start("ob_gzhandler");
 				if (win.width() >= 100) {
 					$("#menuNorm").addClass("hidden");
 					$("#menuTel").removeClass("hidden");
-					$("div[id=connexion] > div").addClass("hidden");
-					$("div[id=connexion] > img").removeClass("hidden");
+					$("div[id=connexion] > div[id='zoneCo']").addClass("hidden");
+					$("div[id=connexion] > img[id='iconeConnexion']").removeClass("hidden");
 				}
 				
 				if (win.width() >= 480) {
-					$("div[id=connexion] > img").addClass("hidden");
+					$("div[id=connexion] > img[id='iconeConnexion']").addClass("hidden");
 					$("div[id=connexion] > div").removeClass("hidden");
 				}
 				
