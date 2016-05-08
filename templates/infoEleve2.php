@@ -1,4 +1,5 @@
- <html lang="en">
+ <?php session_start();?>
+<html lang="en">
   
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +19,42 @@
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
-
+    <script>
+        $(document).ready(function() {
+            afficheMenu();
+        });
+        
+    function afficheMenu(){
+                            
+            $fonctionUser = <?php echo("'".$_SESSION["admin"]."'"); ?>;
+            $("#menuClient").hide();
+            $("#menuAdmin").hide();
+            $("#menuMoniteur").hide();
+            $("#menuClientLog").hide();
+            $("#menuAdminLog").hide();
+            $("#menuMoniteurLog").hide();
+            if($fonctionUser || $fonctionUser=='0')
+            {
+            switch($fonctionUser){
+                                        case '0':
+                                            $("#menuClient").show();
+                                            $("#menuClientLog").show();
+                                        break;
+                                        
+                                        case '1':
+                                            $("#menuAdmin").show();
+                                            $("#menuAdminLog").show();
+                                        break;
+                                        
+                                        case '2':
+                                            $("#menuMoniteur").show();
+                                            $("#menuMoniteurLog").show();
+                                        break;
+                                    }
+                                
+                        }
+                  }
+    </script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -40,16 +76,34 @@
           <a class="navbar-brand" href="../index.php"><img id="logo" src="../images/logosf.png"></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="accueil.php">Menu</a></li>
-            <li><a href="calendar.php">Planning</a></li>
-			<li><a href="gestionCours.php">Cours</a></li>
-			<li class="active"><a href="infoEleve2.php">Informations</a></li>
-            <li><a href="modifInfos2.php">Modifications</a></li>
-            <li><a href="tempsPause.html">Temps de pause</a></li>
-            <li><a href="infoEleve2.php">Infos élève</a></li>
-			<li><a href="#logout">Déconnexion</a></li>
-          </ul>
+          <div id="menuClient">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="accueil.php">Menu</a></li>
+                    <li><a href="calendar.php">Planning</a></li>
+                    <li><a href="infoEleve2.php">Informations</a></li>
+                    <li><a href="modifInfos2.php">Modifications</a></li>
+                    
+                </ul>
+            </div>
+            <div id="menuAdmin">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="accueil.php">Menu</a></li>
+
+                    <li><a href="infoEleve2.php">Informations</a></li>
+                    <li><a href="modifInfos2.php">Modifications</a></li>
+                    <li><a href="tempsPause.html">Temps de pause</a></li>
+                   
+                </ul>
+            </div>
+            <div id="menuMoniteur">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="accueil.php">Menu</a></li>
+                    <li><a href="calendar.php">Planning</a></li>
+                    <li><a href="gestionCours.php">Cours</a></li>
+                    <li><a href="modifInfos2.php">Modifications</a></li>
+                    
+                  </ul>
+            </div>
         </div><!--/.nav-collapse -->
       </div>
     </div>

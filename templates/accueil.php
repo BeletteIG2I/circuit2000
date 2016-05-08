@@ -81,7 +81,7 @@
         <div id="navbar" class="collapse navbar-collapse">
             <div id="menuClient">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="accueil.html">Menu</a></li>
+                    <li class="active"><a href="accueil.php">Menu</a></li>
                     <li><a href="calendar.php">Planning</a></li>
                     <li><a href="infoEleve2.php">Informations</a></li>
                     <li><a href="modifInfos2.php">Modifications</a></li>
@@ -91,7 +91,7 @@
             </div >
             <div id="menuAdmin">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="accueil.html">Menu</a></li>
+                    <li class="active"><a href="accueil.php">Menu</a></li>
 
                     <li><a href="infoEleve2.php">Informations</a></li>
                     <li><a href="modifInfos2.php">Modifications</a></li>
@@ -101,11 +101,11 @@
             </div>
             <div id="menuMoniteur">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="accueil.html">Menu</a></li>
+                    <li class="active"><a href="accueil.php">Menu</a></li>
                     <li><a href="calendar.php">Planning</a></li>
                     <li><a href="gestionCours.php">Cours</a></li>
                     <li><a href="modifInfos2.php">Modifications</a></li>
-                    <li id="deco2"><a href="#logout">Déconnexion</a></li>
+                    <li id="deco"><a href="#logout">Déconnexion</a></li>
                   </ul>
             </div>
           
@@ -202,11 +202,7 @@
           <h2>Cours</h2>
           <p>Lancez un cours</p>
         </div><!-- /.col-lg-4 -->
-		<div class="col-lg-4">
-          <a href="infoEleve2.php"><img class="img-circle" src="../images/logos/list.png" alt="Generic placeholder image" width="140" height="140"></a>
-          <h2>Informations</h2>
-          <p>Informations concernant l'éléve, et la conduite</p>
-        </div><!-- /.col-lg-4 -->
+		
         <div class="col-lg-4">
           <a href="modifInfos2.php"><img class="img-circle" src="../images/logos/gear-rotation.png" alt="Generic placeholder image" width="140" height="140"></a>
           <h2>Modifications</h2>

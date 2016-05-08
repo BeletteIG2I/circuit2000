@@ -93,7 +93,11 @@ function getInfosMoniteur($id) {
 }
 
 function getTpsPauseMoniteur(){
-    $sql = "SELECT idMoniteur,temps_pause FROM cours";
+    $sql = "SELECT user.id, user.nom, user.prenom, moniteur.immatVoiture, SUM(cours.temps_pause) 
+            FROM `cours`, moniteur,user 
+            WHERE user.id = moniteur.id
+            AND moniteur.idMoniteur = cours.idMoniteur
+            GROUP BY user.id";
     $res = SQLSelect($sql);
 
     return parcoursRs($res);

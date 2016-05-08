@@ -1,201 +1,199 @@
-﻿<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta charset="utf-8" />
-        <title></title>
-        <script src="../js/jquery.min.js" type="text/javascript"></script>
-        <script>
-            
-                var bool = 0;
-                var i = 0;
-                var id = 0;
-                var centi = 0; // initialise les dixi�mes
-                var secon = 0;//initialise les secondes
-                var minu = 0; //initialise les minutes
-                //var $idUser = <?php echo $_SESSION["idUser"]?>;
-                var $idUser = 3;
+﻿    <?php session_start();?>
+<head> 
 
-                  // JavaScript source code
-
-                function chrono() {
-                centi++; //incr�mentation des dixi�mes de 1
-                    if (centi > 9) {
-
-                        centi = 0;
-                        secon++;
-
-                    } //si les dixi�mes > 9, on les r�initialise � 0 et on incr�mente les secondes de 1
-                    if (secon > 59) {
-
-                        secon = 0;
-                        minu++;
-
-                    } //si les secondes > 59, on les r�initialise � 0 et on incr�mente les minutes de 1
-
-                    document.forsec.secc.value = " " + centi; //on affiche les dixi�mes
-                    document.forsec.seca.value = " " + secon; //on affiche les secondes
-                    document.forsec.secb.value = " " + minu; //on affiche les minutes
-
-                    compte = setTimeout('chrono()', 100); //la fonction est relanc�e tous les 10� de secondes
-
-                }
-
-                function rasee() { //fonction qui remet les compteurs � 0
-
-                    clearTimeout(compte); //arr�te la fonction chrono()
-                    /*alert(secon);
-                    console.log(secon);
-                    console.log(id);*/
-
-                    document.forsec.secc.value = " " + centi;
-                    document.forsec.seca.value = " " + secon;
-                    document.forsec.secb.value = " " + minu;
-
-                }
-
-
-                $(document).ready(function () {
-
-                    function gestionErreurs(err) {
-                        alert('Erreur' + err);
-                        console.log('Erreur' + err);
-                        return true;
-                    }
-
-                    window.onerror = gestionErreurs;
-
-
-                    function maj() {
-
-                        if (bool == 0) {
-                            rasee();
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
+     <script src="../js/jquery.min.js" type="text/javascript"></script>
+     <script>
+        function afficheMenu(){
+                            
+            $fonctionUser = <?php echo("'".$_SESSION["admin"]."'"); ?>;
+            $("#menuClient").hide();
+            $("#menuAdmin").hide();
+            $("#menuMoniteur").hide();
+            if($fonctionUser || $fonctionUser=='0')
+            {
+            switch($fonctionUser){
+                                        case '0':
+                                            $("#menuClient").show();
+                                            
+                                        break;
+                                        
+                                        case '1':
+                                            $("#menuAdmin").show();
+                                            
+                                        break;
+                                        
+                                        case '2':
+                                            $("#menuMoniteur").show();
+                                            
+                                        break;
+                                    }
+                                
                         }
-                        else if (bool == 1) {
-                            chrono();
-                        }
+                  }
 
-                    }
+        $(document).ready(function () {
+            afficheMenu();
+            /*function gestionErreurs(err) {
+                alert('Erreur' + err);
+                console.log('Erreur' + err);
+                return true;
+            }
 
-                    /**Au chargement de la page, on r�cup�re les infos des cours du moniteurs et on les affiche sur la page
-                        (numero du cours, date de debut, date de fin, temps de pause, date, description, commentaire)*/
-                    $.ajax({
+            window.onerror = gestionErreurs;*/
 
-                        type: "GET",
-                        url: "../templates/data.php?action=recupInfoCours&id=" + $idUser,
-                        success: function (result, htmlStatus, jqXHR) {
+            $.ajax({
 
-                            result = $.parseJSON(result);
-                            alert($idUser);
-                            $.each(result, function (i, value) {
+                type: "GET",
+                url: "../templates/data.php?action=recupTpsPauseMoniteurs",
+                success: function (result1, htmlStatus, jqXHR) {
 
-                                var obj = value;
+                    result1 = $.parseJSON(result1);
+                    
 
-                                $("#infosCours").prepend('<div id=' + i + '>'+ +'</div>');
+                    $.each(result1, function (i, value) {
 
-                                $.each(obj, function (key, value2) {
+                        var obj = value;
 
-                                   $("#"+i).append('     <div>' + key + ' : ' + value2 + '</div></br>');
+                        $("#tab").append('<tr id=' + i + '></tr>');
 
-                                });
+                        $.each(obj, function (key, value2) {
 
-                                $("#"+i).append('<input type="button" class ="btn" value="Lancer le cours" id="' + result[i].id + '" onclick="getId(this)" />');
-
-                            });
-
-
-                        },
-                        error: function (jqXHR, htmlStatus, htmlError) {
-                            console.log("Status :" + htmlStatus + "\nError : " + htmlError);
-                        }
-
-                    });
-
-                    // Quand on clique sur le bouton "Commencer pause", on mets bool � 1 ce qui permettra � la fonction maj() de lancer le chrono
-                    $("#chrono").click(function () {
-                        bool = 1;
-                        maj();
-                    });
-
-
-                    // Quand on clique sur le bouton "Arreter pause", on mets bool � 0 ce qui permettra � la fonction maj() d'arr�ter le chrono
-                    $("#finChrono").click(function () {
-                        bool = 0;
-                        maj();
-                    });
-
-                    /**Quand on clique sur le bouton "Sauver temps de pause", on r�cup�re l'id du cours ainsi que le nouveau temps de pause
-                        Ensuite on lance la requ�te ajax qui redirige vers data.php qui va s'occuper de l'update*/
-                    $("#save").click(function () {
-                        idDuCours = $(".idCours").val();
-                        nouveauTpsPause = $(".newTpsPause").val();
-
-                        //MODIFICATION DU TEMPS DE PAUSE
-                        $.ajax({
-
-                            type: "GET",
-                            url: "../templates/data.php",
-                            data: { action: "updateTpsPause", id: $idUser, idCours: idDuCours, newTpsPause: nouveauTpsPause },
-                            success: function (result, htmlStatus, jqXHR) {
-
-                                if (result.search('erreur:') != -1) {
-
-                                    $('#msgError').text(result.substring(7, result.length));
-                                    $('#msgError').css("border-color", "red");
-                                    // On enl�ve la cha�ne de caract�res 'erreur:' pour afficher le message d'erreur
-
-                                }
-                                else { //si pas d'erreurs
-
-                                    $(".tpsPause").val(nouveauTpsPause);
-
-                                }
-
-                                $('#msgError').show();// On affiche le message
-                                $('#msgError').fadeOut(4000, 'easeInExpo');// On le fait dispara�tre en 4s en easeInExpo
-
-                            },
-
-                            error: function (jqXHR, htmlStatus, htmlError) {
-                                console.log("Status :" + htmlStatus + "\nError : " + htmlError);
-                            }
+                            $("#"+i).append('<td>' + value2 + '</td>');
 
                         });
 
                     });
 
-                });
+                },
+                error: function (jqXHR, htmlStatus, htmlError) {
 
-                //R�cup�re l'id du cours quand on appuie sur "Lancer cours"
-                function getId(ele) {
-                    id = ele.id;
-                    document.forsec.id.value = " " + id;
-                    /*alert(id);
-                    console.log(id);
-                    */
+                    console.log("Status :" + htmlStatus + "\nError : " + htmlError);
+
                 }
+
+            });
+
             
-        </script>
 
-    </head>
+        });
 
-    <body>
+     </script>
 
-        <div id="infosCours">
 
+
+
+<html lang="en">
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../images/icon.png">
+
+    <title>Circuit 2000</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../css/tempsPause.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.php"><img id="logo" src="../images/logosf.png"></a>
         </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <div id="menuClient">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="accueil.php">Menu</a></li>
+                    <li><a href="calendar.php">Planning</a></li>
+                    <li><a href="infoEleve2.php">Informations</a></li>
+                    <li><a href="modifInfos2.php">Modifications</a></li>                   
+                    
+                </ul>
+            </div >
+            <div id="menuAdmin">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="accueil.php">Menu</a></li>
 
-        <div id="pause">
-                <form name="forsec">
-                    <input type="hidden" name="id" class="idCours">
-                    <input type="text" size="3" name="secb"> minute(s)
-                    <input type="text" size="3" name="seca" class="newTpsPause"> secondes
-                    <input type="text" size="3" name="secc"> dixiemes
+                    <li><a href="infoEleve2.php">Informations</a></li>
+                    <li><a href="modifInfos2.php">Modifications</a></li>
+                    <li><a href="tempsPause.html">Temps de pause</a></li>
+                   
+                </ul>
+            </div>
+            <div id="menuMoniteur">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="accueil.php">Menu</a></li>
+                    <li><a href="calendar.php">Planning</a></li>
+                    <li><a href="gestionCours.php">Cours</a></li>
+                    <li><a href="modifInfos2.php">Modifications</a></li>                    
+                  </ul>
+            </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
 
-                    <input type="button" value="Commencer pause" id="chrono">
-                    <input type="button" value="Arreter pause" id="finChrono">
-                    <input type="button" value="Sauver temps de pause" id="save" >
-                </form> 
-        </div>
+    <div class="container">
 
-    </body>
-</html>
+		<div class="starter-template">
+		<h1>Temps de pause</h1>
+		<div id="pause">
+			<table id="tab">
+						   <tr>
+                                                           <th>Id</th>
+							   <th>Nom</th>
+							   <th>Prénom</th>
+							   <th>Immatriculation</th>
+							   <th>Temps de pause</th>
+						   </tr>
+							<tr>								
+
+                </table>
+		</div>
+		
+
+
+    </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+ </body>
+ 
+ 
+
+
+	
+
+

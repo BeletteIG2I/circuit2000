@@ -10,7 +10,38 @@
 
 <script src="../js/jquery.min.js" type="text/javascript"></script>
 <script>
+        function afficheMenu(){
+                            
+            $fonctionUser = <?php echo("'".$_SESSION["admin"]."'"); ?>;
+            $("#menuClient").hide();
+            $("#menuAdmin").hide();
+            $("#menuMoniteur").hide();
+            $("#menuClientLog").hide();
+            $("#menuAdminLog").hide();
+            $("#menuMoniteurLog").hide();
+            if($fonctionUser || $fonctionUser=='0')
+            {
+            switch($fonctionUser){
+                                        case '0':
+                                            $("#menuClient").show();
+                                            $("#menuClientLog").show();
+                                        break;
+                                        
+                                        case '1':
+                                            $("#menuAdmin").show();
+                                            $("#menuAdminLog").show();
+                                        break;
+                                        
+                                        case '2':
+                                            $("#menuMoniteur").show();
+                                            $("#menuMoniteurLog").show();
+                                        break;
+                                    }
+                                
+                        }
+                  }
         $(document).ready(function(){
+            afficheMenu();
             $idUser = <?php echo $_SESSION["idUser"]; ?>;
            
             /** Au chargement de la page, on récupère les infos sur le client et on les affiche sur la page
@@ -273,15 +304,34 @@
           <a class="navbar-brand" href="../index.php"><img id="logo" src="../images/logosf.png"></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="accueil.php">Menu</a></li>
-            <li><a href="calendar.php">Planning</a></li>
-            <li><a href="gestionCours.php">Cours</a></li>
-            <li><a href="infoEleve2.php">Informations</a></li>
-            <li class="active"><a href="modifInfos2.php">Modifications</a></li>
-            <li><a href="tempsPause.html">Temps de pause</a></li>
-            <li><a href="#logout">Déconnexion</a></li>
-          </ul>
+          <div id="menuClient">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="accueil.php">Menu</a></li>
+                    <li><a href="calendar.php">Planning</a></li>
+                    <li><a href="infoEleve2.php">Informations</a></li>
+                    <li><a href="modifInfos2.php">Modifications</a></li>
+                </ul>
+            </div>
+            <div id="menuAdmin">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="accueil.php">Menu</a></li>
+
+                    <li><a href="infoEleve2.php">Informations</a></li>
+                    <li><a href="modifInfos2.php">Modifications</a></li>
+                    <li><a href="tempsPause.html">Temps de pause</a></li>
+                    
+                </ul>
+            </div>
+            <div id="menuMoniteur">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="accueil.php">Menu</a></li>
+                    <li><a href="calendar.php">Planning</a></li>
+                    <li><a href="gestionCours.php">Cours</a></li>
+                    <li><a href="modifInfos2.php">Modifications</a></li>
+                    
+                    
+                  </ul>
+            </div>
         </div><!--/.nav-collapse -->
       </div>
     </div>
