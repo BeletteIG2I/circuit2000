@@ -110,22 +110,62 @@ if($action = valider('action')) {
 		
 					$fctUsr = getFunctionUsr($_GET["id"]);
 					$fctUsr = $fctUsr[0]["fonction"];
+					
 					if($fctUsr == 2) //si on demande les cours d'un moniteur
 					{
 						//echo "on recupere les cours d un moniteur";
 						$var = getCoursParMoniteur($_GET["id"]);
+						$total = array();
+						for($i=0; $i < count($var); $i++){
+							//echo "==============".$var[$i]["date"];
+							$total[$i]["id"] = $var[$i]["id"];
+							$total[$i]["idMoniteur"] = $var[$i]["idMoniteur"];
+							$total[$i]["iEleve"] = $var[$i]["iEleve"];
+							$total[$i]["temps_pause"] = $var[$i]["temps_pause"];
+							$total[$i]["date"] = $var[$i]["date"];
+							$total[$i]["description"] = $var[$i]["description"];
+							$total[$i]["Commentaire"] = $var[$i]["Commentaire"];
+							
+							$info = getInfosClient2($var[$i]["idEleve"]);
+							$total[$i]["nom"] = $info[0]["nom"];	
+							$total[$i]["prenom"] = $info[0]["prenom"];	
+							$total[$i]["numeroADR"] = $info[0]["numeroADR"];	
+							$total[$i]["rueADR"] = $info[0]["rueADR"];	
+							$total[$i]["villeADR"] = $info[0]["villeADR"];	
+							$total[$i]["codePostal"] = $info[0]["codePostal"];	
+							$total[$i]["telephone"] = $info[0]["telephone"];
+						}
+						
 					}
 					else if ($fctUsr == 0) //Si on demande les cours d'un client
 					{
 						//echo "on recupere les cours d un client";
 						$var = getCoursParEleve($_GET["id"]);
+						$total = array();
+						for($i=0; $i < count($var); $i++){
+							//echo "==============".$var[$i]["date"];
+							$total[$i]["id"] = $var[$i]["id"];
+							$total[$i]["idMoniteur"] = $var[$i]["idMoniteur"];
+							$total[$i]["iEleve"] = $var[$i]["iEleve"];
+							$total[$i]["temps_pause"] = $var[$i]["temps_pause"];
+							$total[$i]["date"] = $var[$i]["date"];
+							$total[$i]["description"] = $var[$i]["description"];
+							$total[$i]["Commentaire"] = $var[$i]["Commentaire"];
+							
+							$info = getInfosMoniteur2($var[$i]["idMoniteur"]);
+							$total[$i]["nom"] = $info[0]["nom"];	
+							$total[$i]["prenom"] = $info[0]["prenom"];	
+							$total[$i]["telephone"] = $info[0]["telephone"];
+						}
+						
 					}
 					else if ($fctUsr == 1) //Si on fait une demande d'une ADMIN
 					{
 						
 					}
 					else echo "Vous êtes qui ?";
-                    echo(json_encode($var));
+                    echo(json_encode($total));
+					
             
 			
         }break;

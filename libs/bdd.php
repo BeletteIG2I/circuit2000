@@ -23,7 +23,6 @@ include("maLibSQL.php");
 		return parcoursRs($res);
 	}
 	function getInfosClient2($id) {
-		
 		$sql = "SELECT id FROM eleve WHERE idEleve=".$id;
 		$idUser= SQLGetChamp($sql);
 		
@@ -178,7 +177,13 @@ function getIdUserEleve($idEleve) {
 
     return $idUser;
 }
+function getIdUserMoniteur($idMoniteur) {
+    
+    $sql = "SELECT id FROM moniteur WHERE idMoniteur =".$idMoniteur;
+    $idUser= SQLGetChamp($sql);
 
+    return $idUser;
+}
 
 function UpdateTpsPause($id,$newTpsPause){
 
