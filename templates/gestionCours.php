@@ -240,7 +240,7 @@
 			<li class="active"><a href="gestionCours.php">Cours</a></li>
             <li><a href="infoEleve2.php">Informations</a></li>
 			<li><a href="modifInfos2.php">Modifications</a></li>
-            <li><a href="tempsPause.html">Temps de pause</a></li>
+            <li><a href="tempsPause.php">Temps de pause</a></li>
 			<li><a href="#logout">Déconnexion</a></li>
           </ul>
         </div><!--/.nav-collapse -->
