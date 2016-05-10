@@ -216,7 +216,6 @@ ob_start("ob_gzhandler");
 						</div>
 					</div>
 				</article>
-				
 				<article id="l_auto_ecole" class="">
 					 <center>
 						<div class="historique">
@@ -230,10 +229,14 @@ ob_start("ob_gzhandler");
 							<img src="images/CIRCUIT_2000.png">
 							</div>
 							</div>
-						</div> 
+						</div>
+						<div id="reseaux_sociaux">
+							<a id="facebook" href="https://fr-fr.facebook.com/pages/Circuit-2000/376830679070353" target="blank"><img class="logoRS" src="images/logos/facebook.png"/></a>
+							<a id="twitter" href="https://twitter.com/circuit2000" target="blank"><img class="logoRS" src="images/logos/twitter.png"/></a>
+							<a id="instagram" href="https://instagram.com/circuit2000" target="blank"><img class="logoRS" src="images/logos/instagram.png"/></a>
+						</div>
 					</center>
 				</article>
-				
 				<article id="nos_bureaux" class="">
 					<center>
 						<div id="lievin">
@@ -269,7 +272,6 @@ ob_start("ob_gzhandler");
 						</div>
 					</center>
 				</article>
-				
 				<article id="faq" class="">
 					<div class="historique">
 						<h1>Foire aux questions</h1>
@@ -288,22 +290,6 @@ ob_start("ob_gzhandler");
 						</p>
 					</div> 
 				</article>
-				
-				<article id="espace_clients" class="">
-					<div id='identification'>
-						<div id="new_password">
-							<div>
-								<h1>Réinitialisation de mot de passe</h1><div id="image_new_password"></div>
-							</div>
-							<p>Vous avez oublié votre mot de passe, celui-ci va être réinitialisé.</p>
-							<p>Le nouveau mot de passe va être envoyé à l'adresse e-mail suivante : </p>
-							<input type="text" id="emailReinit" value="Votre adresse e-mail"/>
-							<p>Assurez-vous que cette adresse e-mail est la bonne et cliquez sur "Envoyer un nouveau mot de passe". Il est conseillé de le changer une fois que vous aurez réussi à vous connecter.</p>
-							<input type="button" id="reinit" value="Envoyer un nouveau mot de passe" />
-						</div>
-					</div>
-				</article>
-				
 				<article id="contact" class="">
 					<div id="formulaire_contact">
 						<h1 id='titre_contact'>Vous souhaitez nous rencontrer ?</h1>
