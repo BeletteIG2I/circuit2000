@@ -70,10 +70,12 @@ body {
     ALL: Black Theme
    =================== */
 
-.header-container,
-.footer-container,
-.main {
+.header-container {
 	background-image: linear-gradient(black, #2E2E2E);
+}
+
+.main {
+	background: black;
 }
 
 a {
@@ -193,6 +195,10 @@ a {
     MOBILE: Main
    ============== */
    
+	article {
+		padding-top: 50px;
+	}
+   
 	.main-container{
         width: 90%;
 		margin: 0 5%;
@@ -239,20 +245,21 @@ a {
 		color: black;
 	}
 	
-	#connexionTel {
-		padding: 20px;
-	}
-	
 	#connexionTel div p {
 		margin: 0;
 	}
 	
-	#faq, #contact, #espace_clients {
-		padding: 20px 10px;
+	#contact {
+		padding-left: 30px;
+		padding-right: 30px;
 	}
 	
 	.label_contact{
 		display: block;
+	}
+	
+	.carte {
+		height: 200px;
 	}
 	
 /* ===============
@@ -329,6 +336,9 @@ a {
     INTERMEDIATE: Main
    ==================== */
 	
+	article {
+		padding-top: 80px;
+	}
 	
 	.main, .header-container {
 			 -webkit-box-shadow: 1 5px 10px #aaa;
@@ -398,7 +408,7 @@ a {
 	}
 	
 	#faq, #contact, #espace_clients {
-		padding: 30px;
+		
 	}
 	
 	
@@ -468,6 +478,9 @@ a {
     WIDE: Main
    ============ */
 	
+	article {
+		padding-top: 100px;
+	}
 	
 	.prestations img {
 		width: 100px;

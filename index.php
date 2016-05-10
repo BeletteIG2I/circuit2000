@@ -38,7 +38,12 @@ ob_start("ob_gzhandler");
 		
 		<script>
 			$( document ).ready(function() {
+				
+				//alert($(window).height());
+				
 				var win = $(window);
+				var winHeight = $(window).height();
+				
 				if (win.width() >= 100) {
 					$("#menuNorm").addClass("hidden");
 					$("#menuTel").removeClass("hidden");
@@ -49,7 +54,6 @@ ob_start("ob_gzhandler");
 				if (win.width() >= 480) {
 					$("div[id=connexion] > img").addClass("hidden");
 					$("div[id=connexion] > div").removeClass("hidden");
-					
 				}
 				
 				if (win.width() >= 768) { 
@@ -57,25 +61,29 @@ ob_start("ob_gzhandler");
 					$("#menuNorm").removeClass("hidden");
 				}
 				
+				
+					
+				$("article").css("min-height",winHeight);
+				
 				// Permet de cacher et afficher le corps
 				// Selon le bouton cliqué
 				$(".navigateur").on('click', function(){
 					cacherCorps();
 					switch($(this).attr('class')){
 						case 'navigateur btnMenu1':
-							$("#nos_services").removeClass("hidden");
+							//$("#nos_services").removeClass("hidden");
 						break;
 						case 'navigateur btnMenu2':
-							$("#l_auto_ecole").removeClass("hidden");
+							//$("#l_auto_ecole").removeClass("hidden");
 						break;
 						case 'navigateur btnMenu3':
-							$("#nos_bureaux").removeClass("hidden");
+							//$("#nos_bureaux").removeClass("hidden");
 						break;
 						case 'navigateur btnMenu4':
-							$("#faq").removeClass("hidden");
+							//$("#faq").removeClass("hidden");
 						break;
 						case 'navigateur btnMenu6':
-							$("#contact").removeClass("hidden");
+							//$("#contact").removeClass("hidden");
 						break;
 					}
 				});
@@ -123,9 +131,9 @@ ob_start("ob_gzhandler");
 				}
 			});
 			
-			function cacherCorps() {
+			/*function cacherCorps() {
 				$("#connexionTel ,#nos_services ,#l_auto_ecole ,#nos_bureaux ,#faq ,#contact, #espace_clients").addClass("hidden");
-			}
+			}*/
 			
 			function cacherLi() {
 				$(".navigateur").addClass("hidden");
@@ -209,7 +217,7 @@ ob_start("ob_gzhandler");
 					</div>
 				</article>
 				
-				<article id="l_auto_ecole" class="hidden">
+				<article id="l_auto_ecole" class="">
 					 <center>
 						<div class="historique">
 							<h1>L'auto-école</h1>
@@ -226,7 +234,7 @@ ob_start("ob_gzhandler");
 					</center>
 				</article>
 				
-				<article id="nos_bureaux" class="hidden">
+				<article id="nos_bureaux" class="">
 					<center>
 						<div id="lievin">
 							<h1>Liévin</h1>
@@ -235,7 +243,7 @@ ob_start("ob_gzhandler");
 							62800 Liévin</br>
 							Tél: 03 21 42 10 59
 							</p>
-							<a href="https://www.google.com/maps/place/2+Rue+Jean+Baptiste+Defernez+62800+Liévin/" target="blank"><div class="carte" id="carte_lievin"></div></a>
+							<a href="https://www.google.com/maps/place/2+Rue+Jean+Baptiste+Defernez+62800+Liévin/" target="blank"><img class="carte" id="carte_lievin"src="images/bureau_lievin.png"/></a>
 						</div>
 						<div class="separator"></div>
 						<div id="lens">
@@ -245,7 +253,7 @@ ob_start("ob_gzhandler");
 							62300 Lens</br>
 							Tél: 03 21 42 10 59
 							</p>
-							<a href="https://www.google.com/maps/place/143+Rue+Léon+Blum++62300+Lens/" target="blank"><div class="carte" id="carte_lens"></div></a>
+							<a href="https://www.google.com/maps/place/143+Rue+Léon+Blum++62300+Lens/" target="blank"><img class="carte" id="carte_lens"src="images/bureau_lens.png"/></a>
 
 						</div>
 						<div class="separator"></div>
@@ -256,13 +264,13 @@ ob_start("ob_gzhandler");
 							62218 Loison-sous-lens</br>
 							Tél: 03 21 42 10 59
 							</p>
-							<a href="https://www.google.com/maps/place/1+rue+du+11+novembre++62218+Loison-sous-lens/" target="blank"><div class="carte" id="carte_loison"></div></a>
+							<a href="https://www.google.com/maps/place/1+rue+du+11+novembre++62218+Loison-sous-lens/" target="blank"><img class="carte" id="carte_loison"src="images/bureau_loison.png"/></a>
 
 						</div>
 					</center>
 				</article>
 				
-				<article id="faq" class="hidden">
+				<article id="faq" class="">
 					<div class="historique">
 						<h1>Foire aux questions</h1>
 						<p class="texte">Question n°1 : </br>
@@ -281,7 +289,7 @@ ob_start("ob_gzhandler");
 					</div> 
 				</article>
 				
-				<article id="espace_clients" class="hidden">
+				<article id="espace_clients" class="">
 					<div id='identification'>
 						<div id="new_password">
 							<div>
@@ -296,7 +304,7 @@ ob_start("ob_gzhandler");
 					</div>
 				</article>
 				
-				<article id="contact" class="hidden">
+				<article id="contact" class="">
 					<div id="formulaire_contact">
 						<h1 id='titre_contact'>Vous souhaitez nous rencontrer ?</h1>
 						<label class='label_contact'>Nom : </label>
