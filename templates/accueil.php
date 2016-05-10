@@ -95,7 +95,7 @@
 
                     <li><a href="infoEleve2.php">Informations</a></li>
                     <li><a href="modifInfos2.php">Modifications</a></li>
-                    <li><a href="tempsPause.html">Temps de pause</a></li>
+                    <li><a href="tempsPause.php">Temps de pause</a></li>
                     <li id="deco"><a href="#logout">Déconnexion</a></li>
                 </ul>
             </div>
@@ -170,7 +170,7 @@
           <p>Modifiez les informations d'un élève</p>
         </div><!-- /.col-lg-4 -->
 		<div class="col-lg-4">
-          <a href="tempsPause.html"><img class="img-circle" src="../images/logos/clock.png" alt="Generic placeholder image" width="140" height="140"></a>
+          <a href="tempsPause.php"><img class="img-circle" src="../images/logos/clock.png" alt="Generic placeholder image" width="140" height="140"></a>
           <h2>Temps de Pause</h2>
           <p>Visualisez le temps de pause des moniteurs </p>
         </div><!-- /.col-lg-4 -->

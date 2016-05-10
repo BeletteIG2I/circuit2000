@@ -325,6 +325,62 @@ if($action = valider('action')) {
             else
                 echo("erreur:Echec de la modification du téléphone");
         }break;
+        
+        case 'updateNom' : {
+            $res = NULL;
+            // Après avoir vérifié le nom, on modifie en base
+            if ($nom = valider("nom", "GET"))
+                $res = UpdateNom($_GET["id"], $nom);
+
+            if ($res != NULL) {
+                $clientUpdate = getInfosClient($_GET["id"]);
+                echo $nouveauNom = $clientUpdate[0]['nom'];
+            }
+            else
+                echo("erreur:Echec de la modification de l'e-mail");
+        }break;
+        
+        case 'updatePrenom' : {
+            $res = NULL;
+            // Après avoir vérifié le nom, on modifie en base
+            if ($prenom = valider("prenom", "GET"))
+                $res = UpdatePrenom($_GET["id"], $prenom);
+
+            if ($res != NULL) {
+                $clientUpdate = getInfosClient($_GET["id"]);
+                echo $nouveauPrenom = $clientUpdate[0]['prenom'];
+            }
+            else
+                echo("erreur:Echec de la modification de l'e-mail");
+        }break;
+        
+        case 'updateMdp' : {
+            $res = NULL;
+            // Après avoir vérifié le nom, on modifie en base
+            if ($mdp = valider("mdp", "GET"))
+                $res = UpdateMdp($_GET["id"], $mdp);
+
+            if ($res != NULL) {
+                $clientUpdate = getInfosClient($_GET["id"]);
+                echo $nouveauMdp = $clientUpdate[0]['mdp'];
+            }
+            else
+                echo("erreur:Echec de la modification de l'e-mail");
+        }break;
+        
+        case 'updateDateNaissance' : {
+            $res = NULL;
+            // Après avoir vérifié le nom, on modifie en base
+            if ($dateNaiss = valider("dateNaiss", "GET"))
+                $res = UpdateDateNaissance($_GET["id"], $dateNaiss);
+
+            if ($res != NULL) {
+                $clientUpdate = getInfosClient($_GET["id"]);
+                echo $nouveauDateNaiss = $clientUpdate[0]['dateNaissance'];
+            }
+            else
+                echo("erreur:Echec de la modification de l'e-mail");
+        }break;
 
         case 'updateCode' : {
             $res = NULL;
